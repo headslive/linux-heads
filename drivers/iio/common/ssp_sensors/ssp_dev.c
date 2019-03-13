@@ -45,16 +45,16 @@ static const u8 ssp_magnitude_table[] = {110, 85, 171, 71, 203, 195, 0, 67,
 	243, 13, 45, 250};
 
 static const struct ssp_sensorhub_info ssp_rinato_info = {
-	.fw_name = "ssp_B2.fw",
-	.fw_crashed_name = "ssp_crashed.fw",
+	.fw_name = "/*(DEBLOBBED)*/",
+	.fw_crashed_name = "/*(DEBLOBBED)*/",
 	.fw_rev = 14052300,
 	.mag_table = ssp_magnitude_table,
 	.mag_length = ARRAY_SIZE(ssp_magnitude_table),
 };
 
 static const struct ssp_sensorhub_info ssp_thermostat_info = {
-	.fw_name = "thermostat_B2.fw",
-	.fw_crashed_name = "ssp_crashed.fw",
+	.fw_name = "/*(DEBLOBBED)*/",
+	.fw_crashed_name = "/*(DEBLOBBED)*/",
 	.fw_rev = 14080600,
 	.mag_table = ssp_magnitude_table,
 	.mag_length = ARRAY_SIZE(ssp_magnitude_table),

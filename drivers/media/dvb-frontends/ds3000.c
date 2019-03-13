@@ -38,9 +38,7 @@ static int debug;
 			printk(args); \
 	} while (0)
 
-/* as of March 2009 current DS3000 firmware version is 1.78 */
-/* DS3000 FW v1.78 MD5: a32d17910c4f370073f9346e71d34b80 */
-#define DS3000_DEFAULT_FIRMWARE "dvb-fe-ds3000.fw"
+/*(DEBLOBBED)*/
 
 #define DS3000_SAMPLE_RATE 96000 /* in kHz */
 
@@ -357,8 +355,8 @@ static int ds3000_firmware_ondemand(struct dvb_frontend *fe)
 	/* Load firmware */
 	/* request the firmware, this will block until someone uploads it */
 	printk(KERN_INFO "%s: Waiting for firmware upload (%s)...\n", __func__,
-				DS3000_DEFAULT_FIRMWARE);
-	ret = request_firmware(&fw, DS3000_DEFAULT_FIRMWARE,
+				"/*(DEBLOBBED)*/");
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/",
 				state->i2c->dev.parent);
 	printk(KERN_INFO "%s: Waiting for firmware upload(2)...\n", __func__);
 	if (ret) {
@@ -1139,4 +1137,4 @@ MODULE_PARM_DESC(debug, "Activates frontend debugging (default:0)");
 MODULE_DESCRIPTION("DVB Frontend module for Montage Technology DS3000 hardware");
 MODULE_AUTHOR("Konstantin Dimitrov <kosio.dimitrov@gmail.com>");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(DS3000_DEFAULT_FIRMWARE);
+/*(DEBLOBBED)*/

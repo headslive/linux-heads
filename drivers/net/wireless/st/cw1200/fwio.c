@@ -145,7 +145,7 @@ static int cw1200_load_firmware_cw1200(struct cw1200_common *priv)
 	REG_WRITE(ST90TDS_CONFIG_REG_ID, val32);
 
 	/* Load a firmware file */
-	ret = request_firmware(&firmware, fw_path, priv->pdev);
+	ret = reject_firmware(&firmware, fw_path, priv->pdev);
 	if (ret) {
 		pr_err("Can't load firmware file %s.\n", fw_path);
 		goto exit;

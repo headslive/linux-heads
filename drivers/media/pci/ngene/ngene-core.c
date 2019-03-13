@@ -1234,26 +1234,26 @@ static int ngene_load_firm(struct ngene *dev)
 	case 15:
 		version = 15;
 		size = 23466;
-		fw_name = "ngene_15.fw";
+		fw_name = "/*(DEBLOBBED)*/";
 		dev->cmd_timeout_workaround = true;
 		break;
 	case 16:
 		size = 23498;
-		fw_name = "ngene_16.fw";
+		fw_name = "/*(DEBLOBBED)*/";
 		dev->cmd_timeout_workaround = true;
 		break;
 	case 17:
 		size = 24446;
-		fw_name = "ngene_17.fw";
+		fw_name = "/*(DEBLOBBED)*/";
 		dev->cmd_timeout_workaround = true;
 		break;
 	case 18:
 		size = 0;
-		fw_name = "ngene_18.fw";
+		fw_name = "/*(DEBLOBBED)*/";
 		break;
 	}
 
-	if (request_firmware(&fw, fw_name, &dev->pci_dev->dev) < 0) {
+	if (reject_firmware(&fw, fw_name, &dev->pci_dev->dev) < 0) {
 		dev_err(pdev, "Could not load firmware file %s.\n", fw_name);
 		dev_info(pdev, "Copy %s to your hotplug directory!\n",
 			 fw_name);

@@ -627,7 +627,7 @@ int wil_request_firmware(struct wil6210_priv *wil, const char *name,
 	size_t sz;
 	const void *d;
 
-	rc = request_firmware(&fw, name, wil_to_dev(wil));
+	rc = reject_firmware(&fw, name, wil_to_dev(wil));
 	if (rc) {
 		wil_err_fw(wil, "Failed to load firmware %s rc %d\n", name, rc);
 		return rc;
@@ -723,7 +723,7 @@ int wil_request_board(struct wil6210_priv *wil, const char *name)
 	int rc, dlen;
 	const struct firmware *brd;
 
-	rc = request_firmware(&brd, name, wil_to_dev(wil));
+	rc = reject_firmware(&brd, name, wil_to_dev(wil));
 	if (rc) {
 		wil_err_fw(wil, "Failed to load brd %s\n", name);
 		return rc;
@@ -757,7 +757,7 @@ bool wil_fw_verify_file_exists(struct wil6210_priv *wil, const char *name)
 	const struct firmware *fw;
 	int rc;
 
-	rc = request_firmware(&fw, name, wil_to_dev(wil));
+	rc = reject_firmware(&fw, name, wil_to_dev(wil));
 	if (!rc)
 		release_firmware(fw);
 	else

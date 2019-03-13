@@ -1562,4 +1562,4 @@ module_usb_driver(af9015_usb_driver);
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("Afatech AF9015 driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(AF9015_FIRMWARE);
+/*(DEBLOBBED)*/

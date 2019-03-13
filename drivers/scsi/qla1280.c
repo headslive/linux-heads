@@ -554,9 +554,9 @@ struct qla_fw {
 #define QL_NUM_FW_IMAGES 3
 
 struct qla_fw qla1280_fw_tbl[QL_NUM_FW_IMAGES] = {
-	{"qlogic/1040.bin",  NULL},	/* image 0 */
-	{"qlogic/1280.bin",  NULL},	/* image 1 */
-	{"qlogic/12160.bin", NULL},	/* image 2 */
+	{"/*(DEBLOBBED)*/",  NULL},	/* image 0 */
+	{"/*(DEBLOBBED)*/",  NULL},	/* image 1 */
+	{"/*(DEBLOBBED)*/", NULL},	/* image 2 */
 };
 
 /* NOTE: Order of boards in this table must match order in qla1280_pci_tbl */
@@ -1539,7 +1539,7 @@ qla1280_request_firmware(struct scsi_qla_host *ha)
 		goto out;
 
 	fwname = qla1280_fw_tbl[index].fwname;
-	err = request_firmware(&fw, fwname, &ha->pdev->dev);
+	err = reject_firmware(&fw, fwname, &ha->pdev->dev);
 
 	if (err) {
 		printk(KERN_ERR "Failed to load image \"%s\" err %d\n",
@@ -4460,9 +4460,7 @@ module_exit(qla1280_exit);
 MODULE_AUTHOR("Qlogic & Jes Sorensen");
 MODULE_DESCRIPTION("Qlogic ISP SCSI (qla1x80/qla1x160) driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("qlogic/1040.bin");
-MODULE_FIRMWARE("qlogic/1280.bin");
-MODULE_FIRMWARE("qlogic/12160.bin");
+/*(DEBLOBBED)*/
 MODULE_VERSION(QLA1280_VERSION);
 
 /*

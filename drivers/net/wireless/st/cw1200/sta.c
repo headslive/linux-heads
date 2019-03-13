@@ -1143,7 +1143,7 @@ int cw1200_setup_mac(struct cw1200_common *priv)
 		priv->cqm_use_rssi = true;
 
 	if (!priv->sdd) {
-		ret = request_firmware(&priv->sdd, priv->sdd_path, priv->pdev);
+		ret = reject_firmware(&priv->sdd, priv->sdd_path, priv->pdev);
 		if (ret) {
 			pr_err("Can't load sdd file %s.\n", priv->sdd_path);
 			return ret;

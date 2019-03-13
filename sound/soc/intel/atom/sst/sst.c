@@ -336,7 +336,7 @@ int sst_context_init(struct intel_sst_drv *ctx)
 				PM_QOS_DEFAULT_VALUE);
 
 	dev_dbg(ctx->dev, "Requesting FW %s now...\n", ctx->firmware_name);
-	ret = request_firmware_nowait(THIS_MODULE, true, ctx->firmware_name,
+	ret = reject_firmware_nowait(THIS_MODULE, true, ctx->firmware_name,
 				      ctx->dev, GFP_KERNEL, ctx, sst_firmware_load_cb);
 	if (ret) {
 		dev_err(ctx->dev, "Firmware download failed:%d\n", ret);

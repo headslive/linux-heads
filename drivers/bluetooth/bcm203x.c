@@ -188,7 +188,7 @@ static int bcm203x_probe(struct usb_interface *intf, const struct usb_device_id 
 	if (!data->urb)
 		return -ENOMEM;
 
-	if (request_firmware(&firmware, "BCM2033-MD.hex", &udev->dev) < 0) {
+	if (reject_firmware(&firmware, "/*(DEBLOBBED)*/", &udev->dev) < 0) {
 		BT_ERR("Mini driver request failed");
 		usb_free_urb(data->urb);
 		return -EIO;
@@ -213,7 +213,7 @@ static int bcm203x_probe(struct usb_interface *intf, const struct usb_device_id 
 
 	release_firmware(firmware);
 
-	if (request_firmware(&firmware, "BCM2033-FW.bin", &udev->dev) < 0) {
+	if (reject_firmware(&firmware, "/*(DEBLOBBED)*/", &udev->dev) < 0) {
 		BT_ERR("Firmware request failed");
 		usb_free_urb(data->urb);
 		kfree(data->buffer);
@@ -278,5 +278,4 @@ MODULE_AUTHOR("Marcel Holtmann <marcel@holtmann.org>");
 MODULE_DESCRIPTION("Broadcom Blutonium firmware driver ver " VERSION);
 MODULE_VERSION(VERSION);
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("BCM2033-MD.hex");
-MODULE_FIRMWARE("BCM2033-FW.bin");
+/*(DEBLOBBED)*/

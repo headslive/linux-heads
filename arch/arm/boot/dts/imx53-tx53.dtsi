@@ -546,7 +546,7 @@
 };
 
 &sdma {
-	fsl,sdma-ram-script-name = "sdma-imx53.bin";
+	fsl,sdma-ram-script-name = "/*(DEBLOBBED)*/";
 };
 
 &ssi1 {

@@ -26,10 +26,10 @@
 
 #define MESSAGE_HEADER_LEN	4
 
-static char *lbtf_fw_name = "lbtf_usb.bin";
+static char *lbtf_fw_name = "/*(DEBLOBBED)*/";
 module_param_named(fw_name, lbtf_fw_name, charp, 0644);
 
-MODULE_FIRMWARE("lbtf_usb.bin");
+/*(DEBLOBBED)*/
 
 static const struct usb_device_id if_usb_table[] = {
 	/* Enter the device signature inside */
@@ -817,9 +817,9 @@ static int if_usb_prog_firmware(struct if_usb_card *cardp)
 	lbtf_deb_enter(LBTF_DEB_USB);
 
 	kernel_param_lock(THIS_MODULE);
-	ret = request_firmware(&cardp->fw, lbtf_fw_name, &cardp->udev->dev);
+	ret = reject_firmware(&cardp->fw, lbtf_fw_name, &cardp->udev->dev);
 	if (ret < 0) {
-		pr_err("request_firmware() failed with %#x\n", ret);
+		pr_err("reject_firmware() failed with %#x\n", ret);
 		pr_err("firmware %s not found\n", lbtf_fw_name);
 		kernel_param_unlock(THIS_MODULE);
 		goto done;

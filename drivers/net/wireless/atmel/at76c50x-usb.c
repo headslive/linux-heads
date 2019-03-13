@@ -110,23 +110,16 @@ static struct mutex fw_mutex;
 
 static struct fwentry firmwares[] = {
 	[0] = { "" },
-	[BOARD_503_ISL3861] = { "atmel_at76c503-i3861.bin" },
-	[BOARD_503_ISL3863] = { "atmel_at76c503-i3863.bin" },
-	[BOARD_503] = { "atmel_at76c503-rfmd.bin" },
-	[BOARD_503_ACC] = { "atmel_at76c503-rfmd-acc.bin" },
-	[BOARD_505] = { "atmel_at76c505-rfmd.bin" },
-	[BOARD_505_2958] = { "atmel_at76c505-rfmd2958.bin" },
-	[BOARD_505A] = { "atmel_at76c505a-rfmd2958.bin" },
-	[BOARD_505AMX] = { "atmel_at76c505amx-rfmd.bin" },
+	[BOARD_503_ISL3861] = { "/*(DEBLOBBED)*/" },
+	[BOARD_503_ISL3863] = { "/*(DEBLOBBED)*/" },
+	[BOARD_503] = { "/*(DEBLOBBED)*/" },
+	[BOARD_503_ACC] = { "/*(DEBLOBBED)*/" },
+	[BOARD_505] = { "/*(DEBLOBBED)*/" },
+	[BOARD_505_2958] = { "/*(DEBLOBBED)*/" },
+	[BOARD_505A] = { "/*(DEBLOBBED)*/" },
+	[BOARD_505AMX] = { "/*(DEBLOBBED)*/" },
 };
-MODULE_FIRMWARE("atmel_at76c503-i3861.bin");
-MODULE_FIRMWARE("atmel_at76c503-i3863.bin");
-MODULE_FIRMWARE("atmel_at76c503-rfmd.bin");
-MODULE_FIRMWARE("atmel_at76c503-rfmd-acc.bin");
-MODULE_FIRMWARE("atmel_at76c505-rfmd.bin");
-MODULE_FIRMWARE("atmel_at76c505-rfmd2958.bin");
-MODULE_FIRMWARE("atmel_at76c505a-rfmd2958.bin");
-MODULE_FIRMWARE("atmel_at76c505amx-rfmd.bin");
+/*(DEBLOBBED)*/
 
 #define USB_DEVICE_DATA(__ops)	.driver_info = (kernel_ulong_t)(__ops)
 
@@ -1621,7 +1614,7 @@ static struct fwentry *at76_load_firmware(struct usb_device *udev,
 	}
 
 	at76_dbg(DBG_FW, "downloading firmware %s", fwe->fwname);
-	ret = request_firmware(&fwe->fw, fwe->fwname, &udev->dev);
+	ret = reject_firmware(&fwe->fw, fwe->fwname, &udev->dev);
 	if (ret < 0) {
 		dev_err(&udev->dev, "firmware %s not found!\n",
 			fwe->fwname);

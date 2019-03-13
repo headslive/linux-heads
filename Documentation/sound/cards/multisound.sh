@@ -42,20 +42,7 @@
 #  snd-msnd-pinnacle      - Base audio/mixer support for Pinnacle and Fiji cards
 #
 #
-#  Important Notes - Read Before Using
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
-#  The firmware files are not included (may change in future).  You
-#  must obtain these images from Turtle Beach (they are included in
-#  the MultiSound Development Kits), and place them in /etc/sound for
-#  example, and give the full paths in the Linux configuration.  If
-#  you are compiling in support for the MultiSound driver rather than
-#  using it as a module, these firmware files must be accessible
-#  during kernel compilation.
-#
-#  Please note these files must be binary files, not assembler.  See
-#  the section later in this document for instructions to obtain these
-#  files.
+# /*(DEBLOBBED)*/
 #
 #
 #  Configuring Card Resources
@@ -280,66 +267,7 @@
 #  joystick_io          I/O port of joystick
 #
 #
-#  Obtaining and Creating Firmware Files
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
-#       For the Classic/Tahiti/Monterey
-#       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
-#  Download to /tmp and unzip the following file from Turtle Beach:
-#
-#       ftp://ftp.voyetra.com/pub/tbs/msndcl/msndvkit.zip
-#
-#  When unzipped, unzip the file named MsndFiles.zip.  Then copy the
-#  following firmware files to /etc/sound (note the file renaming):
-#
-#    cp DSPCODE/MSNDINIT.BIN /etc/sound/msndinit.bin
-#    cp DSPCODE/MSNDPERM.REB /etc/sound/msndperm.bin
-#
-#  When configuring the Linux kernel, specify /etc/sound/msndinit.bin and
-#  /etc/sound/msndperm.bin for the two firmware files (Linux kernel
-#  versions older than 2.2 do not ask for firmware paths, and are
-#  hardcoded to /etc/sound).
-#
-#  If you are compiling the driver into the kernel, these files must
-#  be accessible during compilation, but will not be needed later.
-#  The files must remain, however, if the driver is used as a module.
-#
-#
-#       For the Pinnacle/Fiji
-#       ~~~~~~~~~~~~~~~~~~~~~
-#
-#  Download to /tmp and unzip the following file from Turtle Beach (be
-#  sure to use the entire URL; some have had trouble navigating to the
-#  URL):
-#
-#       ftp://ftp.voyetra.com/pub/tbs/pinn/pnddk100.zip
-#
-#  Unpack this shell archive, and run make in the created directory
-#  (you need a C compiler and flex to build the utilities).  This
-#  should give you the executables conv, pinnaclecfg and setdigital.
-#  conv is only used temporarily here to create the firmware files,
-#  while pinnaclecfg is used to configure the Pinnacle or Fiji card in
-#  non-PnP mode, and setdigital can be used to set the S/PDIF input on
-#  the mixer (pinnaclecfg and setdigital should be copied to a
-#  convenient place, possibly run during system initialization).
-#
-#  To generating the firmware files with the `conv' program, we create
-#  the binary firmware files by doing the following conversion
-#  (assuming the archive unpacked into a directory named PINNDDK):
-#
-#    ./conv < PINNDDK/dspcode/pndspini.asm > /etc/sound/pndspini.bin
-#    ./conv < PINNDDK/dspcode/pndsperm.asm > /etc/sound/pndsperm.bin
-#
-#  The conv (and conv.l) program is not needed after conversion and can
-#  be safely deleted.  Then, when configuring the Linux kernel, specify
-#  /etc/sound/pndspini.bin and /etc/sound/pndsperm.bin for the two
-#  firmware files (Linux kernel versions older than 2.2 do not ask for
-#  firmware paths, and are hardcoded to /etc/sound).
-#
-#  If you are compiling the driver into the kernel, these files must
-#  be accessible during compilation, but will not be needed later.
-#  The files must remain, however, if the driver is used as a module.
+# /*(DEBLOBBED)*/
 #
 #
 #  Using Digital I/O with the S/PDIF Port

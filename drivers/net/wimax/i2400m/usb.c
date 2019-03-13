@@ -83,16 +83,16 @@ MODULE_PARM_DESC(debug,
 
 /* Our firmware file name */
 static const char *i2400mu_bus_fw_names_5x50[] = {
-#define I2400MU_FW_FILE_NAME_v1_5 "i2400m-fw-usb-1.5.sbcf"
+#define I2400MU_FW_FILE_NAME_v1_5 "/*(DEBLOBBED)*/"
 	I2400MU_FW_FILE_NAME_v1_5,
-#define I2400MU_FW_FILE_NAME_v1_4 "i2400m-fw-usb-1.4.sbcf"
+#define I2400MU_FW_FILE_NAME_v1_4 "/*(DEBLOBBED)*/"
 	I2400MU_FW_FILE_NAME_v1_4,
 	NULL,
 };
 
 
 static const char *i2400mu_bus_fw_names_6050[] = {
-#define I6050U_FW_FILE_NAME_v1_5 "i6050-fw-usb-1.5.sbcf"
+#define I6050U_FW_FILE_NAME_v1_5 "/*(DEBLOBBED)*/"
 	I6050U_FW_FILE_NAME_v1_5,
 	NULL,
 };
@@ -816,5 +816,4 @@ MODULE_AUTHOR("Intel Corporation <linux-wimax@intel.com>");
 MODULE_DESCRIPTION("Driver for USB based Intel Wireless WiMAX Connection 2400M "
 		   "(5x50 & 6050)");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(I2400MU_FW_FILE_NAME_v1_5);
-MODULE_FIRMWARE(I6050U_FW_FILE_NAME_v1_5);
+/*(DEBLOBBED)*/

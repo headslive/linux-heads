@@ -22,8 +22,8 @@
 
 #include "fdp.h"
 
-#define FDP_OTP_PATCH_NAME			"otp.bin"
-#define FDP_RAM_PATCH_NAME			"ram.bin"
+#define FDP_OTP_PATCH_NAME			"/*(DEBLOBBED)*/"
+#define FDP_RAM_PATCH_NAME			"/*(DEBLOBBED)*/"
 #define FDP_FW_HEADER_SIZE			576
 #define FDP_FW_UPDATE_SLEEP			1000
 
@@ -295,7 +295,7 @@ static int fdp_nci_request_firmware(struct nci_dev *ndev)
 	u8 *data;
 	int r;
 
-	r = request_firmware(&info->ram_patch, FDP_RAM_PATCH_NAME, dev);
+	r = reject_firmware(&info->ram_patch, FDP_RAM_PATCH_NAME, dev);
 	if (r < 0) {
 		nfc_err(dev, "RAM patch request error\n");
 		goto error;
@@ -312,7 +312,7 @@ static int fdp_nci_request_firmware(struct nci_dev *ndev)
 		  info->ram_patch_version, (int) info->ram_patch->size);
 
 
-	r = request_firmware(&info->otp_patch, FDP_OTP_PATCH_NAME, dev);
+	r = reject_firmware(&info->otp_patch, FDP_OTP_PATCH_NAME, dev);
 	if (r < 0) {
 		nfc_err(dev, "OTP patch request error\n");
 		goto out;

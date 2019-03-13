@@ -273,10 +273,10 @@
 #define SLIC_EEPROM_SIZE		128
 #define SLIC_EEPROM_MAGIC		0xa5a5
 
-#define SLIC_FIRMWARE_MOJAVE		"slicoss/gbdownload.sys"
-#define SLIC_FIRMWARE_OASIS		"slicoss/oasisdownload.sys"
-#define SLIC_RCV_FIRMWARE_MOJAVE	"slicoss/gbrcvucode.sys"
-#define SLIC_RCV_FIRMWARE_OASIS		"slicoss/oasisrcvucode.sys"
+#define SLIC_FIRMWARE_MOJAVE		"/*(DEBLOBBED)*/"
+#define SLIC_FIRMWARE_OASIS		"/*(DEBLOBBED)*/"
+#define SLIC_RCV_FIRMWARE_MOJAVE	"/*(DEBLOBBED)*/"
+#define SLIC_RCV_FIRMWARE_OASIS		"/*(DEBLOBBED)*/"
 #define SLIC_FIRMWARE_MIN_SIZE		64
 #define SLIC_FIRMWARE_MAX_SECTIONS	3
 

@@ -117,7 +117,7 @@ int ipu3_css_fw_init(struct ipu3_css *css)
 	unsigned int i, j, binary_nr;
 	int r;
 
-	r = request_firmware(&css->fw, IMGU_FW_NAME, css->dev);
+	r = reject_firmware(&css->fw, IMGU_FW_NAME, css->dev);
 	if (r)
 		return r;
 

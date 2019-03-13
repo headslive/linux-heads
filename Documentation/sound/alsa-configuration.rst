@@ -1565,8 +1565,8 @@ ide_irq
 joystick_io
     Joystick I/O port
 
-The driver requires firmware files ``turtlebeach/msndinit.bin`` and
-``turtlebeach/msndperm.bin`` in the proper firmware directory.
+The driver requires firmware files ``/*(DEBLOBBED)*/`` and
+``/*(DEBLOBBED)*/`` in the proper firmware directory.
 
 See Documentation/sound/cards/multisound.sh for important information
 about this driver.  Note that it has been discontinued, but the 
@@ -1592,8 +1592,8 @@ calibrate_signal
 isapnp
     ISA PnP detection - 0 = disable, 1 = enable (default)
 
-The driver requires firmware files ``turtlebeach/pndspini.bin`` and
-``turtlebeach/pndsperm.bin`` in the proper firmware directory.
+The driver requires firmware files ``/*(DEBLOBBED)*/`` and
+``/*(DEBLOBBED)*/`` in the proper firmware directory.
 
 Module snd-mtpav
 ----------------
@@ -1879,7 +1879,7 @@ opl3_port
 
 This module supports multiple cards.
 The driver requires the firmware loader support on kernel.
-You need to install the firmware file ``riptide.hex`` to the standard
+You need to install the firmware file ``/*(DEBLOBBED)*/`` to the standard
 firmware path (e.g. /lib/firmware).
 
 Module snd-rme32
@@ -2110,7 +2110,7 @@ sleep_interval
 sleep_tries
     How many times to try sleeping during a wait (default: 50)
 ospath
-    Pathname to processed ICS2115 OS firmware (default:wavefront.os);
+    Pathname to processed ICS2115 OS firmware (default:/*(DEBLOBBED)*/);
     The path name of the ISC2115 OS firmware.  In the recent
     version, it's handled via firmware loader framework, so it
     must be installed in the proper path, typically,
@@ -2124,7 +2124,7 @@ osrun_time
 
 This module supports multiple cards and ISA PnP.
 
-Note: the firmware file ``wavefront.os`` was located in the earlier
+Note: the firmware file ``/*(DEBLOBBED)*/`` was located in the earlier
 version in /etc.  Now it's loaded via firmware loader, and
 must be in the proper firmware path, such as /lib/firmware.
 Copy (or symlink) the file appropriately if you get an error

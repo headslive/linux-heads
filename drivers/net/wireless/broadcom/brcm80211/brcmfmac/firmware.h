@@ -20,7 +20,7 @@
 
 #define	BRCMF_FW_NAME_LEN		320
 
-#define BRCMF_FW_DEFAULT_PATH		"brcm/"
+#define BRCMF_FW_DEFAULT_PATH		/*(DEBLOBBED)*/
 
 /**
  * struct brcmf_firmware_mapping - Used to map chipid/revmask to firmware
@@ -40,8 +40,7 @@ struct brcmf_firmware_mapping {
 
 #define BRCMF_FW_DEF(fw_name, fw_base) \
 static const char BRCM_ ## fw_name ## _FIRMWARE_BASENAME[] = \
-	BRCMF_FW_DEFAULT_PATH fw_base; \
-MODULE_FIRMWARE(BRCMF_FW_DEFAULT_PATH fw_base ".bin")
+	BRCMF_FW_DEFAULT_PATH fw_base/*(DEBLOBBED)*/
 
 #define BRCMF_FW_ENTRY(chipid, mask, name) \
 	{ chipid, mask, BRCM_ ## name ## _FIRMWARE_BASENAME }

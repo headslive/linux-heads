@@ -1365,7 +1365,7 @@ static void load_firmware_cb(const struct firmware *fw,
 	struct xc2028_data *priv = fe->tuner_priv;
 	int rc;
 
-	tuner_dbg("request_firmware_nowait(): %s\n", fw ? "OK" : "error");
+	tuner_dbg("reject_firmware_nowait(): %s\n", fw ? "OK" : "error");
 	if (!fw) {
 		tuner_err("Could not load firmware %s.\n", priv->fname);
 		priv->state = XC2028_NODEV;
@@ -1398,7 +1398,7 @@ static int xc2028_set_config(struct dvb_frontend *fe, void *priv_cfg)
 
 	/*
 	 * If firmware name changed, frees firmware. As free_firmware will
-	 * reset the status to NO_FIRMWARE, this forces a new request_firmware
+	 * reset the status to NO_FIRMWARE, this forces a new reject_firmware
 	 */
 	if (!firmware_name[0] && p->fname &&
 	    priv->fname && strcmp(p->fname, priv->fname))
@@ -1418,7 +1418,7 @@ static int xc2028_set_config(struct dvb_frontend *fe, void *priv_cfg)
 			goto unlock;
 		}
 
-		rc = request_firmware_nowait(THIS_MODULE, 1,
+		rc = reject_firmware_nowait(THIS_MODULE, 1,
 					     priv->fname,
 					     priv->i2c_props.adap->dev.parent,
 					     GFP_KERNEL,
@@ -1519,5 +1519,4 @@ MODULE_DESCRIPTION("Xceive xc2028/xc3028 tuner driver");
 MODULE_AUTHOR("Michel Ludwig <michel.ludwig@gmail.com>");
 MODULE_AUTHOR("Mauro Carvalho Chehab <mchehab@kernel.org>");
 MODULE_LICENSE("GPL v2");
-MODULE_FIRMWARE(XC2028_DEFAULT_FIRMWARE);
-MODULE_FIRMWARE(XC3028L_DEFAULT_FIRMWARE);
+/*(DEBLOBBED)*/

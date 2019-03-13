@@ -1376,7 +1376,7 @@ static int dvb_register(struct cx8802_dev *dev)
 				.i2c_addr  = 0x61,
 			};
 			static struct xc2028_ctrl ctl = {
-				.fname       = XC2028_DEFAULT_FIRMWARE,
+				.fname       = "/*(DEBLOBBED)*/",
 				.max_len     = 64,
 				.scode_table = XC3028_FE_OREN538,
 			};

@@ -820,18 +820,18 @@ static const struct dsa_switch_ops gswip_switch_ops = {
 };
 
 static const struct xway_gphy_match_data xrx200a1x_gphy_data = {
-	.fe_firmware_name = "lantiq/xrx200_phy22f_a14.bin",
-	.ge_firmware_name = "lantiq/xrx200_phy11g_a14.bin",
+	.fe_firmware_name = "/*(DEBLOBBED)*/",
+	.ge_firmware_name = "/*(DEBLOBBED)*/",
 };
 
 static const struct xway_gphy_match_data xrx200a2x_gphy_data = {
-	.fe_firmware_name = "lantiq/xrx200_phy22f_a22.bin",
-	.ge_firmware_name = "lantiq/xrx200_phy11g_a22.bin",
+	.fe_firmware_name = "/*(DEBLOBBED)*/",
+	.ge_firmware_name = "/*(DEBLOBBED)*/",
 };
 
 static const struct xway_gphy_match_data xrx300_gphy_data = {
-	.fe_firmware_name = "lantiq/xrx300_phy22f_a21.bin",
-	.ge_firmware_name = "lantiq/xrx300_phy11g_a21.bin",
+	.fe_firmware_name = "/*(DEBLOBBED)*/",
+	.ge_firmware_name = "/*(DEBLOBBED)*/",
 };
 
 static const struct of_device_id xway_gphy_match[] = {
@@ -859,7 +859,7 @@ static int gswip_gphy_fw_load(struct gswip_priv *priv, struct gswip_gphy_fw *gph
 
 	reset_control_assert(gphy_fw->reset);
 
-	ret = request_firmware(&fw, gphy_fw->fw_name, dev);
+	ret = reject_firmware(&fw, gphy_fw->fw_name, dev);
 	if (ret) {
 		dev_err(dev, "failed to load firmware: %s, error: %i\n",
 			gphy_fw->fw_name, ret);
@@ -1162,12 +1162,7 @@ static struct platform_driver gswip_driver = {
 
 module_platform_driver(gswip_driver);
 
-MODULE_FIRMWARE("lantiq/xrx300_phy11g_a21.bin");
-MODULE_FIRMWARE("lantiq/xrx300_phy22f_a21.bin");
-MODULE_FIRMWARE("lantiq/xrx200_phy11g_a14.bin");
-MODULE_FIRMWARE("lantiq/xrx200_phy11g_a22.bin");
-MODULE_FIRMWARE("lantiq/xrx200_phy22f_a14.bin");
-MODULE_FIRMWARE("lantiq/xrx200_phy22f_a22.bin");
+/*(DEBLOBBED)*/
 MODULE_AUTHOR("Hauke Mehrtens <hauke@hauke-m.de>");
 MODULE_DESCRIPTION("Lantiq / Intel GSWIP driver");
 MODULE_LICENSE("GPL v2");

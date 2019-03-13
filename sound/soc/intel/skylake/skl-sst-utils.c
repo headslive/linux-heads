@@ -412,7 +412,7 @@ int skl_prepare_lib_load(struct skl_sst *skl, struct skl_lib_info *linfo,
 	struct sst_dsp *dsp = skl->dsp;
 
 	if (linfo->fw == NULL) {
-		ret = request_firmware(&linfo->fw, linfo->name,
+		ret = reject_firmware(&linfo->fw, linfo->name,
 					skl->dev);
 		if (ret < 0) {
 			dev_err(skl->dev, "Request lib %s failed:%d\n",

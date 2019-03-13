@@ -288,7 +288,7 @@ static int icn8505_upload_fw(struct icn8505_data *icn8505)
 	 * we may need it at resume. Having loaded it once will make the
 	 * firmware class code cache it at suspend/resume.
 	 */
-	error = request_firmware(&fw, icn8505->firmware_name, dev);
+	error = reject_firmware(&fw, icn8505->firmware_name, dev);
 	if (error) {
 		dev_err(dev, "Firmware request error %d\n", error);
 		return error;
@@ -387,7 +387,7 @@ static int icn8505_probe_acpi(struct icn8505_data *icn8505, struct device *dev)
 	}
 
 	snprintf(icn8505->firmware_name, sizeof(icn8505->firmware_name),
-		 "chipone/icn8505-%s.fw", subsys);
+		 "/*(DEBLOBBED)*/", subsys);
 
 	kfree(buffer.pointer);
 	return 0;

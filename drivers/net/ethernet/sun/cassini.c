@@ -180,7 +180,7 @@ static int link_mode;
 MODULE_AUTHOR("Adrian Sun (asun@darksunrising.com)");
 MODULE_DESCRIPTION("Sun Cassini(+) ethernet driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("sun/cassini.bin");
+/*(DEBLOBBED)*/
 module_param(cassini_debug, int, 0);
 MODULE_PARM_DESC(cassini_debug, "Cassini bitmapped debugging message enable value");
 module_param(link_mode, int, 0);
@@ -798,13 +798,13 @@ static int cas_reset_mii_phy(struct cas *cp)
 static void cas_saturn_firmware_init(struct cas *cp)
 {
 	const struct firmware *fw;
-	const char fw_name[] = "sun/cassini.bin";
+	const char fw_name[] = "/*(DEBLOBBED)*/";
 	int err;
 
 	if (PHY_NS_DP83065 != cp->phy_id)
 		return;
 
-	err = request_firmware(&fw, fw_name, &cp->pdev->dev);
+	err = reject_firmware(&fw, fw_name, &cp->pdev->dev);
 	if (err) {
 		pr_err("Failed to load firmware \"%s\"\n",
 		       fw_name);

@@ -652,7 +652,7 @@ static int bfusb_probe(struct usb_interface *intf, const struct usb_device_id *i
 	skb_queue_head_init(&data->pending_q);
 	skb_queue_head_init(&data->completed_q);
 
-	if (request_firmware(&firmware, "bfubase.frm", &udev->dev) < 0) {
+	if (reject_firmware(&firmware, "/*(DEBLOBBED)*/", &udev->dev) < 0) {
 		BT_ERR("Firmware request failed");
 		goto done;
 	}
@@ -735,4 +735,4 @@ MODULE_AUTHOR("Marcel Holtmann <marcel@holtmann.org>");
 MODULE_DESCRIPTION("BlueFRITZ! USB driver ver " VERSION);
 MODULE_VERSION(VERSION);
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("bfubase.frm");
+/*(DEBLOBBED)*/

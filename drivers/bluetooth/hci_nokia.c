@@ -41,8 +41,8 @@
 #define NOKIA_ID_BCM2048	0x04
 #define NOKIA_ID_TI1271		0x31
 
-#define FIRMWARE_BCM2048	"nokia/bcmfw.bin"
-#define FIRMWARE_TI1271		"nokia/ti1273.bin"
+#define FIRMWARE_BCM2048	"/*(DEBLOBBED)*/"
+#define FIRMWARE_TI1271		"/*(DEBLOBBED)*/"
 
 #define HCI_NOKIA_NEG_PKT	0x06
 #define HCI_NOKIA_ALIVE_PKT	0x07
@@ -351,7 +351,7 @@ static int nokia_setup_fw(struct hci_uart *hu)
 		return -ENODEV;
 	}
 
-	err = request_firmware(&fw, fwname, dev);
+	err = reject_firmware(&fw, fwname, dev);
 	if (err < 0) {
 		dev_err(dev, "%s: Failed to load Nokia firmware file (%d)",
 			hu->hdev->name, err);

@@ -29,7 +29,7 @@
 #include <linux/math64.h>
 #include <linux/regmap.h>
 
-#define AF9013_FIRMWARE "dvb-fe-af9013.fw"
+#define AF9013_FIRMWARE "/*(DEBLOBBED)*/"
 
 struct af9013_reg_mask_val {
 	u16 reg;

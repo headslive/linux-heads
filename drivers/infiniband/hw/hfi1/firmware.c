@@ -59,20 +59,17 @@
  * editing the following. This may be something we do while in development
  * but not necessarily something a user would ever need to use.
  */
-#define DEFAULT_FW_8051_NAME_FPGA "hfi_dc8051.bin"
-#define DEFAULT_FW_8051_NAME_ASIC "hfi1_dc8051.fw"
-#define DEFAULT_FW_FABRIC_NAME "hfi1_fabric.fw"
-#define DEFAULT_FW_SBUS_NAME "hfi1_sbus.fw"
-#define DEFAULT_FW_PCIE_NAME "hfi1_pcie.fw"
-#define ALT_FW_8051_NAME_ASIC "hfi1_dc8051_d.fw"
-#define ALT_FW_FABRIC_NAME "hfi1_fabric_d.fw"
-#define ALT_FW_SBUS_NAME "hfi1_sbus_d.fw"
-#define ALT_FW_PCIE_NAME "hfi1_pcie_d.fw"
+#define DEFAULT_FW_8051_NAME_FPGA "/*(DEBLOBBED)*/"
+#define DEFAULT_FW_8051_NAME_ASIC "/*(DEBLOBBED)*/"
+#define DEFAULT_FW_FABRIC_NAME "/*(DEBLOBBED)*/"
+#define DEFAULT_FW_SBUS_NAME "/*(DEBLOBBED)*/"
+#define DEFAULT_FW_PCIE_NAME "/*(DEBLOBBED)*/"
+#define ALT_FW_8051_NAME_ASIC "/*(DEBLOBBED)*/"
+#define ALT_FW_FABRIC_NAME "/*(DEBLOBBED)*/"
+#define ALT_FW_SBUS_NAME "/*(DEBLOBBED)*/"
+#define ALT_FW_PCIE_NAME "/*(DEBLOBBED)*/"
 
-MODULE_FIRMWARE(DEFAULT_FW_8051_NAME_ASIC);
-MODULE_FIRMWARE(DEFAULT_FW_FABRIC_NAME);
-MODULE_FIRMWARE(DEFAULT_FW_SBUS_NAME);
-MODULE_FIRMWARE(DEFAULT_FW_PCIE_NAME);
+/*(DEBLOBBED)*/
 
 static uint fw_8051_load = 1;
 static uint fw_fabric_serdes_load = 1;
@@ -455,7 +452,7 @@ static int obtain_one_firmware(struct hfi1_devdata *dd, const char *name,
 
 	memset(fdet, 0, sizeof(*fdet));
 
-	ret = request_firmware(&fdet->fw, name, &dd->pcidev->dev);
+	ret = reject_firmware(&fdet->fw, name, &dd->pcidev->dev);
 	if (ret) {
 		dd_dev_warn(dd, "cannot find firmware \"%s\", err %d\n",
 			    name, ret);
@@ -678,7 +675,7 @@ done:
  * any possible race condition.
  *
  * The call to this routine cannot be moved to driver load because the kernel
- * call request_firmware() requires a device which is only available after
+ * call reject_firmware() requires a device which is only available after
  * the first device probe.
  */
 static int obtain_firmware(struct hfi1_devdata *dd)

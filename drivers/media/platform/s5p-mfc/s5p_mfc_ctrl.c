@@ -61,7 +61,7 @@ int s5p_mfc_load_firmware(struct s5p_mfc_dev *dev)
 	for (i = MFC_FW_MAX_VERSIONS - 1; i >= 0; i--) {
 		if (!dev->variant->fw_name[i])
 			continue;
-		err = request_firmware((const struct firmware **)&fw_blob,
+		err = reject_firmware((const struct firmware **)&fw_blob,
 				dev->variant->fw_name[i], &dev->plat_dev->dev);
 		if (!err) {
 			dev->fw_ver = (enum s5p_mfc_fw_ver) i;

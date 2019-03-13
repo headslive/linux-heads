@@ -64,9 +64,9 @@ int		max_rport_logins = BFA_FCS_MAX_RPORT_LOGINS;
 u32	bfi_image_cb_size, bfi_image_ct_size, bfi_image_ct2_size;
 u32	*bfi_image_cb, *bfi_image_ct, *bfi_image_ct2;
 
-#define BFAD_FW_FILE_CB		"cbfw-3.2.5.1.bin"
-#define BFAD_FW_FILE_CT		"ctfw-3.2.5.1.bin"
-#define BFAD_FW_FILE_CT2	"ct2fw-3.2.5.1.bin"
+#define BFAD_FW_FILE_CB		"/*(DEBLOBBED)*/"
+#define BFAD_FW_FILE_CT		"/*(DEBLOBBED)*/"
+#define BFAD_FW_FILE_CT2	"/*(DEBLOBBED)*/"
 
 static u32 *bfad_load_fwimg(struct pci_dev *pdev);
 static void bfad_free_fwimg(void);
@@ -83,9 +83,7 @@ static const char *msix_name_cb[] = {
 	"rme0", "rme1", "rme2", "rme3",
 	"eemc", "elpu0", "elpu1", "epss", "mlpu" };
 
-MODULE_FIRMWARE(BFAD_FW_FILE_CB);
-MODULE_FIRMWARE(BFAD_FW_FILE_CT);
-MODULE_FIRMWARE(BFAD_FW_FILE_CT2);
+/*(DEBLOBBED)*/
 
 module_param(os_name, charp, S_IRUGO | S_IWUSR);
 MODULE_PARM_DESC(os_name, "OS name of the hba host machine");
@@ -1756,7 +1754,7 @@ bfad_read_firmware(struct pci_dev *pdev, u32 **bfi_image,
 {
 	const struct firmware *fw;
 
-	if (request_firmware(&fw, fw_name, &pdev->dev)) {
+	if (reject_firmware(&fw, fw_name, &pdev->dev)) {
 		printk(KERN_ALERT "Can't locate firmware %s\n", fw_name);
 		*bfi_image = NULL;
 		goto out;

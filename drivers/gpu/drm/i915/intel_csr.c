@@ -36,35 +36,35 @@
 
 #define GEN12_CSR_MAX_FW_SIZE		ICL_CSR_MAX_FW_SIZE
 
-#define ICL_CSR_PATH			"i915/icl_dmc_ver1_07.bin"
+#define ICL_CSR_PATH			"/*(DEBLOBBED)*/"
 #define ICL_CSR_VERSION_REQUIRED	CSR_VERSION(1, 7)
 #define ICL_CSR_MAX_FW_SIZE		0x6000
-MODULE_FIRMWARE(ICL_CSR_PATH);
+/*(DEBLOBBED)*/
 
-#define CNL_CSR_PATH			"i915/cnl_dmc_ver1_07.bin"
+#define CNL_CSR_PATH			"/*(DEBLOBBED)*/"
 #define CNL_CSR_VERSION_REQUIRED	CSR_VERSION(1, 7)
 #define CNL_CSR_MAX_FW_SIZE		GLK_CSR_MAX_FW_SIZE
-MODULE_FIRMWARE(CNL_CSR_PATH);
+/*(DEBLOBBED)*/
 
-#define GLK_CSR_PATH			"i915/glk_dmc_ver1_04.bin"
+#define GLK_CSR_PATH			"/*(DEBLOBBED)*/"
 #define GLK_CSR_VERSION_REQUIRED	CSR_VERSION(1, 4)
 #define GLK_CSR_MAX_FW_SIZE		0x4000
-MODULE_FIRMWARE(GLK_CSR_PATH);
+/*(DEBLOBBED)*/
 
-#define KBL_CSR_PATH			"i915/kbl_dmc_ver1_04.bin"
+#define KBL_CSR_PATH			"/*(DEBLOBBED)*/"
 #define KBL_CSR_VERSION_REQUIRED	CSR_VERSION(1, 4)
 #define KBL_CSR_MAX_FW_SIZE		BXT_CSR_MAX_FW_SIZE
-MODULE_FIRMWARE(KBL_CSR_PATH);
+/*(DEBLOBBED)*/
 
-#define SKL_CSR_PATH			"i915/skl_dmc_ver1_27.bin"
+#define SKL_CSR_PATH			"/*(DEBLOBBED)*/"
 #define SKL_CSR_VERSION_REQUIRED	CSR_VERSION(1, 27)
 #define SKL_CSR_MAX_FW_SIZE		BXT_CSR_MAX_FW_SIZE
-MODULE_FIRMWARE(SKL_CSR_PATH);
+/*(DEBLOBBED)*/
 
-#define BXT_CSR_PATH			"i915/bxt_dmc_ver1_07.bin"
+#define BXT_CSR_PATH			"/*(DEBLOBBED)*/"
 #define BXT_CSR_VERSION_REQUIRED	CSR_VERSION(1, 7)
 #define BXT_CSR_MAX_FW_SIZE		0x3000
-MODULE_FIRMWARE(BXT_CSR_PATH);
+/*(DEBLOBBED)*/
 
 #define CSR_DEFAULT_FW_OFFSET		0xFFFFFFFF
 
@@ -418,7 +418,7 @@ static void csr_load_work_fn(struct work_struct *work)
 	dev_priv = container_of(work, typeof(*dev_priv), csr.work);
 	csr = &dev_priv->csr;
 
-	request_firmware(&fw, dev_priv->csr.fw_path, &dev_priv->drm.pdev->dev);
+	reject_firmware(&fw, dev_priv->csr.fw_path, &dev_priv->drm.pdev->dev);
 	if (fw)
 		dev_priv->csr.dmc_payload = parse_csr_fw(dev_priv, fw);
 

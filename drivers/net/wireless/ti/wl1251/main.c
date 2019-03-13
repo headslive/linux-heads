@@ -69,7 +69,7 @@ static int wl1251_fetch_firmware(struct wl1251 *wl)
 	struct device *dev = wiphy_dev(wl->hw->wiphy);
 	int ret;
 
-	ret = request_firmware(&fw, WL1251_FW_NAME, dev);
+	ret = reject_firmware(&fw, WL1251_FW_NAME, dev);
 
 	if (ret < 0) {
 		wl1251_error("could not get firmware: %d", ret);
@@ -108,7 +108,7 @@ static int wl1251_fetch_nvs(struct wl1251 *wl)
 	struct device *dev = wiphy_dev(wl->hw->wiphy);
 	int ret;
 
-	ret = request_firmware(&fw, WL1251_NVS_NAME, dev);
+	ret = reject_firmware(&fw, WL1251_NVS_NAME, dev);
 
 	if (ret < 0) {
 		wl1251_error("could not get nvs file: %d", ret);
@@ -1472,7 +1472,7 @@ static int wl1251_read_nvs_mac(struct wl1251 *wl)
 	for (i = 0; i < ETH_ALEN; i++)
 		mac[i] = wl->nvs[NVS_OFF_MAC_DATA + ETH_ALEN - i - 1];
 
-	/* 00:00:20:07:03:09 is in example file wl1251-nvs.bin, so invalid */
+	/* 00:00:20:07:03:09 is in /*(DEBLOBBED)*/
 	if (ether_addr_equal_unaligned(mac, "\x00\x00\x20\x07\x03\x09"))
 		return -EINVAL;
 
@@ -1677,5 +1677,4 @@ EXPORT_SYMBOL_GPL(wl1251_free_hw);
 MODULE_DESCRIPTION("TI wl1251 Wireless LAN Driver Core");
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Kalle Valo <kvalo@adurom.com>");
-MODULE_FIRMWARE(WL1251_FW_NAME);
-MODULE_FIRMWARE(WL1251_NVS_NAME);
+/*(DEBLOBBED)*/

@@ -38,11 +38,11 @@
 #define EEPROM_1000_TX_POWER_VERSION	(4)
 #define EEPROM_1000_EEPROM_VERSION	(0x15C)
 
-#define IWL1000_FW_PRE "iwlwifi-1000-"
-#define IWL1000_MODULE_FIRMWARE(api) IWL1000_FW_PRE __stringify(api) ".ucode"
+#define IWL1000_FW_PRE "/*(DEBLOBBED)*/"
+#define IWL1000_MODULE_FIRMWARE(api) IWL1000_FW_PRE /*(DEBLOBBED)*/
 
-#define IWL100_FW_PRE "iwlwifi-100-"
-#define IWL100_MODULE_FIRMWARE(api) IWL100_FW_PRE __stringify(api) ".ucode"
+#define IWL100_FW_PRE "/*(DEBLOBBED)*/"
+#define IWL100_MODULE_FIRMWARE(api) IWL100_FW_PRE /*(DEBLOBBED)*/
 
 
 static const struct iwl_base_params iwl1000_base_params = {
@@ -129,5 +129,4 @@ const struct iwl_cfg iwl100_bg_cfg = {
 	IWL_DEVICE_100,
 };
 
-MODULE_FIRMWARE(IWL1000_MODULE_FIRMWARE(IWL1000_UCODE_API_MAX));
-MODULE_FIRMWARE(IWL100_MODULE_FIRMWARE(IWL100_UCODE_API_MAX));
+/*(DEBLOBBED)*/

@@ -89,8 +89,8 @@ int dvb_usb_download_firmware(struct usb_device *udev, struct dvb_usb_device_pro
 	int ret;
 	const struct firmware *fw = NULL;
 
-	if ((ret = request_firmware(&fw, props->firmware, &udev->dev)) != 0) {
-		err("did not find the firmware file '%s' (status %d). You can use <kernel_dir>/scripts/get_dvb_firmware to get the firmware",
+	if ((ret = reject_firmware(&fw, props->firmware, &udev->dev)) != 0) {
+		err("did not find the firmware file '%s' (status %d). /*(DEBLOBBED)*/",
 			props->firmware,ret);
 		return ret;
 	}

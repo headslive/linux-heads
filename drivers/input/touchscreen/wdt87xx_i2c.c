@@ -23,8 +23,8 @@
 #include <asm/unaligned.h>
 
 #define WDT87XX_NAME		"wdt87xx_i2c"
-#define WDT87XX_FW_NAME		"wdt87xx_fw.bin"
-#define WDT87XX_CFG_NAME	"wdt87xx_cfg.bin"
+#define WDT87XX_FW_NAME		"/*(DEBLOBBED)*/"
+#define WDT87XX_CFG_NAME	"/*(DEBLOBBED)*/"
 
 #define MODE_ACTIVE			0x01
 #define MODE_READY			0x02
@@ -863,7 +863,7 @@ static int wdt87xx_update_firmware(struct device *dev,
 	const struct firmware *fw;
 	int error;
 
-	error = request_firmware(&fw, fw_name, dev);
+	error = reject_firmware(&fw, fw_name, dev);
 	if (error) {
 		dev_err(&client->dev, "unable to retrieve firmware %s: %d\n",
 			fw_name, error);

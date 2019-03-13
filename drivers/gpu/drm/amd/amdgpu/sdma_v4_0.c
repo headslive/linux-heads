@@ -41,15 +41,7 @@
 #include "ivsrcid/sdma0/irqsrcs_sdma0_4_0.h"
 #include "ivsrcid/sdma1/irqsrcs_sdma1_4_0.h"
 
-MODULE_FIRMWARE("amdgpu/vega10_sdma.bin");
-MODULE_FIRMWARE("amdgpu/vega10_sdma1.bin");
-MODULE_FIRMWARE("amdgpu/vega12_sdma.bin");
-MODULE_FIRMWARE("amdgpu/vega12_sdma1.bin");
-MODULE_FIRMWARE("amdgpu/vega20_sdma.bin");
-MODULE_FIRMWARE("amdgpu/vega20_sdma1.bin");
-MODULE_FIRMWARE("amdgpu/raven_sdma.bin");
-MODULE_FIRMWARE("amdgpu/picasso_sdma.bin");
-MODULE_FIRMWARE("amdgpu/raven2_sdma.bin");
+/*(DEBLOBBED)*/
 
 #define SDMA0_POWER_CNTL__ON_OFF_CONDITION_HOLD_TIME_MASK  0x000000F8L
 #define SDMA0_POWER_CNTL__ON_OFF_STATUS_DURATION_TIME_MASK 0xFC000000L
@@ -301,10 +293,10 @@ static int sdma_v4_0_init_microcode(struct amdgpu_device *adev)
 
 	for (i = 0; i < adev->sdma.num_instances; i++) {
 		if (i == 0)
-			snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_sdma.bin", chip_name);
+			snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
 		else
-			snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_sdma1.bin", chip_name);
-		err = request_firmware(&adev->sdma.instance[i].fw, fw_name, adev->dev);
+			snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+		err = reject_firmware(&adev->sdma.instance[i].fw, fw_name, adev->dev);
 		if (err)
 			goto out;
 		err = amdgpu_ucode_validate(adev->sdma.instance[i].fw);

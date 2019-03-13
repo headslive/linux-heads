@@ -1363,7 +1363,7 @@ static int pvr2_locate_firmware(struct pvr2_hdw *hdw,
 	unsigned int idx;
 	int ret = -EINVAL;
 	for (idx = 0; idx < fwcount; idx++) {
-		ret = request_firmware(fw_entry,
+		ret = reject_firmware(fw_entry,
 				       fwnames[idx],
 				       &hdw->usb_dev->dev);
 		if (!ret) {
@@ -1392,7 +1392,7 @@ static int pvr2_locate_firmware(struct pvr2_hdw *hdw,
 			   fwtypename);
 		for (idx = 0; idx < fwcount; idx++) {
 			pvr2_trace(PVR2_TRACE_ERROR_LEGS,
-				   "request_firmware: Failed to find %s",
+				   "reject_firmware: Failed to find %s",
 				   fwnames[idx]);
 		}
 	}
@@ -1406,7 +1406,7 @@ static int pvr2_locate_firmware(struct pvr2_hdw *hdw,
  * Send the 8051 firmware to the device.  After the upload, arrange for
  * device to re-enumerate.
  *
- * NOTE : the pointer to the firmware data given by request_firmware()
+ * NOTE : the pointer to the firmware data given by reject_firmware()
  * is not suitable for an usb transaction.
  *
  */

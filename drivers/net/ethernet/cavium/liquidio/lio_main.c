@@ -1732,11 +1732,11 @@ static int load_firmware(struct octeon_device *oct)
 		tmp_fw_type = fw_type;
 	}
 
-	sprintf(fw_name, "%s%s%s_%s%s", LIO_FW_DIR, LIO_FW_BASE_NAME,
+	sprintf(fw_name, "/*(DEBLOBBED)*/", LIO_FW_DIR, LIO_FW_BASE_NAME,
 		octeon_get_conf(oct)->card_name, tmp_fw_type,
 		LIO_FW_NAME_SUFFIX);
 
-	ret = request_firmware(&fw, fw_name, &oct->pci_dev->dev);
+	ret = reject_firmware(&fw, fw_name, &oct->pci_dev->dev);
 	if (ret) {
 		dev_err(&oct->pci_dev->dev, "Request firmware failed. Could not find file %s.\n",
 			fw_name);

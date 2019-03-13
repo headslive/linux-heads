@@ -50,7 +50,7 @@ static void rtl_fw_do_work(const struct firmware *firmware, void *context,
 	complete(&rtlpriv->firmware_loading_complete);
 	if (!firmware) {
 		if (rtlpriv->cfg->alt_fw_name) {
-			err = request_firmware(&firmware,
+			err = reject_firmware(&firmware,
 					       rtlpriv->cfg->alt_fw_name,
 					       rtlpriv->io.dev);
 			pr_info("Loading alternative firmware %s\n",

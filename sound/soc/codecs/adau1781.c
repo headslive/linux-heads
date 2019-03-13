@@ -38,8 +38,8 @@
 
 #define ADAU1781_INPUT_DIFFERNTIAL BIT(3)
 
-#define ADAU1381_FIRMWARE "adau1381.bin"
-#define ADAU1781_FIRMWARE "adau1781.bin"
+#define ADAU1381_FIRMWARE "/*(DEBLOBBED)*/"
+#define ADAU1781_FIRMWARE "/*(DEBLOBBED)*/"
 
 static const struct reg_default adau1781_reg_defaults[] = {
 	{ ADAU1781_DMIC_BEEP_CTRL,		0x00 },

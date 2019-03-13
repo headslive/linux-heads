@@ -255,8 +255,8 @@
 #define RT5514_PLL_INP_MAX			40000000
 #define RT5514_PLL_INP_MIN			256000
 
-#define RT5514_FIRMWARE1	"rt5514_dsp_fw1.bin"
-#define RT5514_FIRMWARE2	"rt5514_dsp_fw2.bin"
+#define RT5514_FIRMWARE1	"/*(DEBLOBBED)*/"
+#define RT5514_FIRMWARE2	"/*(DEBLOBBED)*/"
 
 /* System Clock Source */
 enum {

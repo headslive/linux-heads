@@ -21,7 +21,7 @@
 #define DRIVER_VERSION "1.1"
 #define FW_DIR "cavium/"
 /* SE microcode */
-#define SE_FW	FW_DIR "cnn55xx_se.fw"
+#define SE_FW	FW_DIR "/*(DEBLOBBED)*/"
 
 static const char nitrox_driver_name[] = "CNN55XX";
 
@@ -132,7 +132,7 @@ static int nitrox_load_fw(struct nitrox_device *ndev, const char *fw_name)
 
 	dev_info(DEV(ndev), "Loading firmware \"%s\"\n", fw_name);
 
-	ret = request_firmware(&fw, fw_name, DEV(ndev));
+	ret = reject_firmware(&fw, fw_name, DEV(ndev));
 	if (ret < 0) {
 		dev_err(DEV(ndev), "failed to get firmware %s\n", fw_name);
 		return ret;
@@ -506,4 +506,4 @@ MODULE_AUTHOR("Srikanth Jampala <Jampala.Srikanth@cavium.com>");
 MODULE_DESCRIPTION("Cavium CNN55XX PF Driver" DRIVER_VERSION " ");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(DRIVER_VERSION);
-MODULE_FIRMWARE(SE_FW);
+/*(DEBLOBBED)*/

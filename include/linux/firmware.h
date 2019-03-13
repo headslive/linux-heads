@@ -98,4 +98,124 @@ static inline int request_firmware_into_buf(const struct firmware **firmware_p,
 
 int firmware_request_cache(struct device *device, const char *name);
 
+#ifndef _LINUX_LIBRE_FIRMWARE_H
+#define _LINUX_LIBRE_FIRMWARE_H
+
+#include <linux/device.h>
+
+#define NONFREE_FIRMWARE "/*(DEBLOBBED)*/"
+
+static inline int
+is_nonfree_firmware(const char *name)
+{
+  return strstr(name, NONFREE_FIRMWARE) != 0;
+}
+
+static inline int
+report_missing_free_firmware(const char *name, const char *what)
+{
+	printk(KERN_ERR "%s: Missing Free %s (non-Free firmware loading is disabled)\n", name,
+	       what ? what : "firmware");
+	return -ENOENT;
+}
+static inline int
+firmware_reject_nowarn(const struct firmware **fw,
+		       const char *name, struct device *device)
+{
+	const struct firmware *xfw = NULL;
+	int retval, retval0 = -ENOENT;
+	retval = firmware_request_nowarn(&xfw, NONFREE_FIRMWARE, device);
+	if (!retval) {
+		release_firmware(xfw);
+		retval = retval0;
+	}
+	return retval;
+}
+static inline int
+reject_firmware(const struct firmware **fw,
+		const char *name, struct device *device)
+{
+	int retval, retval0;
+	retval0 = report_missing_free_firmware(dev_name(device), NULL);
+	retval = firmware_reject_nowarn(fw, name, device);
+	if (!retval) {
+		retval = retval0;
+	}
+	return retval;
+}
+static inline int
+maybe_reject_firmware(const struct firmware **fw,
+		      const char *name, struct device *device)
+{
+	if (is_nonfree_firmware(name))
+		return reject_firmware(fw, name, device);
+	else
+		return request_firmware(fw, name, device);
+}
+static inline int
+reject_firmware_direct(const struct firmware **fw,
+		const char *name, struct device *device)
+{
+	const struct firmware *xfw = NULL;
+	int retval, retval0;
+	retval0 = report_missing_free_firmware(dev_name(device), NULL);
+	retval = request_firmware_direct(&xfw, NONFREE_FIRMWARE, device);
+	if (!retval) {
+		release_firmware(xfw);
+		retval = retval0;
+	}
+	return retval;
+}
+static inline int
+reject_firmware_nowait(struct module *module, int uevent,
+		       const char *name, struct device *device,
+		       gfp_t gfp, void *context,
+		       void (*cont)(const struct firmware *fw,
+				    void *context))
+{
+	report_missing_free_firmware(dev_name(device), NULL);
+	/* We assume NONFREE_FIRMWARE will not be found; how could it?  */
+	return request_firmware_nowait(module, uevent, NONFREE_FIRMWARE,
+				       device, gfp, context, cont);
+}
+static inline int
+maybe_reject_firmware_nowait(struct module *module, int uevent,
+			     const char *name, struct device *device,
+			     gfp_t gfp, void *context,
+			     void (*cont)(const struct firmware *fw,
+					  void *context))
+{
+	if (is_nonfree_firmware(name))
+		return reject_firmware_nowait(module, uevent, name,
+					      device, gfp, context, cont);
+	else
+		return request_firmware_nowait(module, uevent, name,
+					       device, gfp, context, cont);
+}
+static inline int
+reject_firmware_into_buf(const struct firmware **firmware_p, const char *name,
+			 struct device *device, void *buf, size_t size)
+{
+	const struct firmware *xfw = NULL;
+	int retval, retval0;
+	retval0 = report_missing_free_firmware(dev_name(device), NULL);
+	retval = request_firmware_into_buf(&xfw, NONFREE_FIRMWARE, device, buf, size);
+	if (!retval) {
+		release_firmware(xfw);
+		retval = retval0;
+	}
+	return retval;
+}
+static inline int
+maybe_reject_firmware_into_buf(const struct firmware **firmware_p, const char *name,
+			       struct device *device, void *buf, size_t size)
+{
+	if (is_nonfree_firmware(name))
+		return reject_firmware_into_buf(firmware_p, name, device, buf, size);
+	else
+		return request_firmware_into_buf(firmware_p, name, device, buf, size);
+}
+
+#endif /* _LINUX_LIBRE_FIRMWARE_H */
+
 #endif

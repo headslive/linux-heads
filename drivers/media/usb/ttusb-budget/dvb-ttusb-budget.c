@@ -293,7 +293,7 @@ static int ttusb_boot_dsp(struct ttusb *ttusb)
 	int i, err;
 	u8 b[40];
 
-	err = request_firmware(&fw, "ttusb-budget/dspbootcode.bin",
+	err = reject_firmware(&fw, "/*(DEBLOBBED)*/",
 			       &ttusb->dev->dev);
 	if (err) {
 		printk(KERN_ERR "ttusb-budget: failed to request firmware\n");
@@ -1141,7 +1141,7 @@ static int philips_tdm1316l_request_firmware(struct dvb_frontend* fe, const stru
 {
 	struct ttusb* ttusb = (struct ttusb*) fe->dvb->priv;
 
-	return request_firmware(fw, name, &ttusb->dev->dev);
+	return reject_firmware(fw, name, &ttusb->dev->dev);
 }
 
 static struct tda1004x_config philips_tdm1316l_config = {
@@ -1806,4 +1806,4 @@ module_usb_driver(ttusb_driver);
 MODULE_AUTHOR("Holger Waechtler <holger@convergence.de>");
 MODULE_DESCRIPTION("TTUSB DVB Driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("ttusb-budget/dspbootcode.bin");
+/*(DEBLOBBED)*/

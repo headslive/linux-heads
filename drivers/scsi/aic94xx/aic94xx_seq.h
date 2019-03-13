@@ -30,7 +30,7 @@
 #define CSEQ_NUM_VECS	3
 #define LSEQ_NUM_VECS	11
 
-#define SAS_RAZOR_SEQUENCER_FW_FILE "aic94xx-seq.fw"
+#define SAS_RAZOR_SEQUENCER_FW_FILE "/*(DEBLOBBED)*/"
 #define SAS_RAZOR_SEQUENCER_FW_MAJOR	1
 
 /* Note:  All quantites in the sequencer file are little endian */

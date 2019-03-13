@@ -73,21 +73,15 @@ enum {
 };
 
 static const struct lbs_fw_table fw_table[] = {
-	{ MODEL_8305, "libertas/cf8305.bin", NULL },
-	{ MODEL_8305, "libertas_cs_helper.fw", NULL },
-	{ MODEL_8381, "libertas/cf8381_helper.bin", "libertas/cf8381.bin" },
-	{ MODEL_8381, "libertas_cs_helper.fw", "libertas_cs.fw" },
-	{ MODEL_8385, "libertas/cf8385_helper.bin", "libertas/cf8385.bin" },
-	{ MODEL_8385, "libertas_cs_helper.fw", "libertas_cs.fw" },
+	{ MODEL_8305, "/*(DEBLOBBED)*/", NULL },
+	{ MODEL_8305, "/*(DEBLOBBED)*/", NULL },
+	{ MODEL_8381, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8381, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8385, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8385, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
 	{ 0, NULL, NULL }
 };
-MODULE_FIRMWARE("libertas/cf8305.bin");
-MODULE_FIRMWARE("libertas/cf8381_helper.bin");
-MODULE_FIRMWARE("libertas/cf8381.bin");
-MODULE_FIRMWARE("libertas/cf8385_helper.bin");
-MODULE_FIRMWARE("libertas/cf8385.bin");
-MODULE_FIRMWARE("libertas_cs_helper.fw");
-MODULE_FIRMWARE("libertas_cs.fw");
+/*(DEBLOBBED)*/
 
 
 /********************************************************************/

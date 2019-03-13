@@ -75,7 +75,7 @@ static int ezusb_ihex_firmware_download(struct usb_device *dev,
 	const struct firmware *firmware = NULL;
 	const struct ihex_binrec *record;
 
-	if (request_ihex_firmware(&firmware, firmware_path,
+	if (maybe_reject_ihex_firmware(&firmware, firmware_path,
 				  &dev->dev)) {
 		dev_err(&dev->dev,
 			"%s - request \"%s\" failed\n",

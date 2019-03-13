@@ -238,9 +238,7 @@ int skl_nhlt_update_topology_bin(struct skl *skl)
 		nhlt->header.oem_id, nhlt->header.oem_table_id,
 		nhlt->header.oem_revision);
 
-	snprintf(skl->tplg_name, sizeof(skl->tplg_name), "%x-%.6s-%.8s-%d%s",
-		skl->pci_id, nhlt->header.oem_id, nhlt->header.oem_table_id,
-		nhlt->header.oem_revision, "-tplg.bin");
+	snprintf(skl->tplg_name, sizeof(skl->tplg_name), "/*(DEBLOBBED)*/");
 
 	skl_nhlt_trim_space(skl->tplg_name);
 

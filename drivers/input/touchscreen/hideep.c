@@ -869,12 +869,12 @@ static ssize_t hideep_update_fw(struct device *dev,
 	if (error)
 		return error;
 
-	fw_name = kasprintf(GFP_KERNEL, "hideep_ts_%04x.bin",
+	fw_name = kasprintf(GFP_KERNEL, "/*(DEBLOBBED)*/",
 			    be16_to_cpu(ts->dwz_info.product_id));
 	if (!fw_name)
 		return -ENOMEM;
 
-	error = request_firmware(&fw_entry, fw_name, dev);
+	error = reject_firmware(&fw_entry, fw_name, dev);
 	if (error) {
 		dev_err(dev, "failed to request firmware %s: %d",
 			fw_name, error);

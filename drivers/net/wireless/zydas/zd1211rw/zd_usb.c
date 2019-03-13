@@ -108,8 +108,8 @@ MODULE_AUTHOR("Daniel Drake");
 MODULE_VERSION("1.0");
 MODULE_DEVICE_TABLE(usb, usb_ids);
 
-#define FW_ZD1211_PREFIX	"zd1211/zd1211_"
-#define FW_ZD1211B_PREFIX	"zd1211/zd1211b_"
+#define FW_ZD1211_PREFIX	"/*(DEBLOBBED)*/"
+#define FW_ZD1211B_PREFIX	"/*(DEBLOBBED)*/"
 
 static bool check_read_regs(struct zd_usb *usb, struct usb_req_read_regs *req,
 			    unsigned int count);
@@ -124,7 +124,7 @@ static int request_fw_file(
 
 	dev_dbg_f(device, "fw name %s\n", name);
 
-	r = request_firmware(fw, name, device);
+	r = reject_firmware(fw, name, device);
 	if (r)
 		dev_err(device,
 		       "Could not load firmware file %s. Error number %d\n",
@@ -325,12 +325,7 @@ error:
 	return r;
 }
 
-MODULE_FIRMWARE(FW_ZD1211B_PREFIX "ur");
-MODULE_FIRMWARE(FW_ZD1211_PREFIX "ur");
-MODULE_FIRMWARE(FW_ZD1211B_PREFIX "ub");
-MODULE_FIRMWARE(FW_ZD1211_PREFIX "ub");
-MODULE_FIRMWARE(FW_ZD1211B_PREFIX "uphr");
-MODULE_FIRMWARE(FW_ZD1211_PREFIX "uphr");
+/*(DEBLOBBED)*/
 
 /* Read data from device address space using "firmware interface" which does
  * not require firmware to be loaded. */

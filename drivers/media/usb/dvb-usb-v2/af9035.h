@@ -105,10 +105,10 @@ static const u32 clock_lut_it9135[] = {
 	22000000, /* 22.00 MHz */
 };
 
-#define AF9035_FIRMWARE_AF9035 "dvb-usb-af9035-02.fw"
-#define AF9035_FIRMWARE_IT9135_V1 "dvb-usb-it9135-01.fw"
-#define AF9035_FIRMWARE_IT9135_V2 "dvb-usb-it9135-02.fw"
-#define AF9035_FIRMWARE_IT9303 "dvb-usb-it9303-01.fw"
+#define AF9035_FIRMWARE_AF9035 "/*(DEBLOBBED)*/"
+#define AF9035_FIRMWARE_IT9135_V1 "/*(DEBLOBBED)*/"
+#define AF9035_FIRMWARE_IT9135_V2 "/*(DEBLOBBED)*/"
+#define AF9035_FIRMWARE_IT9303 "/*(DEBLOBBED)*/"
 
 /*
  * eeprom is memory mapped as read only. Writing that memory mapped address

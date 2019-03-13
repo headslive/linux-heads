@@ -334,7 +334,7 @@ static int adsp_remove(struct platform_device *pdev)
 
 static const struct adsp_data adsp_resource_init = {
 		.crash_reason_smem = 423,
-		.firmware_name = "adsp.mdt",
+		.firmware_name = "/*(DEBLOBBED)*/",
 		.pas_id = 1,
 		.has_aggre2_clk = false,
 		.ssr_name = "lpass",
@@ -344,7 +344,7 @@ static const struct adsp_data adsp_resource_init = {
 
 static const struct adsp_data cdsp_resource_init = {
 	.crash_reason_smem = 601,
-	.firmware_name = "cdsp.mdt",
+	.firmware_name = "/*(DEBLOBBED)*/",
 	.pas_id = 18,
 	.has_aggre2_clk = false,
 	.ssr_name = "cdsp",
@@ -354,7 +354,7 @@ static const struct adsp_data cdsp_resource_init = {
 
 static const struct adsp_data slpi_resource_init = {
 		.crash_reason_smem = 424,
-		.firmware_name = "slpi.mdt",
+		.firmware_name = "/*(DEBLOBBED)*/",
 		.pas_id = 12,
 		.has_aggre2_clk = true,
 		.ssr_name = "dsps",
@@ -364,7 +364,7 @@ static const struct adsp_data slpi_resource_init = {
 
 static const struct adsp_data wcss_resource_init = {
 	.crash_reason_smem = 421,
-	.firmware_name = "wcnss.mdt",
+	.firmware_name = "/*(DEBLOBBED)*/",
 	.pas_id = 6,
 	.ssr_name = "mpss",
 	.sysmon_name = "wcnss",

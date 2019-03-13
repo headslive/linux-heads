@@ -1860,7 +1860,7 @@ int sst_hsw_module_load(struct sst_hsw *hsw,
 			/* try and load any other optional modules if they are
 			 * available. Use dev_info instead of dev_err in case
 			 * request firmware failed */
-			ret = request_firmware(&fw, name, dev);
+			ret = reject_firmware(&fw, name, dev);
 			if (ret) {
 				dev_info(dev, "fw image %s not available(%d)\n",
 						name, ret);
@@ -2158,7 +2158,7 @@ int sst_hsw_dsp_init(struct device *dev, struct sst_pdata *pdata)
 		goto fw_err;
 
 	/* try to load module waves */
-	sst_hsw_module_load(hsw, SST_HSW_MODULE_WAVES, 0, "intel/IntcPP01.bin");
+	sst_hsw_module_load(hsw, SST_HSW_MODULE_WAVES, 0, "/*(DEBLOBBED)*/");
 
 	/* allocate scratch mem regions */
 	ret = sst_block_alloc_scratch(hsw->dsp);

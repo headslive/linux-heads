@@ -86,7 +86,7 @@
 &touchscreen {
 	reg = <0x40>;
 	compatible = "silead,gsl1680";
-	firmware-name = "gsl1680-polaroid-mid2407pxe03.fw";
+	firmware-name = "/*(DEBLOBBED)*/";
 	touchscreen-size-x = <960>;
 	touchscreen-size-y = <640>;
 	touchscreen-inverted-x;

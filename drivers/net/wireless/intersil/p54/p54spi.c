@@ -40,7 +40,7 @@
 #include "p54spi_eeprom.h"
 #endif /* CONFIG_P54_SPI_DEFAULT_EEPROM */
 
-MODULE_FIRMWARE("3826.arm");
+/*(DEBLOBBED)*/
 
 /* gpios should be handled in board files and provided via platform data,
  * but because it's currently impossible for p54spi to have a header file
@@ -168,10 +168,10 @@ static int p54spi_request_firmware(struct ieee80211_hw *dev)
 	int ret;
 
 	/* FIXME: should driver use it's own struct device? */
-	ret = request_firmware(&priv->firmware, "3826.arm", &priv->spi->dev);
+	ret = reject_firmware(&priv->firmware, "/*(DEBLOBBED)*/", &priv->spi->dev);
 
 	if (ret < 0) {
-		dev_err(&priv->spi->dev, "request_firmware() failed: %d", ret);
+		dev_err(&priv->spi->dev, "reject_firmware() failed: %d", ret);
 		return ret;
 	}
 
@@ -193,7 +193,7 @@ static int p54spi_request_eeprom(struct ieee80211_hw *dev)
 	/* allow users to customize their eeprom.
 	 */
 
-	ret = request_firmware_direct(&eeprom, "3826.eeprom", &priv->spi->dev);
+	ret = reject_firmware_direct(&eeprom, "/*(DEBLOBBED)*/", &priv->spi->dev);
 	if (ret < 0) {
 #ifdef CONFIG_P54_SPI_DEFAULT_EEPROM
 		dev_info(&priv->spi->dev, "loading default eeprom...\n");

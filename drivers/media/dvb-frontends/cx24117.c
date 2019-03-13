@@ -36,7 +36,7 @@
 #include "cx24117.h"
 
 
-#define CX24117_DEFAULT_FIRMWARE "dvb-fe-cx24117.fw"
+/*(DEBLOBBED)*/
 #define CX24117_SEARCH_RANGE_KHZ 5000
 
 /* known registers */
@@ -467,8 +467,8 @@ static int cx24117_firmware_ondemand(struct dvb_frontend *fe)
 		/* request the firmware, this will block until loaded */
 		dev_dbg(&state->priv->i2c->dev,
 			"%s: Waiting for firmware upload (%s)...\n",
-			__func__, CX24117_DEFAULT_FIRMWARE);
-		ret = request_firmware(&fw, CX24117_DEFAULT_FIRMWARE,
+			__func__, "/*(DEBLOBBED)*/");
+		ret = reject_firmware(&fw, "/*(DEBLOBBED)*/",
 			state->priv->i2c->dev.parent);
 		dev_dbg(&state->priv->i2c->dev,
 			"%s: Waiting for firmware upload(2)...\n", __func__);
@@ -1661,5 +1661,5 @@ MODULE_DESCRIPTION("DVB Frontend module for Conexant cx24117/cx24132 hardware");
 MODULE_AUTHOR("Luis Alves (ljalvs@gmail.com)");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("1.1");
-MODULE_FIRMWARE(CX24117_DEFAULT_FIRMWARE);
+/*(DEBLOBBED)*/
 

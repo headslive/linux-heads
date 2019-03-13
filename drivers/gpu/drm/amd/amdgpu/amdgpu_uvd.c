@@ -53,24 +53,24 @@
 
 /* Firmware Names */
 #ifdef CONFIG_DRM_AMDGPU_CIK
-#define FIRMWARE_BONAIRE	"amdgpu/bonaire_uvd.bin"
-#define FIRMWARE_KABINI	"amdgpu/kabini_uvd.bin"
-#define FIRMWARE_KAVERI	"amdgpu/kaveri_uvd.bin"
-#define FIRMWARE_HAWAII	"amdgpu/hawaii_uvd.bin"
-#define FIRMWARE_MULLINS	"amdgpu/mullins_uvd.bin"
+#define FIRMWARE_BONAIRE	"/*(DEBLOBBED)*/"
+#define FIRMWARE_KABINI	"/*(DEBLOBBED)*/"
+#define FIRMWARE_KAVERI	"/*(DEBLOBBED)*/"
+#define FIRMWARE_HAWAII	"/*(DEBLOBBED)*/"
+#define FIRMWARE_MULLINS	"/*(DEBLOBBED)*/"
 #endif
-#define FIRMWARE_TONGA		"amdgpu/tonga_uvd.bin"
-#define FIRMWARE_CARRIZO	"amdgpu/carrizo_uvd.bin"
-#define FIRMWARE_FIJI		"amdgpu/fiji_uvd.bin"
-#define FIRMWARE_STONEY		"amdgpu/stoney_uvd.bin"
-#define FIRMWARE_POLARIS10	"amdgpu/polaris10_uvd.bin"
-#define FIRMWARE_POLARIS11	"amdgpu/polaris11_uvd.bin"
-#define FIRMWARE_POLARIS12	"amdgpu/polaris12_uvd.bin"
-#define FIRMWARE_VEGAM		"amdgpu/vegam_uvd.bin"
+#define FIRMWARE_TONGA		"/*(DEBLOBBED)*/"
+#define FIRMWARE_CARRIZO	"/*(DEBLOBBED)*/"
+#define FIRMWARE_FIJI		"/*(DEBLOBBED)*/"
+#define FIRMWARE_STONEY		"/*(DEBLOBBED)*/"
+#define FIRMWARE_POLARIS10	"/*(DEBLOBBED)*/"
+#define FIRMWARE_POLARIS11	"/*(DEBLOBBED)*/"
+#define FIRMWARE_POLARIS12	"/*(DEBLOBBED)*/"
+#define FIRMWARE_VEGAM		"/*(DEBLOBBED)*/"
 
-#define FIRMWARE_VEGA10		"amdgpu/vega10_uvd.bin"
-#define FIRMWARE_VEGA12		"amdgpu/vega12_uvd.bin"
-#define FIRMWARE_VEGA20		"amdgpu/vega20_uvd.bin"
+#define FIRMWARE_VEGA10		"/*(DEBLOBBED)*/"
+#define FIRMWARE_VEGA12		"/*(DEBLOBBED)*/"
+#define FIRMWARE_VEGA20		"/*(DEBLOBBED)*/"
 
 /* These are common relative offsets for all asics, from uvd_7_0_offset.h,  */
 #define UVD_GPCOM_VCPU_CMD		0x03c3
@@ -99,24 +99,9 @@ struct amdgpu_uvd_cs_ctx {
 };
 
 #ifdef CONFIG_DRM_AMDGPU_CIK
-MODULE_FIRMWARE(FIRMWARE_BONAIRE);
-MODULE_FIRMWARE(FIRMWARE_KABINI);
-MODULE_FIRMWARE(FIRMWARE_KAVERI);
-MODULE_FIRMWARE(FIRMWARE_HAWAII);
-MODULE_FIRMWARE(FIRMWARE_MULLINS);
+/*(DEBLOBBED)*/
 #endif
-MODULE_FIRMWARE(FIRMWARE_TONGA);
-MODULE_FIRMWARE(FIRMWARE_CARRIZO);
-MODULE_FIRMWARE(FIRMWARE_FIJI);
-MODULE_FIRMWARE(FIRMWARE_STONEY);
-MODULE_FIRMWARE(FIRMWARE_POLARIS10);
-MODULE_FIRMWARE(FIRMWARE_POLARIS11);
-MODULE_FIRMWARE(FIRMWARE_POLARIS12);
-MODULE_FIRMWARE(FIRMWARE_VEGAM);
-
-MODULE_FIRMWARE(FIRMWARE_VEGA10);
-MODULE_FIRMWARE(FIRMWARE_VEGA12);
-MODULE_FIRMWARE(FIRMWARE_VEGA20);
+/*(DEBLOBBED)*/
 
 static void amdgpu_uvd_idle_work_handler(struct work_struct *work);
 
@@ -185,7 +170,7 @@ int amdgpu_uvd_sw_init(struct amdgpu_device *adev)
 		return -EINVAL;
 	}
 
-	r = request_firmware(&adev->uvd.fw, fw_name, adev->dev);
+	r = reject_firmware(&adev->uvd.fw, fw_name, adev->dev);
 	if (r) {
 		dev_err(adev->dev, "amdgpu_uvd: Can't load firmware \"%s\"\n",
 			fw_name);

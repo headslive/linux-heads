@@ -235,7 +235,7 @@ static int edge_create_sysfs_attrs(struct usb_serial_port *port);
 static int edge_remove_sysfs_attrs(struct usb_serial_port *port);
 
 /*
- * Some release of Edgeport firmware "down3.bin" after version 4.80
+ * Some release of Edgeport firmware "(DEBLOBBED)" after version 4.80
  * introduced code to automatically disconnect idle devices on some
  * Edgeport models after periods of inactivity, typically ~60 seconds.
  * This occurs without regard to whether ports on the device are open
@@ -1005,10 +1005,10 @@ static int download_fw(struct edgeport_serial *serial)
 	int status = 0;
 	struct usb_interface_descriptor *interface;
 	const struct firmware *fw;
-	const char *fw_name = "edgeport/down3.bin";
+	const char *fw_name = "/*(DEBLOBBED)*/";
 	struct edgeport_fw_hdr *fw_hdr;
 
-	status = request_firmware(&fw, fw_name, dev);
+	status = reject_firmware(&fw, fw_name, dev);
 	if (status) {
 		dev_err(dev, "Failed to load image \"%s\" err %d\n",
 				fw_name, status);
@@ -2787,7 +2787,7 @@ module_usb_serial_driver(serial_drivers, id_table_combined);
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("edgeport/down3.bin");
+/*(DEBLOBBED)*/
 
 module_param(closing_wait, int, S_IRUGO | S_IWUSR);
 MODULE_PARM_DESC(closing_wait, "Maximum wait for data to drain, in .01 secs");

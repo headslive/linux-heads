@@ -41,12 +41,12 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_kbl_machines[] = {
 	{
 		.id = "INT343A",
 		.drv_name = "kbl_alc286s_i2s",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 	},
 	{
 		.id = "INT343B",
 		.drv_name = "kbl_n88l25_s4567",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &kbl_codecs,
 		.pdata = &skl_dmic_data,
@@ -54,7 +54,7 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_kbl_machines[] = {
 	{
 		.id = "MX98357A",
 		.drv_name = "kbl_n88l25_m98357a",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &kbl_codecs,
 		.pdata = &skl_dmic_data,
@@ -62,7 +62,7 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_kbl_machines[] = {
 	{
 		.id = "MX98927",
 		.drv_name = "kbl_r5514_5663_max",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &kbl_5663_5514_codecs,
 		.pdata = &skl_dmic_data,
@@ -70,7 +70,7 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_kbl_machines[] = {
 	{
 		.id = "MX98927",
 		.drv_name = "kbl_rt5663_m98927",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &kbl_poppy_codecs,
 		.pdata = &skl_dmic_data,
@@ -78,12 +78,12 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_kbl_machines[] = {
 	{
 		.id = "10EC5663",
 		.drv_name = "kbl_rt5663",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 	},
 	{
 		.id = "DLGS7219",
 		.drv_name = "kbl_da7219_max98357a",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &kbl_7219_98357_codecs,
 		.pdata = &skl_dmic_data,
@@ -91,7 +91,7 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_kbl_machines[] = {
 	{
 		.id = "DLGS7219",
 		.drv_name = "kbl_da7219_max98927",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &kbl_7219_98927_codecs,
 		.pdata = &skl_dmic_data
@@ -99,12 +99,12 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_kbl_machines[] = {
 	{
 		.id = "10EC5660",
 		.drv_name = "kbl_rt5660",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 	},
 	{
 		.id = "10EC3277",
 		.drv_name = "kbl_rt5660",
-		.fw_filename = "intel/dsp_fw_kbl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 	},
 	{},
 };

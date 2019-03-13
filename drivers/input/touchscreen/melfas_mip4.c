@@ -143,7 +143,7 @@
 #define MIP4_PRESSURE_MIN			0
 #define MIP4_PRESSURE_MAX			255
 
-#define MIP4_FW_NAME			"melfas_mip4.fw"
+#define MIP4_FW_NAME			"/*(DEBLOBBED)*/"
 #define MIP4_FW_UPDATE_DEBUG		0	/* 0 (default) or 1 */
 
 struct mip4_fw_version {
@@ -294,7 +294,7 @@ static int mip4_query_device(struct mip4_ts *ts)
 
 	/* Firmware name */
 	snprintf(ts->fw_name, sizeof(ts->fw_name),
-		"melfas_mip4_%04X.fw", ts->product_id);
+		"/*(DEBLOBBED)*/", ts->product_id);
 	dev_dbg(&ts->client->dev, "firmware name: %s\n", ts->fw_name);
 
 	/* IC name */
@@ -1302,7 +1302,7 @@ static ssize_t mip4_sysfs_fw_update(struct device *dev,
 	const struct firmware *fw;
 	int error;
 
-	error = request_firmware(&fw, ts->fw_name, dev);
+	error = reject_firmware(&fw, ts->fw_name, dev);
 	if (error) {
 		dev_err(&ts->client->dev,
 			"Failed to retrieve firmware %s: %d\n",

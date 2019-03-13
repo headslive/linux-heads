@@ -190,10 +190,10 @@ nvkm_falcon_init(struct nvkm_engine *engine)
 	 * locate a "self-bootstrapping" firmware image for the engine
 	 */
 	if (!falcon->code.data) {
-		snprintf(name, sizeof(name), "nouveau/nv%02x_fuc%03x",
+		snprintf(name, sizeof(name), "/*(DEBLOBBED)*/",
 			 device->chipset, falcon->addr >> 12);
 
-		ret = request_firmware(&fw, name, device->dev);
+		ret = reject_firmware(&fw, name, device->dev);
 		if (ret == 0) {
 			falcon->code.data = vmemdup(fw->data, fw->size);
 			falcon->code.size = fw->size;
@@ -209,10 +209,10 @@ nvkm_falcon_init(struct nvkm_engine *engine)
 	 * images for the engine
 	 */
 	if (!falcon->code.data) {
-		snprintf(name, sizeof(name), "nouveau/nv%02x_fuc%03xd",
+		snprintf(name, sizeof(name), "/*(DEBLOBBED)*/",
 			 device->chipset, falcon->addr >> 12);
 
-		ret = request_firmware(&fw, name, device->dev);
+		ret = reject_firmware(&fw, name, device->dev);
 		if (ret) {
 			nvkm_error(subdev, "unable to load firmware data\n");
 			return -ENODEV;
@@ -224,10 +224,10 @@ nvkm_falcon_init(struct nvkm_engine *engine)
 		if (!falcon->data.data)
 			return -ENOMEM;
 
-		snprintf(name, sizeof(name), "nouveau/nv%02x_fuc%03xc",
+		snprintf(name, sizeof(name), "/*(DEBLOBBED)*/",
 			 device->chipset, falcon->addr >> 12);
 
-		ret = request_firmware(&fw, name, device->dev);
+		ret = reject_firmware(&fw, name, device->dev);
 		if (ret) {
 			nvkm_error(subdev, "unable to load firmware code\n");
 			return -ENODEV;

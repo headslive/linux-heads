@@ -173,7 +173,7 @@ static int si2157_init(struct dvb_frontend *fe)
 		goto skip_fw_download;
 
 	/* request the firmware, this will block and timeout */
-	ret = request_firmware(&fw, fw_name, &client->dev);
+	ret = reject_firmware(&fw, fw_name, &client->dev);
 	if (ret) {
 		dev_err(&client->dev, "firmware file '%s' not found\n",
 				fw_name);
@@ -548,5 +548,4 @@ module_i2c_driver(si2157_driver);
 MODULE_DESCRIPTION("Silicon Labs Si2141/Si2146/2147/2148/2157/2158 silicon tuner driver");
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(SI2158_A20_FIRMWARE);
-MODULE_FIRMWARE(SI2141_A10_FIRMWARE);
+/*(DEBLOBBED)*/

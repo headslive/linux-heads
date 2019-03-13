@@ -59,12 +59,12 @@
 #include <linux/atomic.h>
 #include "echoaudio.h"
 
-MODULE_FIRMWARE("ea/darla24_dsp.fw");
+/*(DEBLOBBED)*/
 
 #define FW_DARLA24_DSP	0
 
 static const struct firmware card_fw[] = {
-	{0, "darla24_dsp.fw"}
+	{0, "/*(DEBLOBBED)*/"}
 };
 
 static const struct pci_device_id snd_echo_ids[] = {

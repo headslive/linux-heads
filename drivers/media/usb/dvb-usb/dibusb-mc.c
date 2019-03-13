@@ -52,7 +52,7 @@ static struct dvb_usb_device_properties dibusb_mc_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = CYPRESS_FX2,
-	.firmware = "dvb-usb-dibusb-6.0.0.8.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 
 	.num_adapters = 1,
 	.adapter = {

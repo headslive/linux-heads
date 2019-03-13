@@ -286,31 +286,31 @@ static const struct tegra_drm_client_ops vic_ops = {
 	.submit = tegra_drm_submit,
 };
 
-#define NVIDIA_TEGRA_124_VIC_FIRMWARE "nvidia/tegra124/vic03_ucode.bin"
+#define NVIDIA_TEGRA_124_VIC_FIRMWARE "/*(DEBLOBBED)*/"
 
 static const struct vic_config vic_t124_config = {
 	.firmware = NVIDIA_TEGRA_124_VIC_FIRMWARE,
 	.version = 0x40,
 };
 
-#define NVIDIA_TEGRA_210_VIC_FIRMWARE "nvidia/tegra210/vic04_ucode.bin"
+#define NVIDIA_TEGRA_210_VIC_FIRMWARE "/*(DEBLOBBED)*/"
 
 static const struct vic_config vic_t210_config = {
 	.firmware = NVIDIA_TEGRA_210_VIC_FIRMWARE,
 	.version = 0x21,
 };
 
-#define NVIDIA_TEGRA_186_VIC_FIRMWARE "nvidia/tegra186/vic04_ucode.bin"
+#define NVIDIA_TEGRA_186_VIC_FIRMWARE "/*(DEBLOBBED)*/"
 
 static const struct vic_config vic_t186_config = {
 	.firmware = NVIDIA_TEGRA_186_VIC_FIRMWARE,
 	.version = 0x18,
 };
 
-#define NVIDIA_TEGRA_194_VIC_FIRMWARE "nvidia/tegra194/vic.bin"
+#define NVIDIA_TEGRA_194_VIC_FIRMWARE "/*(DEBLOBBED)*/"
 
 static const struct vic_config vic_t194_config = {
-	.firmware = NVIDIA_TEGRA_194_VIC_FIRMWARE,
+	/*(DEBLOBBED)*/NVIDIA_TEGRA_194_VIC_FIRMWARE,
 	.version = 0x19,
 };
 
@@ -451,14 +451,14 @@ struct platform_driver tegra_vic_driver = {
 };
 
 #if IS_ENABLED(CONFIG_ARCH_TEGRA_124_SOC)
-MODULE_FIRMWARE(NVIDIA_TEGRA_124_VIC_FIRMWARE);
+/*(DEBLOBBED)*/
 #endif
 #if IS_ENABLED(CONFIG_ARCH_TEGRA_210_SOC)
-MODULE_FIRMWARE(NVIDIA_TEGRA_210_VIC_FIRMWARE);
+/*(DEBLOBBED)*/
 #endif
 #if IS_ENABLED(CONFIG_ARCH_TEGRA_186_SOC)
-MODULE_FIRMWARE(NVIDIA_TEGRA_186_VIC_FIRMWARE);
+/*(DEBLOBBED)*/
 #endif
 #if IS_ENABLED(CONFIG_ARCH_TEGRA_194_SOC)
-MODULE_FIRMWARE(NVIDIA_TEGRA_194_VIC_FIRMWARE);
+/*(DEBLOBBED)*/
 #endif

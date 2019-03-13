@@ -20,13 +20,7 @@
 
 #define pr_fmt(fmt)	KBUILD_MODNAME ": %s: " fmt, __func__
 
-/*
- * This driver needs external firmware. Please use the command
- * "<kerneldir>/scripts/get_dvb_firmware or51211" to
- * download/extract it, and then copy it to /usr/lib/hotplug/firmware
- * or /lib/firmware (depending on configuration of firmware hotplug).
- */
-#define OR51211_DEFAULT_FIRMWARE "dvb-fe-or51211.fw"
+/*(DEBLOBBED)*/
 
 #include <linux/kernel.h>
 #include <linux/module.h>
@@ -368,9 +362,9 @@ static int or51211_init(struct dvb_frontend* fe)
 	if (!state->initialized) {
 		/* Request the firmware, this will block until it uploads */
 		pr_info("Waiting for firmware upload (%s)...\n",
-			OR51211_DEFAULT_FIRMWARE);
+			"/*(DEBLOBBED)*/");
 		ret = config->request_firmware(fe, &fw,
-					       OR51211_DEFAULT_FIRMWARE);
+					       "/*(DEBLOBBED)*/");
 		pr_info("Got Hotplug firmware\n");
 		if (ret) {
 			pr_warn("No firmware uploaded (timeout or file not found?)\n");

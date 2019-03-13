@@ -40,8 +40,8 @@
 #include <media/dvb_frontend.h>
 #include <media/dvb_net.h>
 
-#define FIRMWARE_MEMDMA "pti_memdma_h407.elf"
-MODULE_FIRMWARE(FIRMWARE_MEMDMA);
+#define FIRMWARE_MEMDMA "/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 #define PID_TABLE_SIZE 1024
 #define POLL_MSECS 50
@@ -1144,7 +1144,7 @@ static int load_c8sectpfe_fw(struct c8sectpfei *fei)
 
 	dev_info(fei->dev, "Loading firmware: %s\n", FIRMWARE_MEMDMA);
 
-	err = request_firmware(&fw, FIRMWARE_MEMDMA, fei->dev);
+	err = reject_firmware(&fw, FIRMWARE_MEMDMA, fei->dev);
 	if (err)
 		return err;
 

@@ -28,7 +28,7 @@
 
 #include "plx9052.h"
 
-#define ME2600_FIRMWARE		"me2600_firmware.bin"
+#define ME2600_FIRMWARE		"/*(DEBLOBBED)*/"
 
 #define XILINX_DOWNLOAD_RESET	0x42	/* Xilinx registers */
 
@@ -553,4 +553,4 @@ module_comedi_pci_driver(me_daq_driver, me_daq_pci_driver);
 MODULE_AUTHOR("Comedi http://www.comedi.org");
 MODULE_DESCRIPTION("Comedi low-level driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(ME2600_FIRMWARE);
+/*(DEBLOBBED)*/

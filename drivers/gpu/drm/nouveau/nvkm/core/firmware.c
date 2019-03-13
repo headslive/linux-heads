@@ -48,8 +48,8 @@ nvkm_firmware_get(struct nvkm_device *device, const char *fwname,
 		cname[i] = tolower(cname[i]);
 	}
 
-	snprintf(f, sizeof(f), "nvidia/%s/%s.bin", cname, fwname);
-	return request_firmware(fw, f, device->dev);
+	snprintf(f, sizeof(f), "/*(DEBLOBBED)*/", cname, fwname);
+	return reject_firmware(fw, f, device->dev);
 }
 
 /**

@@ -29,37 +29,25 @@
 #include <sound/hwdep.h>
 #include <sound/vx_core.h>
 
-MODULE_FIRMWARE("vx/bx_1_vxp.b56");
-MODULE_FIRMWARE("vx/bx_1_vp4.b56");
-MODULE_FIRMWARE("vx/x1_1_vx2.xlx");
-MODULE_FIRMWARE("vx/x1_2_v22.xlx");
-MODULE_FIRMWARE("vx/x1_1_vxp.xlx");
-MODULE_FIRMWARE("vx/x1_1_vp4.xlx");
-MODULE_FIRMWARE("vx/bd56002.boot");
-MODULE_FIRMWARE("vx/bd563v2.boot");
-MODULE_FIRMWARE("vx/bd563s3.boot");
-MODULE_FIRMWARE("vx/l_1_vx2.d56");
-MODULE_FIRMWARE("vx/l_1_v22.d56");
-MODULE_FIRMWARE("vx/l_1_vxp.d56");
-MODULE_FIRMWARE("vx/l_1_vp4.d56");
+/*(DEBLOBBED)*/
 
 int snd_vx_setup_firmware(struct vx_core *chip)
 {
 	static char *fw_files[VX_TYPE_NUMS][4] = {
 		[VX_TYPE_BOARD] = {
-			NULL, "x1_1_vx2.xlx", "bd56002.boot", "l_1_vx2.d56",
+			NULL, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/",
 		},
 		[VX_TYPE_V2] = {
-			NULL, "x1_2_v22.xlx", "bd563v2.boot", "l_1_v22.d56",
+			NULL, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/",
 		},
 		[VX_TYPE_MIC] = {
-			NULL, "x1_2_v22.xlx", "bd563v2.boot", "l_1_v22.d56",
+			NULL, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/",
 		},
 		[VX_TYPE_VXPOCKET] = {
-			"bx_1_vxp.b56", "x1_1_vxp.xlx", "bd563s3.boot", "l_1_vxp.d56"
+			"/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/"
 		},
 		[VX_TYPE_VXP440] = {
-			"bx_1_vp4.b56", "x1_1_vp4.xlx", "bd563s3.boot", "l_1_vp4.d56"
+			"/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/"
 		},
 	};
 
@@ -71,7 +59,7 @@ int snd_vx_setup_firmware(struct vx_core *chip)
 		if (! fw_files[chip->type][i])
 			continue;
 		sprintf(path, "vx/%s", fw_files[chip->type][i]);
-		if (request_firmware(&fw, path, chip->dev)) {
+		if (reject_firmware(&fw, path, chip->dev)) {
 			snd_printk(KERN_ERR "vx: can't load firmware %s\n", path);
 			return -ENOENT;
 		}

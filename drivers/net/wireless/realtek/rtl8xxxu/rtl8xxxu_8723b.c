@@ -479,9 +479,9 @@ static int rtl8723bu_load_firmware(struct rtl8xxxu_priv *priv)
 	int ret;
 
 	if (priv->enable_bluetooth)
-		fw_name = "rtlwifi/rtl8723bu_bt.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 	else
-		fw_name = "rtlwifi/rtl8723bu_nic.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 
 	ret = rtl8xxxu_load_firmware(priv, fw_name);
 	return ret;

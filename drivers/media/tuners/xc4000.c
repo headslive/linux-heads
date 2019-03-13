@@ -107,8 +107,8 @@ struct xc4000_priv {
 #define XC4000_AUDIO_STD_INPUT1		16
 #define XC4000_AUDIO_STD_MONO		32
 
-#define XC4000_DEFAULT_FIRMWARE "dvb-fe-xc4000-1.4.fw"
-#define XC4000_DEFAULT_FIRMWARE_NEW "dvb-fe-xc4000-1.4.1.fw"
+/*(DEBLOBBED)*/
+/*(DEBLOBBED)*/
 
 /* Misc Defines */
 #define MAX_TV_STANDARD			24
@@ -725,17 +725,17 @@ static int xc4000_fwupload(struct dvb_frontend *fe)
 		fname = firmware_name;
 
 		dprintk(1, "Reading custom firmware %s\n", fname);
-		rc = request_firmware(&fw, fname,
+		rc = maybe_reject_firmware(&fw, fname,
 				      priv->i2c_props.adap->dev.parent);
 	} else {
-		fname = XC4000_DEFAULT_FIRMWARE_NEW;
+		fname = "/*(DEBLOBBED)*/";
 		dprintk(1, "Trying to read firmware %s\n", fname);
-		rc = request_firmware(&fw, fname,
+		rc = maybe_reject_firmware(&fw, fname,
 				      priv->i2c_props.adap->dev.parent);
 		if (rc == -ENOENT) {
-			fname = XC4000_DEFAULT_FIRMWARE;
+			fname = "/*(DEBLOBBED)*/";
 			dprintk(1, "Trying to read firmware %s\n", fname);
-			rc = request_firmware(&fw, fname,
+			rc = maybe_reject_firmware(&fw, fname,
 					      priv->i2c_props.adap->dev.parent);
 		}
 	}
@@ -1759,5 +1759,4 @@ EXPORT_SYMBOL(xc4000_attach);
 MODULE_AUTHOR("Steven Toth, Davide Ferri");
 MODULE_DESCRIPTION("Xceive xc4000 silicon tuner driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(XC4000_DEFAULT_FIRMWARE_NEW);
-MODULE_FIRMWARE(XC4000_DEFAULT_FIRMWARE);
+/*(DEBLOBBED)*/

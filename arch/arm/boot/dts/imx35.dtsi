@@ -285,7 +285,7 @@
 				clock-names = "ipg", "ahb";
 				#dma-cells = <3>;
 				interrupts = <34>;
-				fsl,sdma-ram-script-name = "imx/sdma/sdma-imx35.bin";
+				fsl,sdma-ram-script-name = "/*(DEBLOBBED)*/";
 			};
 
 			wdog: wdog@53fdc000 {

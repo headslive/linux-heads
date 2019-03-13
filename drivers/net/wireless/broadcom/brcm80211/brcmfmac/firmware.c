@@ -624,12 +624,12 @@ static int brcmf_fw_request_firmware(const struct firmware **fw,
 		strlcat(alt_path, fwctx->req->board_type, BRCMF_FW_NAME_LEN);
 		strlcat(alt_path, ".txt", BRCMF_FW_NAME_LEN);
 
-		ret = request_firmware(fw, alt_path, fwctx->dev);
+		ret = reject_firmware(fw, alt_path, fwctx->dev);
 		if (ret == 0)
 			return ret;
 	}
 
-	return request_firmware(fw, cur->path, fwctx->dev);
+	return reject_firmware(fw, cur->path, fwctx->dev);
 }
 
 static void brcmf_fw_request_done(const struct firmware *fw, void *ctx)
@@ -690,7 +690,7 @@ int brcmf_fw_get_firmwares(struct device *dev, struct brcmf_fw_request *req,
 	fwctx->req = req;
 	fwctx->done = fw_cb;
 
-	ret = request_firmware_nowait(THIS_MODULE, true, first->path,
+	ret = reject_firmware_nowait(THIS_MODULE, true, first->path,
 				      fwctx->dev, GFP_KERNEL, fwctx,
 				      brcmf_fw_request_done);
 	if (ret < 0)

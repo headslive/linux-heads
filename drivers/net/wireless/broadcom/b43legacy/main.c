@@ -60,8 +60,7 @@ MODULE_AUTHOR("Stefano Brivio");
 MODULE_AUTHOR("Michael Buesch");
 MODULE_LICENSE("GPL");
 
-MODULE_FIRMWARE("b43legacy/ucode2.fw");
-MODULE_FIRMWARE("b43legacy/ucode4.fw");
+/*(DEBLOBBED)*/
 
 #if defined(CONFIG_B43LEGACY_DMA) && defined(CONFIG_B43LEGACY_PIO)
 static int modparam_pio;
@@ -1508,9 +1507,7 @@ static void b43legacy_release_firmware(struct b43legacy_wldev *dev)
 
 static void b43legacy_print_fw_helptext(struct b43legacy_wl *wl)
 {
-	b43legacyerr(wl, "You must go to http://wireless.kernel.org/en/users/"
-		     "Drivers/b43#devicefirmware "
-		     "and download the correct firmware (version 3).\n");
+	/*(DEBLOBBED)*/
 }
 
 static void b43legacy_fw_cb(const struct firmware *firmware, void *context)
@@ -1534,12 +1531,12 @@ static int do_request_fw(struct b43legacy_wldev *dev,
 		return 0;
 
 	snprintf(path, ARRAY_SIZE(path),
-		 "b43legacy%s/%s.fw",
+		 "/*(DEBLOBBED)*/",
 		 modparam_fwpostfix, name);
 	b43legacyinfo(dev->wl, "Loading firmware %s\n", path);
 	if (async) {
 		init_completion(&dev->fw_load_complete);
-		err = request_firmware_nowait(THIS_MODULE, 1, path,
+		err = reject_firmware_nowait(THIS_MODULE, 1, path,
 					      dev->dev->dev, GFP_KERNEL,
 					      dev, b43legacy_fw_cb);
 		if (err) {
@@ -1552,7 +1549,7 @@ static int do_request_fw(struct b43legacy_wldev *dev,
 			err = -EINVAL;
 		*fw = dev->fwp;
 	} else {
-		err = request_firmware(fw, path, dev->dev->dev);
+		err = reject_firmware(fw, path, dev->dev->dev);
 	}
 	if (err) {
 		b43legacyerr(dev->wl, "Firmware file \"%s\" not found "
@@ -1600,20 +1597,20 @@ static void b43legacy_request_firmware(struct work_struct *work)
 
 	if (!fw->ucode) {
 		if (rev == 2)
-			filename = "ucode2";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 4)
-			filename = "ucode4";
+			filename = "/*(DEBLOBBED)*/";
 		else
-			filename = "ucode5";
+			filename = "/*(DEBLOBBED)*/";
 		err = do_request_fw(dev, filename, &fw->ucode, true);
 		if (err)
 			goto err_load;
 	}
 	if (!fw->pcm) {
 		if (rev < 5)
-			filename = "pcm4";
+			filename = "/*(DEBLOBBED)*/";
 		else
-			filename = "pcm5";
+			filename = "/*(DEBLOBBED)*/";
 		err = do_request_fw(dev, filename, &fw->pcm, false);
 		if (err)
 			goto err_load;
@@ -1623,9 +1620,9 @@ static void b43legacy_request_firmware(struct work_struct *work)
 		case B43legacy_PHYTYPE_B:
 		case B43legacy_PHYTYPE_G:
 			if ((rev >= 5) && (rev <= 10))
-				filename = "b0g0initvals5";
+				filename = "/*(DEBLOBBED)*/";
 			else if (rev == 2 || rev == 4)
-				filename = "b0g0initvals2";
+				filename = "/*(DEBLOBBED)*/";
 			else
 				goto err_no_initvals;
 			break;
@@ -1641,7 +1638,7 @@ static void b43legacy_request_firmware(struct work_struct *work)
 		case B43legacy_PHYTYPE_B:
 		case B43legacy_PHYTYPE_G:
 			if ((rev >= 5) && (rev <= 10))
-				filename = "b0g0bsinitvals5";
+				filename = "/*(DEBLOBBED)*/";
 			else if (rev >= 11)
 				filename = NULL;
 			else if (rev == 2 || rev == 4)

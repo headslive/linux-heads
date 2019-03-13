@@ -139,7 +139,7 @@ static void eip197_write_firmware(struct safexcel_crypto_priv *priv,
 
 static int eip197_load_firmwares(struct safexcel_crypto_priv *priv)
 {
-	const char *fw_name[] = {"ifpp.bin", "ipue.bin"};
+	const char *fw_name[] = {"/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/"};
 	const struct firmware *fw[FW_NB];
 	char fw_path[31], *dir = NULL;
 	int i, j, ret = 0, pe;
@@ -159,7 +159,7 @@ static int eip197_load_firmwares(struct safexcel_crypto_priv *priv)
 
 	for (i = 0; i < FW_NB; i++) {
 		snprintf(fw_path, 31, "inside-secure/%s/%s", dir, fw_name[i]);
-		ret = request_firmware(&fw[i], fw_path, priv->dev);
+		ret = reject_firmware(&fw[i], fw_path, priv->dev);
 		if (ret) {
 			if (priv->version != EIP197B)
 				goto release_fw;
@@ -167,7 +167,7 @@ static int eip197_load_firmwares(struct safexcel_crypto_priv *priv)
 			/* Fallback to the old firmware location for the
 			 * EIP197b.
 			 */
-			ret = request_firmware(&fw[i], fw_name[i], priv->dev);
+			ret = reject_firmware(&fw[i], fw_name[i], priv->dev);
 			if (ret) {
 				dev_err(priv->dev,
 					"Failed to request firmware %s (%d)\n",

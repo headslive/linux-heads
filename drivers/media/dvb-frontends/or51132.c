@@ -21,14 +21,9 @@
  *
 */
 
-/*
- * This driver needs two external firmware files. Please copy
- * "dvb-fe-or51132-vsb.fw" and "dvb-fe-or51132-qam.fw" to
- * /usr/lib/hotplug/firmware/ or /lib/firmware/
- * (depending on configuration of firmware hotplug).
- */
-#define OR51132_VSB_FIRMWARE "dvb-fe-or51132-vsb.fw"
-#define OR51132_QAM_FIRMWARE "dvb-fe-or51132-qam.fw"
+/*(DEBLOBBED)*/
+#define OR51132_VSB_FIRMWARE "/*(DEBLOBBED)*/"
+#define OR51132_QAM_FIRMWARE "/*(DEBLOBBED)*/"
 
 #include <linux/kernel.h>
 #include <linux/module.h>
@@ -336,7 +331,7 @@ static int or51132_set_parameters(struct dvb_frontend *fe)
 		}
 		printk("or51132: Waiting for firmware upload(%s)...\n",
 		       fwname);
-		ret = request_firmware(&fw, fwname, state->i2c->dev.parent);
+		ret = reject_firmware(&fw, fwname, state->i2c->dev.parent);
 		if (ret) {
 			printk(KERN_WARNING "or51132: No firmware uploaded(timeout or file not found?)\n");
 			return ret;

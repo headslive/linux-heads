@@ -185,9 +185,9 @@ struct fm_event_msg_hdr {
  * Firmware files of FM. ASIC ID and ASIC version will be appened to this,
  * later.
  */
-#define FM_FMC_FW_FILE_START      ("fmc_ch8")
-#define FM_RX_FW_FILE_START       ("fm_rx_ch8")
-#define FM_TX_FW_FILE_START       ("fm_tx_ch8")
+#define FM_FMC_FW_FILE_START      ("/*(DEBLOBBED)*/")
+#define FM_RX_FW_FILE_START       ("/*(DEBLOBBED)*/")
+#define FM_TX_FW_FILE_START       ("/*(DEBLOBBED)*/")
 
 #define FM_UNDEFINED_FREQ		   0xFFFFFFFF
 

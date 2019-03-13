@@ -867,9 +867,9 @@ static int q6v5_mpss_load(struct q6v5 *qproc)
 	int ret;
 	int i;
 
-	ret = request_firmware(&fw, "modem.mdt", qproc->dev);
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/", qproc->dev);
 	if (ret < 0) {
-		dev_err(qproc->dev, "unable to load modem.mdt\n");
+		dev_err(qproc->dev, "unable to load /*(DEBLOBBED)*/\n");
 		return ret;
 	}
 
@@ -918,8 +918,8 @@ static int q6v5_mpss_load(struct q6v5 *qproc)
 		ptr = qproc->mpss_region + offset;
 
 		if (phdr->p_filesz) {
-			snprintf(seg_name, sizeof(seg_name), "modem.b%02d", i);
-			ret = request_firmware(&seg_fw, seg_name, qproc->dev);
+			snprintf(seg_name, sizeof(seg_name), "/*(DEBLOBBED)*/", i);
+			ret = reject_firmware(&seg_fw, seg_name, qproc->dev);
 			if (ret) {
 				dev_err(qproc->dev, "failed to load %s\n", seg_name);
 				goto release_firmware;
@@ -1075,9 +1075,9 @@ static int qcom_q6v5_register_dump_segments(struct rproc *rproc,
 	unsigned long i;
 	int ret;
 
-	ret = request_firmware(&fw, "modem.mdt", qproc->dev);
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/", qproc->dev);
 	if (ret < 0) {
-		dev_err(qproc->dev, "unable to load modem.mdt\n");
+		dev_err(qproc->dev, "unable to load /*(DEBLOBBED)*/\n");
 		return ret;
 	}
 
@@ -1370,7 +1370,7 @@ static int q6v5_remove(struct platform_device *pdev)
 }
 
 static const struct rproc_hexagon_res sdm845_mss = {
-	.hexagon_mba_image = "mba.mbn",
+	.hexagon_mba_image = "/*(DEBLOBBED)*/",
 	.proxy_clk_names = (char*[]){
 			"xo",
 			"prng",
@@ -1394,7 +1394,7 @@ static const struct rproc_hexagon_res sdm845_mss = {
 };
 
 static const struct rproc_hexagon_res msm8996_mss = {
-	.hexagon_mba_image = "mba.mbn",
+	.hexagon_mba_image = "/*(DEBLOBBED)*/",
 	.proxy_clk_names = (char*[]){
 			"xo",
 			"pnoc",
@@ -1413,7 +1413,7 @@ static const struct rproc_hexagon_res msm8996_mss = {
 };
 
 static const struct rproc_hexagon_res msm8916_mss = {
-	.hexagon_mba_image = "mba.mbn",
+	.hexagon_mba_image = "/*(DEBLOBBED)*/",
 	.proxy_supply = (struct qcom_mss_reg_res[]) {
 		{
 			.supply = "mx",
@@ -1445,7 +1445,7 @@ static const struct rproc_hexagon_res msm8916_mss = {
 };
 
 static const struct rproc_hexagon_res msm8974_mss = {
-	.hexagon_mba_image = "mba.b00",
+	.hexagon_mba_image = "/*(DEBLOBBED)*/",
 	.proxy_supply = (struct qcom_mss_reg_res[]) {
 		{
 			.supply = "mx",

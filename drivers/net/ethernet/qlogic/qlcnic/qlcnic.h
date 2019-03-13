@@ -327,7 +327,7 @@ struct qlcnic_fdt {
 #define QLCNIC_FLASH_ROMIMAGE		1
 #define QLCNIC_UNKNOWN_ROMIMAGE		0xff
 
-#define QLCNIC_UNIFIED_ROMIMAGE_NAME	"phanfw.bin"
+#define QLCNIC_UNIFIED_ROMIMAGE_NAME	"/*(DEBLOBBED)*/"
 #define QLCNIC_FLASH_ROMIMAGE_NAME	"flash"
 
 extern char qlcnic_driver_name[];

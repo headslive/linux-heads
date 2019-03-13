@@ -51,7 +51,7 @@
 #include "efivar.h"
 #include "eprom.h"
 
-#define DEFAULT_PLATFORM_CONFIG_NAME "hfi1_platform.dat"
+#define DEFAULT_PLATFORM_CONFIG_NAME "/*(DEBLOBBED)*/"
 
 static int validate_scratch_checksum(struct hfi1_devdata *dd)
 {
@@ -173,7 +173,7 @@ void get_platform_config(struct hfi1_devdata *dd)
 		   "%s: Failed to get platform config, falling back to sub-optimal default file\n",
 		   __func__);
 
-	ret = request_firmware(&platform_config_file,
+	ret = reject_firmware(&platform_config_file,
 			       DEFAULT_PLATFORM_CONFIG_NAME,
 			       &dd->pcidev->dev);
 	if (ret) {

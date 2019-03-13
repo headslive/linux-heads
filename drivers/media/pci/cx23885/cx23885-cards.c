@@ -2398,7 +2398,7 @@ void cx23885_card_setup(struct cx23885_dev *dev)
 	case CX23885_BOARD_NETUP_DUAL_DVB_T_C_CI_RF: {
 		int ret;
 		const struct firmware *fw;
-		const char *filename = "dvb-netup-altera-01.fw";
+		const char *filename = "/*(DEBLOBBED)*/";
 		char *action = "configure";
 		static struct netup_card_info cinfo;
 		struct altera_config netup_config = {
@@ -2415,18 +2415,18 @@ void cx23885_card_setup(struct cx23885_dev *dev)
 
 		switch (cinfo.rev) {
 		case 0x4:
-			filename = "dvb-netup-altera-04.fw";
+			filename = "/*(DEBLOBBED)*/";
 			break;
 		default:
-			filename = "dvb-netup-altera-01.fw";
+			filename = "/*(DEBLOBBED)*/";
 			break;
 		}
 		pr_info("NetUP card rev=0x%x fw_filename=%s\n",
 			cinfo.rev, filename);
 
-		ret = request_firmware(&fw, filename, &dev->pci->dev);
+		ret = reject_firmware(&fw, filename, &dev->pci->dev);
 		if (ret != 0)
-			pr_err("did not find the firmware file '%s'. You can use <kernel_dir>/scripts/get_dvb_firmware to get the firmware.",
+			pr_err("did not find the firmware file '%s'. /*(DEBLOBBED)*/",
 			       filename);
 		else
 			altera_init(&netup_config, fw);

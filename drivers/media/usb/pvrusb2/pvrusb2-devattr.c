@@ -50,7 +50,7 @@ static const struct pvr2_device_client_desc pvr2_cli_29xxx[] = {
 	{ .module_id = PVR2_CLIENT_ID_DEMOD },
 };
 
-#define PVR2_FIRMWARE_29xxx "v4l-pvrusb2-29xxx-01.fw"
+#define PVR2_FIRMWARE_29xxx "/*(DEBLOBBED)*/"
 static const char *pvr2_fw1_names_29xxx[] = {
 		PVR2_FIRMWARE_29xxx,
 };
@@ -84,7 +84,7 @@ static const struct pvr2_device_client_desc pvr2_cli_24xxx[] = {
 	{ .module_id = PVR2_CLIENT_ID_DEMOD },
 };
 
-#define PVR2_FIRMWARE_24xxx "v4l-pvrusb2-24xxx-01.fw"
+#define PVR2_FIRMWARE_24xxx "/*(DEBLOBBED)*/"
 static const char *pvr2_fw1_names_24xxx[] = {
 		PVR2_FIRMWARE_24xxx,
 };
@@ -367,7 +367,7 @@ static const struct pvr2_device_client_desc pvr2_cli_73xxx[] = {
 	  .i2c_address_list = "\x42"},
 };
 
-#define PVR2_FIRMWARE_73xxx "v4l-pvrusb2-73xxx-01.fw"
+#define PVR2_FIRMWARE_73xxx "/*(DEBLOBBED)*/"
 static const char *pvr2_fw1_names_73xxx[] = {
 		PVR2_FIRMWARE_73xxx,
 };
@@ -474,7 +474,7 @@ static const struct pvr2_dvb_props pvr2_751xx_dvb_props = {
 };
 #endif
 
-#define PVR2_FIRMWARE_75xxx "v4l-pvrusb2-73xxx-01.fw"
+#define PVR2_FIRMWARE_75xxx "/*(DEBLOBBED)*/"
 static const char *pvr2_fw1_names_75xxx[] = {
 		PVR2_FIRMWARE_75xxx,
 };
@@ -556,7 +556,4 @@ struct usb_device_id pvr2_device_table[] = {
 };
 
 MODULE_DEVICE_TABLE(usb, pvr2_device_table);
-MODULE_FIRMWARE(PVR2_FIRMWARE_29xxx);
-MODULE_FIRMWARE(PVR2_FIRMWARE_24xxx);
-MODULE_FIRMWARE(PVR2_FIRMWARE_73xxx);
-MODULE_FIRMWARE(PVR2_FIRMWARE_75xxx);
+/*(DEBLOBBED)*/

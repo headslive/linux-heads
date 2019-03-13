@@ -213,9 +213,9 @@ bool init_firmware(struct net_device *dev)
 
 	rt_firmware		*pfirmware = priv->pFirmware;
 	const struct firmware	*fw_entry;
-	const char *fw_name[3] = { "RTL8192U/boot.img",
-			   "RTL8192U/main.img",
-			   "RTL8192U/data.img"};
+	const char *fw_name[3] = { "/*(DEBLOBBED)*/",
+			   "/*(DEBLOBBED)*/",
+			   "/*(DEBLOBBED)*/"};
 	int rc;
 
 	RT_TRACE(COMP_FIRMWARE, " PlatformInitFirmware()==>\n");
@@ -244,7 +244,7 @@ bool init_firmware(struct net_device *dev)
 		 * or read image file from array. Default load from IMG file
 		 */
 		if (rst_opt == OPT_SYSTEM_RESET) {
-			rc = request_firmware(&fw_entry, fw_name[init_step], &priv->udev->dev);
+			rc = reject_firmware(&fw_entry, fw_name[init_step], &priv->udev->dev);
 			if (rc < 0) {
 				RT_TRACE(COMP_ERR, "request firmware fail!\n");
 				goto download_firmware_fail;
@@ -341,6 +341,4 @@ download_firmware_fail:
 
 }
 
-MODULE_FIRMWARE("RTL8192U/boot.img");
-MODULE_FIRMWARE("RTL8192U/main.img");
-MODULE_FIRMWARE("RTL8192U/data.img");
+/*(DEBLOBBED)*/

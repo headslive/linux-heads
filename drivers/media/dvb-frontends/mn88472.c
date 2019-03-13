@@ -429,7 +429,7 @@ static int mn88472_init(struct dvb_frontend *fe)
 	if (!(utmp & 0x01))
 		goto warm;
 
-	ret = request_firmware(&firmware, name, &client->dev);
+	ret = reject_firmware(&firmware, name, &client->dev);
 	if (ret) {
 		dev_err(&client->dev, "firmware file '%s' not found\n", name);
 		goto err;
@@ -742,4 +742,4 @@ module_i2c_driver(mn88472_driver);
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("Panasonic MN88472 DVB-T/T2/C demodulator driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(MN88472_FIRMWARE);
+/*(DEBLOBBED)*/

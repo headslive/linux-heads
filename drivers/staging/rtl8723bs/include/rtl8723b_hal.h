@@ -23,8 +23,8 @@
 /*  */
 /* RTL8723B From file */
 /*  */
-#define RTL8723B_FW_IMG      "rtl8723b/FW_NIC.bin"
-#define RTL8723B_FW_WW_IMG   "rtl8723b/FW_WoWLAN.bin"
+#define RTL8723B_FW_IMG      "/*(DEBLOBBED)*/"
+#define RTL8723B_FW_WW_IMG   "/*(DEBLOBBED)*/"
 #define RTL8723B_PHY_REG     "rtl8723b/PHY_REG.txt"
 #define RTL8723B_PHY_RADIO_A "rtl8723b/RadioA.txt"
 #define RTL8723B_PHY_RADIO_B "rtl8723b/RadioB.txt"

@@ -120,14 +120,14 @@ const char cxgb4_driver_version[] = DRV_VERSION;
 
 #include "t4_pci_id_tbl.h"
 
-#define FW4_FNAME "cxgb4/t4fw.bin"
-#define FW5_FNAME "cxgb4/t5fw.bin"
-#define FW6_FNAME "cxgb4/t6fw.bin"
+#define FW4_FNAME "/*(DEBLOBBED)*/"
+#define FW5_FNAME "/*(DEBLOBBED)*/"
+#define FW6_FNAME "/*(DEBLOBBED)*/"
 #define FW4_CFNAME "cxgb4/t4-config.txt"
 #define FW5_CFNAME "cxgb4/t5-config.txt"
 #define FW6_CFNAME "cxgb4/t6-config.txt"
-#define PHY_AQ1202_FIRMWARE "cxgb4/aq1202_fw.cld"
-#define PHY_BCM84834_FIRMWARE "cxgb4/bcm8483.bin"
+#define PHY_AQ1202_FIRMWARE "/*(DEBLOBBED)*/"
+#define PHY_BCM84834_FIRMWARE "/*(DEBLOBBED)*/"
 #define PHY_AQ1202_DEVICEID 0x4409
 #define PHY_BCM84834_DEVICEID 0x4486
 
@@ -136,9 +136,7 @@ MODULE_AUTHOR("Chelsio Communications");
 MODULE_LICENSE("Dual BSD/GPL");
 MODULE_VERSION(DRV_VERSION);
 MODULE_DEVICE_TABLE(pci, cxgb4_pci_tbl);
-MODULE_FIRMWARE(FW4_FNAME);
-MODULE_FIRMWARE(FW5_FNAME);
-MODULE_FIRMWARE(FW6_FNAME);
+/*(DEBLOBBED)*/
 
 /*
  * The driver uses the best interrupt scheme available on a platform in the
@@ -3757,7 +3755,7 @@ static int adap_init0_phy(struct adapter *adap)
 	 * where we can load a PHY firmware file from the host if we want to
 	 * override the PHY firmware File in flash.
 	 */
-	ret = request_firmware_direct(&phyf, phy_info->phy_fw_file,
+	ret = reject_firmware_direct(&phyf, phy_info->phy_fw_file,
 				      adap->pdev_dev);
 	if (ret < 0) {
 		/* For adapters without FLASH attached to PHY for their
@@ -3861,7 +3859,7 @@ static int adap_init0_config(struct adapter *adapter, int reset)
 		goto bye;
 	}
 
-	ret = request_firmware(&cf, fw_config_file, adapter->pdev_dev);
+	ret = reject_firmware(&cf, fw_config_file, adapter->pdev_dev);
 	if (ret < 0) {
 		config_name = "On FLASH";
 		mtype = FW_MEMTYPE_CF_FLASH;
@@ -3889,7 +3887,7 @@ static int adap_init0_config(struct adapter *adapter, int reset)
 				 * to write that out separately since we can't
 				 * guarantee that the bytes following the
 				 * residual byte in the buffer returned by
-				 * request_firmware() are zeroed out ...
+				 * reject_firmware() are zeroed out ...
 				 */
 				size_t resid = cf->size & 0x3;
 				size_t size = cf->size & ~0x3;
@@ -4158,7 +4156,7 @@ static int adap_init0(struct adapter *adap)
 		}
 
 		/* Get FW from from /lib/firmware/ */
-		ret = request_firmware(&fw, fw_info->fw_mod_name,
+		ret = reject_firmware(&fw, fw_info->fw_mod_name,
 				       adap->pdev_dev);
 		if (ret < 0) {
 			dev_err(adap->pdev_dev,

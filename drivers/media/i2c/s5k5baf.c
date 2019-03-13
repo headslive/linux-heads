@@ -39,7 +39,7 @@ module_param(debug, int, 0644);
 #define S5K5BAF_DEFAULT_MCLK_FREQ	24000000U
 #define S5K5BAF_CLK_NAME		"mclk"
 
-#define S5K5BAF_FW_FILENAME		"s5k5baf-cfg.bin"
+#define S5K5BAF_FW_FILENAME		"/*(DEBLOBBED)*/"
 #define S5K5BAF_FW_TAG			"SF00"
 #define S5K5BAG_FW_TAG_LEN		2
 #define S5K5BAG_FW_MAX_COUNT		16
@@ -1032,7 +1032,7 @@ static int s5k5baf_load_setfile(struct s5k5baf *state)
 	const struct firmware *fw;
 	int ret;
 
-	ret = request_firmware(&fw, S5K5BAF_FW_FILENAME, &c->dev);
+	ret = reject_firmware(&fw, S5K5BAF_FW_FILENAME, &c->dev);
 	if (ret < 0) {
 		dev_warn(&c->dev, "firmware file (%s) not loaded\n",
 			 S5K5BAF_FW_FILENAME);

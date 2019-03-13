@@ -33,7 +33,7 @@ static int flexcop_fe_request_firmware(struct dvb_frontend *fe,
 {
 	struct flexcop_device *fc = fe->dvb->priv;
 
-	return request_firmware(fw, name, fc->dev);
+	return reject_firmware(fw, name, fc->dev);
 }
 #endif
 

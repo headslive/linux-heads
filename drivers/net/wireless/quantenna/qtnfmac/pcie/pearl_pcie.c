@@ -990,7 +990,7 @@ static void qtnf_pearl_fw_work_handler(struct work_struct *work)
 	if (ps->base.flashboot) {
 		state |= QTN_RC_FW_FLASHBOOT;
 	} else {
-		ret = request_firmware(&fw, fwname, &pdev->dev);
+		ret = reject_firmware(&fw, fwname, &pdev->dev);
 		if (ret < 0) {
 			pr_err("failed to get firmware %s\n", fwname);
 			goto fw_load_exit;

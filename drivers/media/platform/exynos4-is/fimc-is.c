@@ -237,7 +237,7 @@ static int fimc_is_load_setfile(struct fimc_is *is, char *file_name)
 	void *buf;
 	int ret;
 
-	ret = request_firmware(&fw, file_name, &is->pdev->dev);
+	ret = reject_firmware(&fw, file_name, &is->pdev->dev);
 	if (ret < 0) {
 		dev_err(&is->pdev->dev, "firmware request failed (%d)\n", ret);
 		return ret;
@@ -440,7 +440,7 @@ done:
 
 static int fimc_is_request_firmware(struct fimc_is *is, const char *fw_name)
 {
-	return request_firmware_nowait(THIS_MODULE,
+	return reject_firmware_nowait(THIS_MODULE,
 				FW_ACTION_HOTPLUG, fw_name, &is->pdev->dev,
 				GFP_KERNEL, is, fimc_is_load_firmware);
 }

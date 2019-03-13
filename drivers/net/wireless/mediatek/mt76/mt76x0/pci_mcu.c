@@ -36,7 +36,7 @@ static int mt76x0e_load_firmware(struct mt76x02_dev *dev)
 	else
 		firmware = MT7610E_FIRMWARE;
 
-	err = request_firmware(&fw, firmware, dev->mt76.dev);
+	err = reject_firmware(&fw, firmware, dev->mt76.dev);
 	if (err)
 		return err;
 

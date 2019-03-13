@@ -1361,7 +1361,7 @@ static void download_offload_pseudocode(struct vub300_mmc_host *vub300)
 	int sdio_funcs = card->sdio_funcs;
 	const struct firmware *fw = NULL;
 	int l = snprintf(vub300->vub_name, sizeof(vub300->vub_name),
-			 "vub_%04X%04X", card->cis.vendor, card->cis.device);
+			 "/*(DEBLOBBED)*/", card->cis.vendor, card->cis.device);
 	int n = 0;
 	int retval;
 	for (n = 0; n < sdio_funcs; n++) {
@@ -1370,14 +1370,14 @@ static void download_offload_pseudocode(struct vub300_mmc_host *vub300)
 			      sizeof(vub300->vub_name) - l, "_%04X%04X",
 			      sf->vendor, sf->device);
 	}
-	snprintf(vub300->vub_name + l, sizeof(vub300->vub_name) - l, ".bin");
+	/*(DEBLOBBED)*/
 	dev_info(&vub300->udev->dev, "requesting offload firmware %s\n",
 		 vub300->vub_name);
-	retval = request_firmware(&fw, vub300->vub_name, &card->dev);
+	retval = reject_firmware(&fw, vub300->vub_name, &card->dev);
 	if (retval < 0) {
-		strncpy(vub300->vub_name, "vub_default.bin",
+		strncpy(vub300->vub_name, "/*(DEBLOBBED)*/",
 			sizeof(vub300->vub_name));
-		retval = request_firmware(&fw, vub300->vub_name, &card->dev);
+		retval = reject_firmware(&fw, vub300->vub_name, &card->dev);
 		if (retval < 0) {
 			strncpy(vub300->vub_name,
 				"no SDIO offload firmware found",

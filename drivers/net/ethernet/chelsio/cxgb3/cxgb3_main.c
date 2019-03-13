@@ -990,21 +990,14 @@ static int bind_qsets(struct adapter *adap)
 	return err;
 }
 
-#define FW_VERSION __stringify(FW_VERSION_MAJOR) "."			\
-	__stringify(FW_VERSION_MINOR) "." __stringify(FW_VERSION_MICRO)
-#define FW_FNAME "cxgb3/t3fw-" FW_VERSION ".bin"
-#define TPSRAM_VERSION __stringify(TP_VERSION_MAJOR) "."		\
-	__stringify(TP_VERSION_MINOR) "." __stringify(TP_VERSION_MICRO)
-#define TPSRAM_NAME "cxgb3/t3%c_psram-" TPSRAM_VERSION ".bin"
-#define AEL2005_OPT_EDC_NAME "cxgb3/ael2005_opt_edc.bin"
-#define AEL2005_TWX_EDC_NAME "cxgb3/ael2005_twx_edc.bin"
-#define AEL2020_TWX_EDC_NAME "cxgb3/ael2020_twx_edc.bin"
-MODULE_FIRMWARE(FW_FNAME);
-MODULE_FIRMWARE("cxgb3/t3b_psram-" TPSRAM_VERSION ".bin");
-MODULE_FIRMWARE("cxgb3/t3c_psram-" TPSRAM_VERSION ".bin");
-MODULE_FIRMWARE(AEL2005_OPT_EDC_NAME);
-MODULE_FIRMWARE(AEL2005_TWX_EDC_NAME);
-MODULE_FIRMWARE(AEL2020_TWX_EDC_NAME);
+/*(DEBLOBBED)*/
+#define FW_FNAME "/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
+#define TPSRAM_NAME "/*(DEBLOBBED)*/"
+#define AEL2005_OPT_EDC_NAME "/*(DEBLOBBED)*/"
+#define AEL2005_TWX_EDC_NAME "/*(DEBLOBBED)*/"
+#define AEL2020_TWX_EDC_NAME "/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 static inline const char *get_edc_fw_name(int edc_idx)
 {
@@ -1036,7 +1029,7 @@ int t3_get_edc_fw(struct cphy *phy, int edc_idx, int size)
 
 	fw_name = get_edc_fw_name(edc_idx);
 	if (fw_name)
-		ret = request_firmware(&fw, fw_name, &adapter->pdev->dev);
+		ret = reject_firmware(&fw, fw_name, &adapter->pdev->dev);
 	if (ret < 0) {
 		dev_err(&adapter->pdev->dev,
 			"could not upgrade firmware: unable to load %s\n",
@@ -1078,7 +1071,7 @@ static int upgrade_fw(struct adapter *adap)
 	const struct firmware *fw;
 	struct device *dev = &adap->pdev->dev;
 
-	ret = request_firmware(&fw, FW_FNAME, dev);
+	ret = reject_firmware(&fw, FW_FNAME, dev);
 	if (ret < 0) {
 		dev_err(dev, "could not upgrade firmware: unable to load %s\n",
 			FW_FNAME);
@@ -1127,7 +1120,7 @@ static int update_tpsram(struct adapter *adap)
 
 	snprintf(buf, sizeof(buf), TPSRAM_NAME, rev);
 
-	ret = request_firmware(&tpsram, buf, dev);
+	ret = reject_firmware(&tpsram, buf, dev);
 	if (ret < 0) {
 		dev_err(dev, "could not load TP SRAM: unable to load %s\n",
 			buf);

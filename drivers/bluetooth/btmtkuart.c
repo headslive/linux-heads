@@ -26,7 +26,7 @@
 
 #define VERSION "0.1"
 
-#define FIRMWARE_MT7622		"mediatek/mt7622pr2h.bin"
+#define FIRMWARE_MT7622		"/*(DEBLOBBED)*/"
 
 #define MTK_STP_TLR_SIZE	2
 
@@ -134,7 +134,7 @@ static int mtk_setup_fw(struct hci_dev *hdev)
 	int err, dlen;
 	u8 flag;
 
-	err = request_firmware(&fw, FIRMWARE_MT7622, &hdev->dev);
+	err = reject_firmware(&fw, FIRMWARE_MT7622, &hdev->dev);
 	if (err < 0) {
 		bt_dev_err(hdev, "Failed to load firmware file (%d)", err);
 		return err;
@@ -628,4 +628,4 @@ MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
 MODULE_DESCRIPTION("MediaTek Bluetooth Serial driver ver " VERSION);
 MODULE_VERSION(VERSION);
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(FIRMWARE_MT7622);
+/*(DEBLOBBED)*/

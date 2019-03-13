@@ -110,15 +110,4 @@ Interface Control Command::
 	hcitool cmd 0x3f 0x5b 0xf5 0x00 0x01    --Disable Wlan interface
 	hcitool cmd 0x3f 0x5b 0xf5 0x00 0x02    --Disable BT interface
 
-SD8688 firmware
-===============
-
-Images:
-
-- /lib/firmware/sd8688_helper.bin
-- /lib/firmware/sd8688.bin
-
-
-The images can be downloaded from:
-
-git.infradead.org/users/dwmw2/linux-firmware.git/libertas/
+/*(DEBLOBBED)*/

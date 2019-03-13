@@ -392,7 +392,7 @@ static int si2165_upload_firmware(struct si2165_state *state)
 	}
 
 	/* request the firmware, this will block and timeout */
-	ret = request_firmware(&fw, fw_file, &state->client->dev);
+	ret = reject_firmware(&fw, fw_file, &state->client->dev);
 	if (ret) {
 		dev_warn(&state->client->dev, "firmware file '%s' not found\n",
 			 fw_file);
@@ -1312,4 +1312,4 @@ module_i2c_driver(si2165_driver);
 MODULE_DESCRIPTION("Silicon Labs Si2165 DVB-C/-T Demodulator driver");
 MODULE_AUTHOR("Matthias Schwarzott <zzam@gentoo.org>");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(SI2165_FIRMWARE_REV_D);
+/*(DEBLOBBED)*/

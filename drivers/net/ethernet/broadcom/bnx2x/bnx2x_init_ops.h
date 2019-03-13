@@ -180,20 +180,8 @@ static const u8 *bnx2x_sel_blob(struct bnx2x *bp, u32 addr,
 	return data;
 }
 
-static void bnx2x_init_wr_wb(struct bnx2x *bp, u32 addr,
-			     const u32 *data, u32 len)
-{
-	if (bp->dmae_ready)
-		VIRT_WR_DMAE_LEN(bp, data, addr, len, 0);
-
-	/* in E1 chips BIOS initiated ZLR may interrupt widebus writes */
-	else if (CHIP_IS_E1(bp))
-		bnx2x_init_ind_wr(bp, addr, data, len);
-
-	/* in later chips PXP root complex handles BIOS ZLR w/o interrupting */
-	else
-		bnx2x_init_str_wr(bp, addr, data, len);
-}
+extern void bnx2x_init_wr_wb(struct bnx2x *, u32, const u32 *, u32);
+/*(DEBLOBBED)*/
 
 static void bnx2x_wr_64(struct bnx2x *bp, u32 reg, u32 val_lo,
 			u32 val_hi)
@@ -226,87 +214,7 @@ static void bnx2x_init_wr_zp(struct bnx2x *bp, u32 addr, u32 len,
 	bnx2x_write_big_buf_wb(bp, addr, len);
 }
 
-static void bnx2x_init_block(struct bnx2x *bp, u32 block, u32 stage)
-{
-	u16 op_start =
-		INIT_OPS_OFFSETS(bp)[BLOCK_OPS_IDX(block, stage,
-						     STAGE_START)];
-	u16 op_end =
-		INIT_OPS_OFFSETS(bp)[BLOCK_OPS_IDX(block, stage,
-						     STAGE_END)];
-	const union init_op *op;
-	u32 op_idx, op_type, addr, len;
-	const u32 *data, *data_base;
-
-	/* If empty block */
-	if (op_start == op_end)
-		return;
-
-	data_base = INIT_DATA(bp);
-
-	for (op_idx = op_start; op_idx < op_end; op_idx++) {
-
-		op = (const union init_op *)&(INIT_OPS(bp)[op_idx]);
-		/* Get generic data */
-		op_type = op->raw.op;
-		addr = op->raw.offset;
-		/* Get data that's used for OP_SW, OP_WB, OP_FW, OP_ZP and
-		 * OP_WR64 (we assume that op_arr_write and op_write have the
-		 * same structure).
-		 */
-		len = op->arr_wr.data_len;
-		data = data_base + op->arr_wr.data_off;
-
-		switch (op_type) {
-		case OP_RD:
-			REG_RD(bp, addr);
-			break;
-		case OP_WR:
-			REG_WR(bp, addr, op->write.val);
-			break;
-		case OP_SW:
-			bnx2x_init_str_wr(bp, addr, data, len);
-			break;
-		case OP_WB:
-			bnx2x_init_wr_wb(bp, addr, data, len);
-			break;
-		case OP_ZR:
-			bnx2x_init_fill(bp, addr, 0, op->zero.len, 0);
-			break;
-		case OP_WB_ZR:
-			bnx2x_init_fill(bp, addr, 0, op->zero.len, 1);
-			break;
-		case OP_ZP:
-			bnx2x_init_wr_zp(bp, addr, len,
-					 op->arr_wr.data_off);
-			break;
-		case OP_WR_64:
-			bnx2x_init_wr_64(bp, addr, data, len);
-			break;
-		case OP_IF_MODE_AND:
-			/* if any of the flags doesn't match, skip the
-			 * conditional block.
-			 */
-			if ((INIT_MODE_FLAGS(bp) &
-				op->if_mode.mode_bit_map) !=
-				op->if_mode.mode_bit_map)
-				op_idx += op->if_mode.cmd_offset;
-			break;
-		case OP_IF_MODE_OR:
-			/* if all the flags don't match, skip the conditional
-			 * block.
-			 */
-			if ((INIT_MODE_FLAGS(bp) &
-				op->if_mode.mode_bit_map) == 0)
-				op_idx += op->if_mode.cmd_offset;
-			break;
-		default:
-			/* Should never get here! */
-
-			break;
-		}
-	}
-}
+/*(DEBLOBBED)*/
 
 
 /****************************************************************************

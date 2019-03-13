@@ -1024,7 +1024,7 @@ static struct dvb_usb_device_properties af9005_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = DEVICE_SPECIFIC,
-	.firmware = "af9005.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 	.download_firmware = af9005_download_firmware,
 	.no_reconnect = 1,
 

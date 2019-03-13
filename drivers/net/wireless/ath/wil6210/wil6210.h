@@ -45,14 +45,14 @@ union wil_tx_desc;
 
 #define WIL_NAME "wil6210"
 
-#define WIL_FW_NAME_DEFAULT "wil6210.fw"
-#define WIL_FW_NAME_FTM_DEFAULT "wil6210_ftm.fw"
+#define WIL_FW_NAME_DEFAULT "/*(DEBLOBBED)*/"
+#define WIL_FW_NAME_FTM_DEFAULT "/*(DEBLOBBED)*/"
 
-#define WIL_FW_NAME_SPARROW_PLUS "wil6210_sparrow_plus.fw"
-#define WIL_FW_NAME_FTM_SPARROW_PLUS "wil6210_sparrow_plus_ftm.fw"
+#define WIL_FW_NAME_SPARROW_PLUS "/*(DEBLOBBED)*/"
+#define WIL_FW_NAME_FTM_SPARROW_PLUS "/*(DEBLOBBED)*/"
 
-#define WIL_FW_NAME_TALYN "wil6436.fw"
-#define WIL_FW_NAME_FTM_TALYN "wil6436_ftm.fw"
+#define WIL_FW_NAME_TALYN "/*(DEBLOBBED)*/"
+#define WIL_FW_NAME_FTM_TALYN "/*(DEBLOBBED)*/"
 #define WIL_BRD_NAME_TALYN "wil6436.brd"
 
 #define WIL_BOARD_FILE_NAME "wil6210.brd" /* board & radio parameters */

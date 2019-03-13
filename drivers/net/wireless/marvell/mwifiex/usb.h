@@ -44,10 +44,10 @@
 #define MWIFIEX_RX_DATA_URB	6
 #define MWIFIEX_USB_TIMEOUT	100
 
-#define USB8766_DEFAULT_FW_NAME	"mrvl/usb8766_uapsta.bin"
-#define USB8797_DEFAULT_FW_NAME	"mrvl/usb8797_uapsta.bin"
-#define USB8801_DEFAULT_FW_NAME	"mrvl/usb8801_uapsta.bin"
-#define USB8997_DEFAULT_FW_NAME	"mrvl/usbusb8997_combo_v4.bin"
+#define USB8766_DEFAULT_FW_NAME	"/*(DEBLOBBED)*/"
+#define USB8797_DEFAULT_FW_NAME	"/*(DEBLOBBED)*/"
+#define USB8801_DEFAULT_FW_NAME	"/*(DEBLOBBED)*/"
+#define USB8997_DEFAULT_FW_NAME	"/*(DEBLOBBED)*/"
 
 #define FW_DNLD_TX_BUF_SIZE	620
 #define FW_DNLD_RX_BUF_SIZE	2048

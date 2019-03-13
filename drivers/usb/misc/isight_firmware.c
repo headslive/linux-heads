@@ -44,7 +44,7 @@ static int isight_firmware_load(struct usb_interface *intf,
 	if (!buf)
 		return -ENOMEM;
 
-	if (request_firmware(&firmware, "isight.fw", &dev->dev) != 0) {
+	if (reject_firmware(&firmware, "/*(DEBLOBBED)*/", &dev->dev) != 0) {
 		printk(KERN_ERR "Unable to load isight firmware\n");
 		ret = -ENODEV;
 		goto out;
@@ -112,7 +112,7 @@ out:
 	return ret;
 }
 
-MODULE_FIRMWARE("isight.fw");
+/*(DEBLOBBED)*/
 
 static void isight_firmware_disconnect(struct usb_interface *intf)
 {

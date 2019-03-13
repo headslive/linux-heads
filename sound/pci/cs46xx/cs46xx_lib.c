@@ -356,11 +356,7 @@ static const char *module_names[CS46XX_DSP_MODULES] = {
 	"cwc4630", "cwcasync", "cwcsnoop", "cwcbinhack", "cwcdma"
 };
 
-MODULE_FIRMWARE("cs46xx/cwc4630");
-MODULE_FIRMWARE("cs46xx/cwcasync");
-MODULE_FIRMWARE("cs46xx/cwcsnoop");
-MODULE_FIRMWARE("cs46xx/cwcbinhack");
-MODULE_FIRMWARE("cs46xx/cwcdma");
+/*(DEBLOBBED)*/
 
 static void free_module_desc(struct dsp_module_desc *module)
 {
@@ -405,7 +401,7 @@ static int load_firmware(struct snd_cs46xx *chip,
 	char fw_path[32];
 
 	sprintf(fw_path, "cs46xx/%s", fw_name);
-	err = request_firmware(&fw, fw_path, &chip->pci->dev);
+	err = reject_firmware(&fw, fw_path, &chip->pci->dev);
 	if (err < 0)
 		return err;
 	fwsize = fw->size / 4;
@@ -510,14 +506,14 @@ struct ba1_struct {
 	u32 map[BA1_DWORD_SIZE];
 };
 
-MODULE_FIRMWARE("cs46xx/ba1");
+/*(DEBLOBBED)*/
 
 static int load_firmware(struct snd_cs46xx *chip)
 {
 	const struct firmware *fw;
 	int i, size, err;
 
-	err = request_firmware(&fw, "cs46xx/ba1", &chip->pci->dev);
+	err = reject_firmware(&fw, "cs46xx/ba1", &chip->pci->dev);
 	if (err < 0)
 		return err;
 	if (fw->size != sizeof(*chip->ba1)) {

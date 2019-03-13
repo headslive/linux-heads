@@ -38,7 +38,7 @@
 #include <media/tuner.h>
 
 #define CX231xx_FIRM_IMAGE_SIZE 376836
-#define CX231xx_FIRM_IMAGE_NAME "v4l-cx23885-enc.fw"
+#define CX231xx_FIRM_IMAGE_NAME "/*(DEBLOBBED)*/"
 
 /* for polaris ITVC */
 #define ITVC_WRITE_DIR          0x03FDFC00
@@ -992,7 +992,7 @@ static int cx231xx_load_firmware(struct cx231xx *dev)
 		return retval;
 	}
 
-	retval = request_firmware(&firmware, CX231xx_FIRM_IMAGE_NAME,
+	retval = reject_firmware(&firmware, CX231xx_FIRM_IMAGE_NAME,
 				  dev->dev);
 
 	if (retval != 0) {
@@ -2040,4 +2040,4 @@ int cx231xx_417_register(struct cx231xx *dev)
 	return 0;
 }
 
-MODULE_FIRMWARE(CX231xx_FIRM_IMAGE_NAME);
+/*(DEBLOBBED)*/

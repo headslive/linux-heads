@@ -670,7 +670,7 @@ static const struct wl18xx_clk_cfg wl18xx_clk_table[NUM_CLOCK_CONFIGS] = {
 };
 
 /* TODO: maybe move to a new header file? */
-#define WL18XX_FW_NAME "ti-connectivity/wl18xx-fw-4.bin"
+#define WL18XX_FW_NAME "/*(DEBLOBBED)*/"
 
 static int wl18xx_identify_chip(struct wl1271 *wl)
 {
@@ -1409,7 +1409,7 @@ static int wl18xx_load_conf_file(struct device *dev, struct wlcore_conf *conf,
 	const struct firmware *fw;
 	int ret;
 
-	ret = request_firmware(&fw, file, dev);
+	ret = reject_firmware(&fw, file, dev);
 	if (ret < 0) {
 		wl1271_error("could not get configuration binary %s: %d",
 			     file, ret);
@@ -2143,4 +2143,4 @@ MODULE_PARM_DESC(num_rx_desc_param,
 
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("Luciano Coelho <coelho@ti.com>");
-MODULE_FIRMWARE(WL18XX_FW_NAME);
+/*(DEBLOBBED)*/

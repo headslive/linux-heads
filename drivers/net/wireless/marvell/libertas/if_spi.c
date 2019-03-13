@@ -101,22 +101,14 @@ static void free_if_spi_card(struct if_spi_card *card)
 #define MODEL_8688	0x10
 
 static const struct lbs_fw_table fw_table[] = {
-	{ MODEL_8385, "libertas/gspi8385_helper.bin", "libertas/gspi8385.bin" },
-	{ MODEL_8385, "libertas/gspi8385_hlp.bin", "libertas/gspi8385.bin" },
-	{ MODEL_8686, "libertas/gspi8686_v9_helper.bin", "libertas/gspi8686_v9.bin" },
-	{ MODEL_8686, "libertas/gspi8686_hlp.bin", "libertas/gspi8686.bin" },
-	{ MODEL_8688, "libertas/gspi8688_helper.bin", "libertas/gspi8688.bin" },
+	{ MODEL_8385, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8385, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8686, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8686, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8688, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
 	{ 0, NULL, NULL }
 };
-MODULE_FIRMWARE("libertas/gspi8385_helper.bin");
-MODULE_FIRMWARE("libertas/gspi8385_hlp.bin");
-MODULE_FIRMWARE("libertas/gspi8385.bin");
-MODULE_FIRMWARE("libertas/gspi8686_v9_helper.bin");
-MODULE_FIRMWARE("libertas/gspi8686_v9.bin");
-MODULE_FIRMWARE("libertas/gspi8686_hlp.bin");
-MODULE_FIRMWARE("libertas/gspi8686.bin");
-MODULE_FIRMWARE("libertas/gspi8688_helper.bin");
-MODULE_FIRMWARE("libertas/gspi8688.bin");
+/*(DEBLOBBED)*/
 
 
 /*

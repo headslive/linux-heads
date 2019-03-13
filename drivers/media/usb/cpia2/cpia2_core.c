@@ -34,8 +34,8 @@
 #include <linux/firmware.h>
 #include <linux/sched/signal.h>
 
-#define FIRMWARE "cpia2/stv0672_vp4.bin"
-MODULE_FIRMWARE(FIRMWARE);
+#define FIRMWARE "/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 /* #define _CPIA2_DEBUG_ */
 
@@ -920,7 +920,7 @@ static int apply_vp_patch(struct camera_data *cam)
 	int i, ret;
 	struct cpia2_command cmd;
 
-	ret = request_firmware(&fw, fw_name, &cam->dev->dev);
+	ret = reject_firmware(&fw, fw_name, &cam->dev->dev);
 	if (ret) {
 		printk(KERN_ERR "cpia2: failed to load VP patch \"%s\"\n",
 		       fw_name);

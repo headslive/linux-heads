@@ -31,7 +31,7 @@
 #include <net/bluetooth/bluetooth.h>
 
 #define VERSION "1.0"
-#define ATH3K_FIRMWARE	"ath3k-1.fw"
+#define ATH3K_FIRMWARE	"/*(DEBLOBBED)*/"
 
 #define ATH3K_DNLOAD				0x01
 #define ATH3K_GETSTATE				0x05
@@ -427,10 +427,10 @@ static int ath3k_load_patch(struct usb_device *udev)
 		return ret;
 	}
 
-	snprintf(filename, ATH3K_NAME_LEN, "ar3k/AthrBT_0x%08x.dfu",
+	snprintf(filename, ATH3K_NAME_LEN, "/*(DEBLOBBED)*/",
 		 le32_to_cpu(fw_version.rom_version));
 
-	ret = request_firmware(&firmware, filename, &udev->dev);
+	ret = reject_firmware(&firmware, filename, &udev->dev);
 	if (ret < 0) {
 		BT_ERR("Patch file not found %s", filename);
 		return ret;
@@ -490,10 +490,10 @@ static int ath3k_load_syscfg(struct usb_device *udev)
 		break;
 	}
 
-	snprintf(filename, ATH3K_NAME_LEN, "ar3k/ramps_0x%08x_%d%s",
+	snprintf(filename, ATH3K_NAME_LEN, "/*(DEBLOBBED)*/",
 		le32_to_cpu(fw_version.rom_version), clk_value, ".dfu");
 
-	ret = request_firmware(&firmware, filename, &udev->dev);
+	ret = reject_firmware(&firmware, filename, &udev->dev);
 	if (ret < 0) {
 		BT_ERR("Configuration file not found %s", filename);
 		return ret;
@@ -551,7 +551,7 @@ static int ath3k_probe(struct usb_interface *intf,
 		return 0;
 	}
 
-	ret = request_firmware(&firmware, ATH3K_FIRMWARE, &udev->dev);
+	ret = reject_firmware(&firmware, ATH3K_FIRMWARE, &udev->dev);
 	if (ret < 0) {
 		if (ret == -ENOENT)
 			BT_ERR("Firmware file \"%s\" not found",
@@ -587,4 +587,4 @@ MODULE_AUTHOR("Atheros Communications");
 MODULE_DESCRIPTION("Atheros AR30xx firmware driver");
 MODULE_VERSION(VERSION);
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(ATH3K_FIRMWARE);
+/*(DEBLOBBED)*/

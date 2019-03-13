@@ -1489,7 +1489,7 @@ static int ar5523_load_firmware(struct usb_device *dev)
 	int foolen; /* XXX(hch): handle short transfers */
 	int error = -ENXIO;
 
-	if (request_firmware(&fw, AR5523_FIRMWARE_FILE, &dev->dev)) {
+	if (reject_firmware(&fw, AR5523_FIRMWARE_FILE, &dev->dev)) {
 		dev_err(&dev->dev, "no firmware found: %s\n",
 			AR5523_FIRMWARE_FILE);
 		return -ENOENT;
@@ -1792,4 +1792,4 @@ static struct usb_driver ar5523_driver = {
 module_usb_driver(ar5523_driver);
 
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_FIRMWARE(AR5523_FIRMWARE_FILE);
+/*(DEBLOBBED)*/

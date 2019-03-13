@@ -34,7 +34,7 @@ MODULE_LICENSE("GPL");
 static struct cw1200_platform_data_sdio sagrad_109x_evk_platform_data = {
 	.ref_clk = 38400,
 	.have_5ghz = false,
-	.sdd_file = "sdd_sagrad_1091_1098.bin",
+	.sdd_file = "/*(DEBLOBBED)*/",
 };
 
 /* Allow platform data to be overridden */

@@ -415,7 +415,7 @@ config SND_SSCAPE
 	  and VIVO cards. The supported OEM cards are SPEA Media FX and
 	  Reveal SC-600.
 	  The MIDI support is very experimental and requires binary
-	  firmware files called "scope.cod" and "sndscape.co?" where the
+	  firmware files called "/*(DEBLOBBED)*/" and "/*(DEBLOBBED)*/" where the
 	  ? is digit 0, 1, 2, 3 or 4. The firmware files can be found
 	  in DOS or Windows driver packages. One has to put the firmware
 	  files into the /lib/firmware directory.

@@ -57,7 +57,7 @@ MODULE_AUTHOR("Utz Bacher <utz.bacher@de.ibm.com> and Jens Osterkamp " \
 MODULE_DESCRIPTION("Spider Southbridge Gigabit Ethernet driver");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(VERSION);
-MODULE_FIRMWARE(SPIDER_NET_FIRMWARE_NAME);
+/*(DEBLOBBED)*/
 
 static int rx_descriptors = SPIDER_NET_RX_DESCRIPTORS_DEFAULT;
 static int tx_descriptors = SPIDER_NET_TX_DESCRIPTORS_DEFAULT;
@@ -1833,13 +1833,13 @@ spider_net_download_firmware(struct spider_net_card *card,
  *
  * Firmware format
  * ===============
- * spider_fw.bin is expected to be a file containing 6*1024*4 bytes, 4k being
+ * DEBLOBBED.bin is expected to be a file containing 6*1024*4 bytes, 4k being
  * the program for each sequencer. Use the command
  *    tail -q -n +2 Seq_code1_0x088.txt Seq_code2_0x090.txt              \
  *         Seq_code3_0x098.txt Seq_code4_0x0A0.txt Seq_code5_0x0A8.txt   \
- *         Seq_code6_0x0B0.txt | xxd -r -p -c4 > spider_fw.bin
+ *         Seq_code6_0x0B0.txt | xxd -r -p -c4 > DEBLOBBED.bin
  *
- * to generate spider_fw.bin, if you have sequencer programs with something
+ * to generate DEBLOBBED.bin, if you have sequencer programs with something
  * like the following contents for each sequencer:
  *    <ONE LINE COMMENT>
  *    <FIRST 4-BYTES-WORD FOR SEQUENCER>
@@ -1856,7 +1856,7 @@ spider_net_init_firmware(struct spider_net_card *card)
 	int err = -ENOENT;
 	int fw_size;
 
-	if (request_firmware((const struct firmware **)&firmware,
+	if (reject_firmware((const struct firmware **)&firmware,
 			     SPIDER_NET_FIRMWARE_NAME, &card->pdev->dev) == 0) {
 		if ( (firmware->size != SPIDER_NET_FIRMWARE_LEN) &&
 		     netif_msg_probe(card) ) {

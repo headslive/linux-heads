@@ -79,7 +79,7 @@ struct firmware_hdr {
 };
 
 static const char * const brcms_firmwares[MAX_FW_IMAGES] = {
-	"brcm/bcm43xx",
+	"/*(DEBLOBBED)*/",
 	NULL
 };
 
@@ -90,8 +90,7 @@ MODULE_DESCRIPTION("Broadcom 802.11n wireless LAN driver.");
 MODULE_SUPPORTED_DEVICE("Broadcom 802.11n WLAN cards");
 MODULE_LICENSE("Dual BSD/GPL");
 /* This needs to be adjusted when brcms_firmwares changes */
-MODULE_FIRMWARE("brcm/bcm43xx-0.fw");
-MODULE_FIRMWARE("brcm/bcm43xx_hdr-0.fw");
+/*(DEBLOBBED)*/
 
 /* recognized BCMA Core IDs */
 static struct bcma_device_id brcms_coreid_table[] = {
@@ -375,17 +374,17 @@ static int brcms_request_fw(struct brcms_info *wl, struct bcma_device *pdev)
 	for (i = 0; i < MAX_FW_IMAGES; i++) {
 		if (brcms_firmwares[i] == NULL)
 			break;
-		sprintf(fw_name, "%s-%d.fw", brcms_firmwares[i],
+		sprintf(fw_name, "/*(DEBLOBBED)*/", brcms_firmwares[i],
 			UCODE_LOADER_API_VER);
-		status = request_firmware(&wl->fw.fw_bin[i], fw_name, device);
+		status = reject_firmware(&wl->fw.fw_bin[i], fw_name, device);
 		if (status) {
 			wiphy_err(wl->wiphy, "%s: fail to load firmware %s\n",
 				  KBUILD_MODNAME, fw_name);
 			return status;
 		}
-		sprintf(fw_name, "%s_hdr-%d.fw", brcms_firmwares[i],
+		sprintf(fw_name, "/*(DEBLOBBED)*/", brcms_firmwares[i],
 			UCODE_LOADER_API_VER);
-		status = request_firmware(&wl->fw.fw_hdr[i], fw_name, device);
+		status = reject_firmware(&wl->fw.fw_hdr[i], fw_name, device);
 		if (status) {
 			wiphy_err(wl->wiphy, "%s: fail to load firmware %s\n",
 				  KBUILD_MODNAME, fw_name);

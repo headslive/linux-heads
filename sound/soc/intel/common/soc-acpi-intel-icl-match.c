@@ -18,10 +18,10 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_icl_machines[] = {
 	{
 		.id = "INT34C2",
 		.drv_name = "icl_rt274",
-		.fw_filename = "intel/dsp_fw_icl.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.pdata = &icl_pdata,
-		.sof_fw_filename = "intel/sof-icl.ri",
-		.sof_tplg_filename = "intel/sof-icl-rt274.tplg",
+		.sof_fw_filename = "/*(DEBLOBBED)*/",
+		.sof_tplg_filename = "/*(DEBLOBBED)*/",
 		.asoc_plat_name = "0000:00:1f.3",
 	},
 	{},

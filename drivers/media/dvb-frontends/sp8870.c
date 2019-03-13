@@ -19,13 +19,7 @@
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 */
-/*
- * This driver needs external firmware. Please use the command
- * "<kerneldir>/scripts/get_dvb_firmware alps_tdlb7" to
- * download/extract it, and then copy it to /usr/lib/hotplug/firmware
- * or /lib/firmware (depending on configuration of firmware hotplug).
- */
-#define SP8870_DEFAULT_FIRMWARE "dvb-fe-sp8870.fw"
+/*(DEBLOBBED)*/
 
 #include <linux/init.h>
 #include <linux/module.h>
@@ -314,8 +308,8 @@ static int sp8870_init (struct dvb_frontend* fe)
 
 
 	/* request the firmware, this will block until someone uploads it */
-	printk("sp8870: waiting for firmware upload (%s)...\n", SP8870_DEFAULT_FIRMWARE);
-	if (state->config->request_firmware(fe, &fw, SP8870_DEFAULT_FIRMWARE)) {
+	printk("sp8870: waiting for firmware upload (%s)...\n", "/*(DEBLOBBED)*/");
+	if (state->config->request_firmware(fe, &fw, "/*(DEBLOBBED)*/")) {
 		printk("sp8870: no firmware upload (timeout or file not found?)\n");
 		return -EIO;
 	}

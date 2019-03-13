@@ -51,8 +51,7 @@ static void sdma_v2_4_set_buffer_funcs(struct amdgpu_device *adev);
 static void sdma_v2_4_set_vm_pte_funcs(struct amdgpu_device *adev);
 static void sdma_v2_4_set_irq_funcs(struct amdgpu_device *adev);
 
-MODULE_FIRMWARE("amdgpu/topaz_sdma.bin");
-MODULE_FIRMWARE("amdgpu/topaz_sdma1.bin");
+/*(DEBLOBBED)*/
 
 static const u32 sdma_offsets[SDMA_MAX_INSTANCE] =
 {
@@ -145,10 +144,10 @@ static int sdma_v2_4_init_microcode(struct amdgpu_device *adev)
 
 	for (i = 0; i < adev->sdma.num_instances; i++) {
 		if (i == 0)
-			snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_sdma.bin", chip_name);
+			snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
 		else
-			snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_sdma1.bin", chip_name);
-		err = request_firmware(&adev->sdma.instance[i].fw, fw_name, adev->dev);
+			snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+		err = reject_firmware(&adev->sdma.instance[i].fw, fw_name, adev->dev);
 		if (err)
 			goto out;
 		err = amdgpu_ucode_validate(adev->sdma.instance[i].fw);

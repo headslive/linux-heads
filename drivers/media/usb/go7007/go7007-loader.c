@@ -25,19 +25,14 @@ struct fw_config {
 };
 
 static struct fw_config fw_configs[] = {
-	{ 0x1943, 0xa250, "go7007/s2250-1.fw", "go7007/s2250-2.fw" },
-	{ 0x093b, 0xa002, "go7007/px-m402u.fw", NULL },
-	{ 0x093b, 0xa004, "go7007/px-tv402u.fw", NULL },
-	{ 0x0eb1, 0x6666, "go7007/lr192.fw", NULL },
-	{ 0x0eb1, 0x6668, "go7007/wis-startrek.fw", NULL },
+	{ 0x1943, 0xa250, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ 0x093b, 0xa002, "/*(DEBLOBBED)*/", NULL },
+	{ 0x093b, 0xa004, "/*(DEBLOBBED)*/", NULL },
+	{ 0x0eb1, 0x6666, "/*(DEBLOBBED)*/", NULL },
+	{ 0x0eb1, 0x6668, "/*(DEBLOBBED)*/", NULL },
 	{ 0, 0, NULL, NULL }
 };
-MODULE_FIRMWARE("go7007/s2250-1.fw");
-MODULE_FIRMWARE("go7007/s2250-2.fw");
-MODULE_FIRMWARE("go7007/px-m402u.fw");
-MODULE_FIRMWARE("go7007/px-tv402u.fw");
-MODULE_FIRMWARE("go7007/lr192.fw");
-MODULE_FIRMWARE("go7007/wis-startrek.fw");
+/*(DEBLOBBED)*/
 
 static int go7007_loader_probe(struct usb_interface *interface,
 				const struct usb_device_id *id)
@@ -75,7 +70,7 @@ static int go7007_loader_probe(struct usb_interface *interface,
 
 	dev_info(&interface->dev, "loading firmware %s\n", fw1);
 
-	if (request_firmware(&fw, fw1, &usbdev->dev)) {
+	if (reject_firmware(&fw, fw1, &usbdev->dev)) {
 		dev_err(&interface->dev,
 			"unable to load firmware from file \"%s\"\n", fw1);
 		goto failed2;
@@ -90,7 +85,7 @@ static int go7007_loader_probe(struct usb_interface *interface,
 	if (fw2 == NULL)
 		return 0;
 
-	if (request_firmware(&fw, fw2, &usbdev->dev)) {
+	if (reject_firmware(&fw, fw2, &usbdev->dev)) {
 		dev_err(&interface->dev,
 			"unable to load firmware from file \"%s\"\n", fw2);
 		goto failed2;

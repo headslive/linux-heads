@@ -57,36 +57,7 @@ static void gfx_v7_0_set_ring_funcs(struct amdgpu_device *adev);
 static void gfx_v7_0_set_irq_funcs(struct amdgpu_device *adev);
 static void gfx_v7_0_set_gds_init(struct amdgpu_device *adev);
 
-MODULE_FIRMWARE("amdgpu/bonaire_pfp.bin");
-MODULE_FIRMWARE("amdgpu/bonaire_me.bin");
-MODULE_FIRMWARE("amdgpu/bonaire_ce.bin");
-MODULE_FIRMWARE("amdgpu/bonaire_rlc.bin");
-MODULE_FIRMWARE("amdgpu/bonaire_mec.bin");
-
-MODULE_FIRMWARE("amdgpu/hawaii_pfp.bin");
-MODULE_FIRMWARE("amdgpu/hawaii_me.bin");
-MODULE_FIRMWARE("amdgpu/hawaii_ce.bin");
-MODULE_FIRMWARE("amdgpu/hawaii_rlc.bin");
-MODULE_FIRMWARE("amdgpu/hawaii_mec.bin");
-
-MODULE_FIRMWARE("amdgpu/kaveri_pfp.bin");
-MODULE_FIRMWARE("amdgpu/kaveri_me.bin");
-MODULE_FIRMWARE("amdgpu/kaveri_ce.bin");
-MODULE_FIRMWARE("amdgpu/kaveri_rlc.bin");
-MODULE_FIRMWARE("amdgpu/kaveri_mec.bin");
-MODULE_FIRMWARE("amdgpu/kaveri_mec2.bin");
-
-MODULE_FIRMWARE("amdgpu/kabini_pfp.bin");
-MODULE_FIRMWARE("amdgpu/kabini_me.bin");
-MODULE_FIRMWARE("amdgpu/kabini_ce.bin");
-MODULE_FIRMWARE("amdgpu/kabini_rlc.bin");
-MODULE_FIRMWARE("amdgpu/kabini_mec.bin");
-
-MODULE_FIRMWARE("amdgpu/mullins_pfp.bin");
-MODULE_FIRMWARE("amdgpu/mullins_me.bin");
-MODULE_FIRMWARE("amdgpu/mullins_ce.bin");
-MODULE_FIRMWARE("amdgpu/mullins_rlc.bin");
-MODULE_FIRMWARE("amdgpu/mullins_mec.bin");
+/*(DEBLOBBED)*/
 
 static const struct amdgpu_gds_reg_offset amdgpu_gds_reg_offset[] =
 {
@@ -924,32 +895,32 @@ static int gfx_v7_0_init_microcode(struct amdgpu_device *adev)
 	default: BUG();
 	}
 
-	snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_pfp.bin", chip_name);
-	err = request_firmware(&adev->gfx.pfp_fw, fw_name, adev->dev);
+	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+	err = reject_firmware(&adev->gfx.pfp_fw, fw_name, adev->dev);
 	if (err)
 		goto out;
 	err = amdgpu_ucode_validate(adev->gfx.pfp_fw);
 	if (err)
 		goto out;
 
-	snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_me.bin", chip_name);
-	err = request_firmware(&adev->gfx.me_fw, fw_name, adev->dev);
+	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+	err = reject_firmware(&adev->gfx.me_fw, fw_name, adev->dev);
 	if (err)
 		goto out;
 	err = amdgpu_ucode_validate(adev->gfx.me_fw);
 	if (err)
 		goto out;
 
-	snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_ce.bin", chip_name);
-	err = request_firmware(&adev->gfx.ce_fw, fw_name, adev->dev);
+	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+	err = reject_firmware(&adev->gfx.ce_fw, fw_name, adev->dev);
 	if (err)
 		goto out;
 	err = amdgpu_ucode_validate(adev->gfx.ce_fw);
 	if (err)
 		goto out;
 
-	snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_mec.bin", chip_name);
-	err = request_firmware(&adev->gfx.mec_fw, fw_name, adev->dev);
+	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+	err = reject_firmware(&adev->gfx.mec_fw, fw_name, adev->dev);
 	if (err)
 		goto out;
 	err = amdgpu_ucode_validate(adev->gfx.mec_fw);
@@ -957,8 +928,8 @@ static int gfx_v7_0_init_microcode(struct amdgpu_device *adev)
 		goto out;
 
 	if (adev->asic_type == CHIP_KAVERI) {
-		snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_mec2.bin", chip_name);
-		err = request_firmware(&adev->gfx.mec2_fw, fw_name, adev->dev);
+		snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+		err = reject_firmware(&adev->gfx.mec2_fw, fw_name, adev->dev);
 		if (err)
 			goto out;
 		err = amdgpu_ucode_validate(adev->gfx.mec2_fw);
@@ -966,8 +937,8 @@ static int gfx_v7_0_init_microcode(struct amdgpu_device *adev)
 			goto out;
 	}
 
-	snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_rlc.bin", chip_name);
-	err = request_firmware(&adev->gfx.rlc_fw, fw_name, adev->dev);
+	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+	err = reject_firmware(&adev->gfx.rlc_fw, fw_name, adev->dev);
 	if (err)
 		goto out;
 	err = amdgpu_ucode_validate(adev->gfx.rlc_fw);

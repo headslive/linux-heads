@@ -15,23 +15,18 @@
 #include "debug.h"
 #include "scsiglue.h"
 
-#define SD_INIT1_FIRMWARE "ene-ub6250/sd_init1.bin"
-#define SD_INIT2_FIRMWARE "ene-ub6250/sd_init2.bin"
-#define SD_RW_FIRMWARE "ene-ub6250/sd_rdwr.bin"
-#define MS_INIT_FIRMWARE "ene-ub6250/ms_init.bin"
-#define MSP_RW_FIRMWARE "ene-ub6250/msp_rdwr.bin"
-#define MS_RW_FIRMWARE "ene-ub6250/ms_rdwr.bin"
+#define SD_INIT1_FIRMWARE "/*(DEBLOBBED)*/"
+#define SD_INIT2_FIRMWARE "/*(DEBLOBBED)*/"
+#define SD_RW_FIRMWARE "/*(DEBLOBBED)*/"
+#define MS_INIT_FIRMWARE "/*(DEBLOBBED)*/"
+#define MSP_RW_FIRMWARE "/*(DEBLOBBED)*/"
+#define MS_RW_FIRMWARE "/*(DEBLOBBED)*/"
 
 #define DRV_NAME "ums_eneub6250"
 
 MODULE_DESCRIPTION("Driver for ENE UB6250 reader");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(SD_INIT1_FIRMWARE);
-MODULE_FIRMWARE(SD_INIT2_FIRMWARE);
-MODULE_FIRMWARE(SD_RW_FIRMWARE);
-MODULE_FIRMWARE(MS_INIT_FIRMWARE);
-MODULE_FIRMWARE(MSP_RW_FIRMWARE);
-MODULE_FIRMWARE(MS_RW_FIRMWARE);
+/*(DEBLOBBED)*/
 
 /*
  * The table of devices
@@ -1920,7 +1915,7 @@ static int ene_load_bincode(struct us_data *us, unsigned char flag)
 		goto nofw;
 	}
 
-	err = request_firmware(&sd_fw, fw_name, &us->pusb_dev->dev);
+	err = reject_firmware(&sd_fw, fw_name, &us->pusb_dev->dev);
 	if (err) {
 		usb_stor_dbg(us, "load firmware %s failed\n", fw_name);
 		goto nofw;

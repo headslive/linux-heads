@@ -42,13 +42,11 @@
 #define VCN_IDLE_TIMEOUT	msecs_to_jiffies(1000)
 
 /* Firmware Names */
-#define FIRMWARE_RAVEN		"amdgpu/raven_vcn.bin"
-#define FIRMWARE_PICASSO	"amdgpu/picasso_vcn.bin"
-#define FIRMWARE_RAVEN2		"amdgpu/raven2_vcn.bin"
+#define FIRMWARE_RAVEN		"/*(DEBLOBBED)*/"
+#define FIRMWARE_PICASSO	"/*(DEBLOBBED)*/"
+#define FIRMWARE_RAVEN2		"/*(DEBLOBBED)*/"
 
-MODULE_FIRMWARE(FIRMWARE_RAVEN);
-MODULE_FIRMWARE(FIRMWARE_PICASSO);
-MODULE_FIRMWARE(FIRMWARE_RAVEN2);
+/*(DEBLOBBED)*/
 
 static void amdgpu_vcn_idle_work_handler(struct work_struct *work);
 
@@ -75,7 +73,7 @@ int amdgpu_vcn_sw_init(struct amdgpu_device *adev)
 		return -EINVAL;
 	}
 
-	r = request_firmware(&adev->vcn.fw, fw_name, adev->dev);
+	r = reject_firmware(&adev->vcn.fw, fw_name, adev->dev);
 	if (r) {
 		dev_err(adev->dev, "amdgpu_vcn: Can't load firmware \"%s\"\n",
 			fw_name);

@@ -1093,9 +1093,9 @@ struct hw_pairwise_ta_entry {
 /*
  * 8051 firmware image.
  */
-#define FIRMWARE_RT2561			"rt2561.bin"
-#define FIRMWARE_RT2561s		"rt2561s.bin"
-#define FIRMWARE_RT2661			"rt2661.bin"
+#define FIRMWARE_RT2561			"/*(DEBLOBBED)*/"
+#define FIRMWARE_RT2561s		"/*(DEBLOBBED)*/"
+#define FIRMWARE_RT2661			"/*(DEBLOBBED)*/"
 #define FIRMWARE_IMAGE_BASE		0x4000
 
 /*

@@ -71,7 +71,7 @@ INCLUDE FILES
 /*=== DEFINES ================================================================*/
 /*============================================================================*/
 
-#define DRX39XX_MAIN_FIRMWARE "dvb-fe-drxj-mc-1.0.8.fw"
+#define DRX39XX_MAIN_FIRMWARE "/*(DEBLOBBED)*/"
 
 /*
 * \brief Maximum u32 value.
@@ -11753,7 +11753,7 @@ static int drx_ctrl_u_code(struct drx_demod_instance *demod,
 	if (!demod->firmware) {
 		const struct firmware *fw = NULL;
 
-		rc = request_firmware(&fw, mc_file, demod->i2c->dev.parent);
+		rc = reject_firmware(&fw, mc_file, demod->i2c->dev.parent);
 		if (rc < 0) {
 			pr_err("Couldn't read firmware %s\n", mc_file);
 			return rc;
@@ -12396,4 +12396,4 @@ static const struct dvb_frontend_ops drx39xxj_ops = {
 MODULE_DESCRIPTION("Micronas DRX39xxj Frontend");
 MODULE_AUTHOR("Devin Heitmueller");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(DRX39XX_MAIN_FIRMWARE);
+/*(DEBLOBBED)*/

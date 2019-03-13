@@ -43,9 +43,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 16 * MHZ, .max_brp = 32, .max_sjw = 4,
 	.dpram_size = 0x0800,
-	.boot = {0x0000, 0x000000, fw_dir "bcard.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cancard.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = softingcs_enable_irq,
 }, {
@@ -55,9 +55,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 16 * MHZ, .max_brp = 32, .max_sjw = 4,
 	.dpram_size = 0x0800,
-	.boot = {0x0000, 0x000000, fw_dir "bcard.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cancard.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = softingcs_enable_irq,
 }, {
@@ -67,9 +67,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 20 * MHZ, .max_brp = 32, .max_sjw = 4,
 	.dpram_size = 0x0800,
-	.boot = {0x0000, 0x000000, fw_dir "bcard.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cansja.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = softingcs_enable_irq,
 }, {
@@ -79,9 +79,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 24 * MHZ, .max_brp = 64, .max_sjw = 4,
 	.dpram_size = 0x1000,
-	.boot = {0x0000, 0x000000, fw_dir "bcard2.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard2.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cancrd2.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = NULL,
 }, {
@@ -91,9 +91,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 16 * MHZ, .max_brp = 64, .max_sjw = 4,
 	.dpram_size = 0x0800,
-	.boot = {0x0000, 0x000000, fw_dir "bcard.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cancard.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = softingcs_enable_irq,
 }, {
@@ -103,9 +103,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 20 * MHZ, .max_brp = 32, .max_sjw = 4,
 	.dpram_size = 0x0800,
-	.boot = {0x0000, 0x000000, fw_dir "bcard.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cansja.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = softingcs_enable_irq,
 }, {
@@ -115,9 +115,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 24 * MHZ, .max_brp = 64, .max_sjw = 4,
 	.dpram_size = 0x1000,
-	.boot = {0x0000, 0x000000, fw_dir "bcard2.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard2.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cancrd2.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = NULL,
 }, {
@@ -127,9 +127,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 16 * MHZ, .max_brp = 64, .max_sjw = 4,
 	.dpram_size = 0x0800,
-	.boot = {0x0000, 0x000000, fw_dir "bcard.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cancard.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = softingcs_enable_irq,
 }, {
@@ -139,9 +139,9 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 	.nbus = 2,
 	.freq = 24 * MHZ, .max_brp = 64, .max_sjw = 4,
 	.dpram_size = 0x1000,
-	.boot = {0x0000, 0x000000, fw_dir "bcard2.bin",},
-	.load = {0x0120, 0x00f600, fw_dir "ldcard2.bin",},
-	.app = {0x0010, 0x0d0000, fw_dir "cancrd2.bin",},
+	.boot = {0x0000, 0x000000, fw_dir "/*(DEBLOBBED)*/",},
+	.load = {0x0120, 0x00f600, fw_dir "/*(DEBLOBBED)*/",},
+	.app = {0x0010, 0x0d0000, fw_dir "/*(DEBLOBBED)*/",},
 	.reset = softingcs_reset,
 	.enable_irq = NULL,
 }, {
@@ -149,14 +149,7 @@ static const struct softing_platform_data softingcs_platform_data[] = {
 },
 };
 
-MODULE_FIRMWARE(fw_dir "bcard.bin");
-MODULE_FIRMWARE(fw_dir "ldcard.bin");
-MODULE_FIRMWARE(fw_dir "cancard.bin");
-MODULE_FIRMWARE(fw_dir "cansja.bin");
-
-MODULE_FIRMWARE(fw_dir "bcard2.bin");
-MODULE_FIRMWARE(fw_dir "ldcard2.bin");
-MODULE_FIRMWARE(fw_dir "cancrd2.bin");
+/*(DEBLOBBED)*/
 
 static const struct softing_platform_data
 *softingcs_find_platform_data(unsigned int manf, unsigned int prod)

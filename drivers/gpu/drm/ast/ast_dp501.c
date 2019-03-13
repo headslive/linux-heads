@@ -3,13 +3,13 @@
 #include <linux/firmware.h>
 #include <drm/drmP.h>
 #include "ast_drv.h"
-MODULE_FIRMWARE("ast_dp501_fw.bin");
+/*(DEBLOBBED)*/
 
 static int ast_load_dp501_microcode(struct drm_device *dev)
 {
 	struct ast_private *ast = dev->dev_private;
 
-	return request_firmware(&ast->dp501_fw, "ast_dp501_fw.bin", dev->dev);
+	return reject_firmware(&ast->dp501_fw, "/*(DEBLOBBED)*/", dev->dev);
 }
 
 static void send_ack(struct ast_private *ast)

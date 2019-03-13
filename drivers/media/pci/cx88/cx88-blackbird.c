@@ -468,7 +468,7 @@ static int blackbird_load_firmware(struct cx8802_dev *dev)
 	if (retval < 0)
 		dprintk(0, "Error with register_write\n");
 
-	retval = request_firmware(&firmware, CX2341X_FIRM_ENC_FILENAME,
+	retval = reject_firmware(&firmware, CX2341X_FIRM_ENC_FILENAME,
 				  &dev->pci->dev);
 
 	if (retval != 0) {

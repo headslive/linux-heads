@@ -1240,7 +1240,7 @@ static int fm_download_firmware(struct fmdev *fmdev, const u8 *fw_name)
 	cmd_cnt = 0;
 	set_bit(FM_FW_DW_INPROGRESS, &fmdev->flag);
 
-	ret = request_firmware(&fw_entry, fw_name,
+	ret = reject_firmware(&fw_entry, fw_name,
 				&fmdev->radio_dev->dev);
 	if (ret < 0) {
 		fmerr("Unable to read firmware(%s) content\n", fw_name);
@@ -1346,7 +1346,7 @@ static int fm_power_up(struct fmdev *fmdev, u8 mode)
 	fmdbg("ASIC ID: 0x%x , ASIC Version: %d\n",
 		be16_to_cpu(asic_id), be16_to_cpu(asic_ver));
 
-	sprintf(fw_name, "%s_%x.%d.bts", FM_FMC_FW_FILE_START,
+	sprintf(fw_name, "/*(DEBLOBBED)*/", FM_FMC_FW_FILE_START,
 		be16_to_cpu(asic_id), be16_to_cpu(asic_ver));
 
 	ret = fm_download_firmware(fmdev, fw_name);
@@ -1354,7 +1354,7 @@ static int fm_power_up(struct fmdev *fmdev, u8 mode)
 		fmdbg("Failed to download firmware file %s\n", fw_name);
 		goto rel;
 	}
-	sprintf(fw_name, "%s_%x.%d.bts", (mode == FM_MODE_RX) ?
+	sprintf(fw_name, "/*(DEBLOBBED)*/", (mode == FM_MODE_RX) ?
 			FM_RX_FW_FILE_START : FM_TX_FW_FILE_START,
 			be16_to_cpu(asic_id), be16_to_cpu(asic_ver));
 

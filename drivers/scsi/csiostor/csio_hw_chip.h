@@ -44,9 +44,9 @@
 #define CSIO_HW_CHIP_MASK			0xF000
 
 #define T5_REGMAP_SIZE				(332 * 1024)
-#define FW_FNAME_T5				"cxgb4/t5fw.bin"
+#define FW_FNAME_T5				"/*(DEBLOBBED)*/"
 #define FW_CFG_NAME_T5				"cxgb4/t5-config.txt"
-#define FW_FNAME_T6				"cxgb4/t6fw.bin"
+#define FW_FNAME_T6				"/*(DEBLOBBED)*/"
 #define FW_CFG_NAME_T6				"cxgb4/t6-config.txt"
 
 #define CHELSIO_CHIP_CODE(version, revision) (((version) << 4) | (revision))

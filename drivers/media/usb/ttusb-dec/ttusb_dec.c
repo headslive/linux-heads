@@ -1333,7 +1333,7 @@ static int ttusb_dec_boot_dsp(struct ttusb_dec *dec)
 
 	dprintk("%s\n", __func__);
 
-	result = request_firmware(&fw_entry, dec->firmware_name, &dec->udev->dev);
+	result = reject_firmware(&fw_entry, dec->firmware_name, &dec->udev->dev);
 	if (result) {
 		printk(KERN_ERR "%s: Firmware (%s) unavailable.\n",
 		       __func__, dec->firmware_name);
@@ -1766,17 +1766,17 @@ static void ttusb_dec_set_model(struct ttusb_dec *dec,
 	switch (model) {
 	case TTUSB_DEC2000T:
 		dec->model_name = "DEC2000-t";
-		dec->firmware_name = "dvb-ttusb-dec-2000t.fw";
+		dec->firmware_name = "/*(DEBLOBBED)*/";
 		break;
 
 	case TTUSB_DEC2540T:
 		dec->model_name = "DEC2540-t";
-		dec->firmware_name = "dvb-ttusb-dec-2540t.fw";
+		dec->firmware_name = "/*(DEBLOBBED)*/";
 		break;
 
 	case TTUSB_DEC3000S:
 		dec->model_name = "DEC3000-s";
-		dec->firmware_name = "dvb-ttusb-dec-3000s.fw";
+		dec->firmware_name = "/*(DEBLOBBED)*/";
 		break;
 	}
 }

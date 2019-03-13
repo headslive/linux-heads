@@ -52,16 +52,16 @@
 #define DW2102_RC_QUERY (0x1a00)
 #define DW2102_LED_CTRL (0x1b00)
 
-#define DW2101_FIRMWARE "dvb-usb-dw2101.fw"
-#define DW2102_FIRMWARE "dvb-usb-dw2102.fw"
-#define DW2104_FIRMWARE "dvb-usb-dw2104.fw"
-#define DW3101_FIRMWARE "dvb-usb-dw3101.fw"
-#define S630_FIRMWARE   "dvb-usb-s630.fw"
-#define S660_FIRMWARE   "dvb-usb-s660.fw"
-#define P1100_FIRMWARE  "dvb-usb-p1100.fw"
-#define P7500_FIRMWARE  "dvb-usb-p7500.fw"
+#define DW2101_FIRMWARE "/*(DEBLOBBED)*/"
+#define DW2102_FIRMWARE "/*(DEBLOBBED)*/"
+#define DW2104_FIRMWARE "/*(DEBLOBBED)*/"
+#define DW3101_FIRMWARE "/*(DEBLOBBED)*/"
+#define S630_FIRMWARE   "/*(DEBLOBBED)*/"
+#define S660_FIRMWARE   "/*(DEBLOBBED)*/"
+#define P1100_FIRMWARE  "/*(DEBLOBBED)*/"
+#define P7500_FIRMWARE  "/*(DEBLOBBED)*/"
 
-#define	err_str "did not find the firmware file '%s'. You can use <kernel_dir>/scripts/get_dvb_firmware to get the firmware"
+#define	err_str "did not find the firmware file '%s'. /*(DEBLOBBED)*/"
 
 struct dw2102_state {
 	u8 initialized;
@@ -1795,7 +1795,7 @@ static int dw2102_load_firmware(struct usb_device *dev,
 
 	switch (le16_to_cpu(dev->descriptor.idProduct)) {
 	case 0x2101:
-		ret = request_firmware(&fw, DW2101_FIRMWARE, &dev->dev);
+		ret = reject_firmware(&fw, DW2101_FIRMWARE, &dev->dev);
 		if (ret != 0) {
 			err(err_str, DW2101_FIRMWARE);
 			return ret;
@@ -2462,11 +2462,4 @@ MODULE_AUTHOR("Igor M. Liplianin (c) liplianin@me.by");
 MODULE_DESCRIPTION("Driver for DVBWorld DVB-S 2101, 2102, DVB-S2 2104, DVB-C 3101 USB2.0, TeVii S421, S480, S482, S600, S630, S632, S650, TeVii S660, S662, Prof 1100, 7500 USB2.0, Geniatech SU3000, T220, TechnoTrend S2-4600, Terratec Cinergy S2 devices");
 MODULE_VERSION("0.1");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(DW2101_FIRMWARE);
-MODULE_FIRMWARE(DW2102_FIRMWARE);
-MODULE_FIRMWARE(DW2104_FIRMWARE);
-MODULE_FIRMWARE(DW3101_FIRMWARE);
-MODULE_FIRMWARE(S630_FIRMWARE);
-MODULE_FIRMWARE(S660_FIRMWARE);
-MODULE_FIRMWARE(P1100_FIRMWARE);
-MODULE_FIRMWARE(P7500_FIRMWARE);
+/*(DEBLOBBED)*/

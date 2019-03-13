@@ -24,7 +24,7 @@
 /* FLASH Firmware */
 static struct ta_metadata metadata_flash_content[] = {
 	{"flash_content", 0x00010000},
-	{"rsi/rs9113_wlan_qspi.rps", 0x00010000},
+	{"/*(DEBLOBBED)*/", 0x00010000},
 	{"rsi/rs9113_wlan_bt_dual_mode.rps", 0x00010000},
 	{"flash_content", 0x00010000},
 	{"rsi/rs9113_ap_bt_dual_mode.rps", 0x00010000},
@@ -888,7 +888,7 @@ static int rsi_load_firmware(struct rsi_hw *adapter)
 	rsi_dbg(INIT_ZONE, "%s: Loading file %s\n", __func__, metadata_p->name);
 	adapter->fw_file_name = metadata_p->name;
 
-	status = request_firmware(&fw_entry, metadata_p->name, adapter->device);
+	status = reject_firmware(&fw_entry, metadata_p->name, adapter->device);
 	if (status < 0) {
 		rsi_dbg(ERR_ZONE, "%s: Failed to open file %s\n",
 			__func__, metadata_p->name);

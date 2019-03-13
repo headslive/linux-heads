@@ -30,7 +30,7 @@ MODULE_AUTHOR("Michael Wu <flamingice@sourmilk.net>");
 MODULE_DESCRIPTION("Prism54 PCI wireless driver");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("prism54pci");
-MODULE_FIRMWARE("isl3886pci");
+/*(DEBLOBBED)*/
 
 static const struct pci_device_id p54p_table[] = {
 	/* Intersil PRISM Duette/Prism GT Wireless LAN adapter */
@@ -499,7 +499,7 @@ static void p54p_firmware_step2(const struct firmware *fw,
 	int err;
 
 	if (!fw) {
-		dev_err(&pdev->dev, "Cannot find firmware (isl3886pci)\n");
+		dev_err(&pdev->dev, "Cannot find firmware (/*(DEBLOBBED)*/)\n");
 		err = -ENOENT;
 		goto out;
 	}
@@ -620,7 +620,7 @@ static int p54p_probe(struct pci_dev *pdev,
 	spin_lock_init(&priv->lock);
 	tasklet_init(&priv->tasklet, p54p_tasklet, (unsigned long)dev);
 
-	err = request_firmware_nowait(THIS_MODULE, 1, "isl3886pci",
+	err = reject_firmware_nowait(THIS_MODULE, 1, "/*(DEBLOBBED)*/",
 				      &priv->pdev->dev, GFP_KERNEL,
 				      priv, p54p_firmware_step2);
 	if (!err)

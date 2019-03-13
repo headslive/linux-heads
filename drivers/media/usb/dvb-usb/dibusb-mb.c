@@ -181,7 +181,7 @@ static struct dvb_usb_device_properties dibusb1_1_properties = {
 
 	.usb_ctrl = CYPRESS_AN2135,
 
-	.firmware = "dvb-usb-dibusb-5.0.0.11.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 
 	.num_adapters = 1,
 	.adapter = {
@@ -271,7 +271,7 @@ static struct dvb_usb_device_properties dibusb1_1_an2235_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 	.usb_ctrl = CYPRESS_AN2235,
 
-	.firmware = "dvb-usb-dibusb-an2235-01.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 
 	.num_adapters = 1,
 	.adapter = {
@@ -340,7 +340,7 @@ static struct dvb_usb_device_properties dibusb2_0b_properties = {
 
 	.usb_ctrl = CYPRESS_FX2,
 
-	.firmware = "dvb-usb-adstech-usb2-02.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 
 	.num_adapters = 1,
 	.adapter = {
@@ -403,7 +403,7 @@ static struct dvb_usb_device_properties artec_t1_usb2_properties = {
 
 	.usb_ctrl = CYPRESS_FX2,
 
-	.firmware = "dvb-usb-dibusb-6.0.0.8.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 
 	.num_adapters = 1,
 	.adapter = {

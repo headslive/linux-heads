@@ -35,7 +35,7 @@
 #define CYAPA_ADAPTER_FUNC_SMBUS  2
 #define CYAPA_ADAPTER_FUNC_BOTH   3
 
-#define CYAPA_FW_NAME		"cyapa.bin"
+#define CYAPA_FW_NAME		"/*(DEBLOBBED)*/"
 
 const char product_id[] = "CYTRA";
 

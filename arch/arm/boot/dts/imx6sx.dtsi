@@ -813,7 +813,7 @@
 				clock-names = "ipg", "ahb";
 				#dma-cells = <3>;
 				/* imx6sx reuses imx6q sdma firmware */
-				fsl,sdma-ram-script-name = "imx/sdma/sdma-imx6q.bin";
+				fsl,sdma-ram-script-name = "/*(DEBLOBBED)*/";
 			};
 		};
 

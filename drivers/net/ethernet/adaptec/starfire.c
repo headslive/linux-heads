@@ -162,8 +162,8 @@ static int rx_copybreak /* = 0 */;
 #define skb_num_frags(skb) (skb_shinfo(skb)->nr_frags + 1)
 
 /* Firmware names */
-#define FIRMWARE_RX	"adaptec/starfire_rx.bin"
-#define FIRMWARE_TX	"adaptec/starfire_tx.bin"
+#define FIRMWARE_RX	"/*(DEBLOBBED)*/"
+#define FIRMWARE_TX	"/*(DEBLOBBED)*/"
 
 /* These identify the driver base version and may not be removed. */
 static const char version[] =
@@ -174,8 +174,7 @@ MODULE_AUTHOR("Donald Becker <becker@scyld.com>");
 MODULE_DESCRIPTION("Adaptec Starfire Ethernet driver");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(DRV_VERSION);
-MODULE_FIRMWARE(FIRMWARE_RX);
-MODULE_FIRMWARE(FIRMWARE_TX);
+/*(DEBLOBBED)*/
 
 module_param(max_interrupt_work, int, 0);
 module_param(mtu, int, 0);
@@ -1014,7 +1013,7 @@ static int netdev_open(struct net_device *dev)
 	writel(ETH_P_8021Q, ioaddr + VlanType);
 #endif /* VLAN_SUPPORT */
 
-	retval = request_firmware(&fw_rx, FIRMWARE_RX, &np->pci_dev->dev);
+	retval = reject_firmware(&fw_rx, FIRMWARE_RX, &np->pci_dev->dev);
 	if (retval) {
 		printk(KERN_ERR "starfire: Failed to load firmware \"%s\"\n",
 		       FIRMWARE_RX);
@@ -1026,7 +1025,7 @@ static int netdev_open(struct net_device *dev)
 		retval = -EINVAL;
 		goto out_rx;
 	}
-	retval = request_firmware(&fw_tx, FIRMWARE_TX, &np->pci_dev->dev);
+	retval = reject_firmware(&fw_tx, FIRMWARE_TX, &np->pci_dev->dev);
 	if (retval) {
 		printk(KERN_ERR "starfire: Failed to load firmware \"%s\"\n",
 		       FIRMWARE_TX);

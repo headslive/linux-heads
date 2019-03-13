@@ -5240,7 +5240,7 @@ int evergreen_init(struct radeon_device *rdev)
 			r = r600_init_microcode(rdev);
 			if (r) {
 				DRM_ERROR("Failed to load firmware!\n");
-				return r;
+				/*(DEBLOBBED)*/
 			}
 		}
 	}

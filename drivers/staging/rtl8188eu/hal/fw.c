@@ -146,13 +146,13 @@ int rtl88eu_download_fw(struct adapter *adapt)
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapt);
 	struct device *device = dvobj_to_dev(dvobj);
 	const struct firmware *fw;
-	const char fw_name[] = "rtlwifi/rtl8188eufw.bin";
+	const char fw_name[] = "/*(DEBLOBBED)*/";
 	struct rtl92c_firmware_header *pfwheader = NULL;
 	u8 *download_data, *fw_data;
 	size_t download_size;
 	unsigned int trailing_zeros_length;
 
-	if (request_firmware(&fw, fw_name, device)) {
+	if (reject_firmware(&fw, fw_name, device)) {
 		dev_err(device, "Firmware %s not available\n", fw_name);
 		return -ENOENT;
 	}

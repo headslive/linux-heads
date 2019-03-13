@@ -25,7 +25,7 @@
 #include "11n.h"
 
 #define VERSION	"1.0"
-#define MFG_FIRMWARE	"mwifiex_mfg.bin"
+#define MFG_FIRMWARE	"/*(DEBLOBBED)*/"
 
 static unsigned int debug_mask = MWIFIEX_DEFAULT_DEBUG_MASK;
 module_param(debug_mask, uint, 0);
@@ -551,10 +551,10 @@ static int _mwifiex_fw_dpc(const struct firmware *firmware, void *context)
 	mwifiex_dbg(adapter, MSG, "WLAN FW is active\n");
 
 	if (cal_data_cfg) {
-		if ((request_firmware(&adapter->cal_data, cal_data_cfg,
+		if ((reject_firmware(&adapter->cal_data, cal_data_cfg,
 				      adapter->dev)) < 0)
 			mwifiex_dbg(adapter, ERROR,
-				    "Cal data request_firmware() failed\n");
+				    "Cal data reject_firmware() failed\n");
 	}
 
 	/* enable host interrupt after fw dnld is successful */
@@ -707,17 +707,17 @@ static int mwifiex_init_hw_fw(struct mwifiex_adapter *adapter,
 	}
 
 	if (req_fw_nowait) {
-		ret = request_firmware_nowait(THIS_MODULE, 1, adapter->fw_name,
+		ret = reject_firmware_nowait(THIS_MODULE, 1, adapter->fw_name,
 					      adapter->dev, GFP_KERNEL, adapter,
 					      mwifiex_fw_dpc);
 	} else {
-		ret = request_firmware(&adapter->firmware,
+		ret = reject_firmware(&adapter->firmware,
 				       adapter->fw_name,
 				       adapter->dev);
 	}
 
 	if (ret < 0)
-		mwifiex_dbg(adapter, ERROR, "request_firmware%s error %d\n",
+		mwifiex_dbg(adapter, ERROR, "reject_firmware%s error %d\n",
 			    req_fw_nowait ? "_nowait" : "", ret);
 	return ret;
 }

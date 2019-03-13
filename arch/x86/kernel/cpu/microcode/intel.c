@@ -40,7 +40,7 @@
 #include <asm/setup.h>
 #include <asm/msr.h>
 
-static const char ucode_path[] = "kernel/x86/microcode/GenuineIntel.bin";
+static const char ucode_path[] = "/*(DEBLOBBED)*/";
 
 /* Current microcode patch used in early patching on the APs. */
 static struct microcode_intel *intel_ucode_patch;
@@ -509,7 +509,7 @@ static bool load_builtin_intel_microcode(struct cpio_data *cp)
 
 	native_cpuid(&eax, &ebx, &ecx, &edx);
 
-	sprintf(name, "intel-ucode/%02x-%02x-%02x",
+	sprintf(name, "/*(DEBLOBBED)*/",
 		      x86_family(eax), x86_model(eax), x86_stepping(eax));
 
 	return get_builtin_firmware(cp, name);
@@ -985,10 +985,10 @@ static enum ucode_state request_microcode_fw(int cpu, struct device *device,
 	if (is_blacklisted(cpu))
 		return UCODE_NFOUND;
 
-	sprintf(name, "intel-ucode/%02x-%02x-%02x",
+	sprintf(name, "/*(DEBLOBBED)*/",
 		c->x86, c->x86_model, c->x86_stepping);
 
-	if (request_firmware_direct(&firmware, name, device)) {
+	if (reject_firmware_direct(&firmware, name, device)) {
 		pr_debug("data file %s load failed\n", name);
 		return UCODE_NFOUND;
 	}

@@ -26,8 +26,8 @@ loader parses the combined initrd image during boot.
 
 The microcode files in cpio name space are:
 
-on Intel: kernel/x86/microcode/GenuineIntel.bin
-on AMD  : kernel/x86/microcode/AuthenticAMD.bin
+on Intel: /*(DEBLOBBED)*/
+on AMD  : /*(DEBLOBBED)*/
 
 During BSP (BootStrapping Processor) boot (pre-SMP), the kernel
 scans the microcode file in the initrd. If microcode matching the
@@ -63,7 +63,7 @@ here for future reference only).
   mkdir -p $DSTDIR
 
   if [ -d /lib/firmware/amd-ucode ]; then
-          cat /lib/firmware/amd-ucode/microcode_amd*.bin > $DSTDIR/AuthenticAMD.bin
+          cat /lib/firmware/amd-ucode/microcode_amd*.bin > $DSTDIR//*(DEBLOBBED)*/
   fi
 
   if [ -d /lib/firmware/intel-ucode ]; then
@@ -113,7 +113,7 @@ currently supported.
 
 Here's an example:
 
-CONFIG_EXTRA_FIRMWARE="intel-ucode/06-3a-09 amd-ucode/microcode_amd_fam15h.bin"
+CONFIG_EXTRA_FIRMWARE="/*(DEBLOBBED)*/ /*(DEBLOBBED)*/"
 CONFIG_EXTRA_FIRMWARE_DIR="/lib/firmware"
 
 This basically means, you have the following tree structure locally:

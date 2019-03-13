@@ -1849,10 +1849,10 @@ il3945_read_ucode(struct il_priv *il)
 	u32 api_ver, inst_size, data_size, init_size, init_data_size, boot_size;
 
 	/* Ask kernel firmware_class module to get the boot firmware off disk.
-	 * request_firmware() is synchronous, file is in memory on return. */
+	 * reject_firmware() is synchronous, file is in memory on return. */
 	for (idx = api_max; idx >= api_min; idx--) {
-		sprintf(buf, "%s%u%s", name_pre, idx, ".ucode");
-		ret = request_firmware(&ucode_raw, buf, &il->pci_dev->dev);
+		sprintf(buf, "/*(DEBLOBBED)*/");
+		ret = reject_firmware(&ucode_raw, buf, &il->pci_dev->dev);
 		if (ret < 0) {
 			IL_ERR("%s firmware file req failed: %d\n", buf, ret);
 			if (ret == -ENOENT)
@@ -3928,7 +3928,7 @@ il3945_exit(void)
 	il3945_rate_control_unregister();
 }
 
-MODULE_FIRMWARE(IL3945_MODULE_FIRMWARE(IL3945_UCODE_API_MAX));
+/*(DEBLOBBED)*/
 
 module_param_named(antenna, il3945_mod_params.antenna, int, 0444);
 MODULE_PARM_DESC(antenna, "select antenna (1=Main, 2=Aux, default 0 [both])");

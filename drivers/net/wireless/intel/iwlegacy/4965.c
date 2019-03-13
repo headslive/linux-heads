@@ -272,8 +272,8 @@ static int il4965_hw_get_temperature(struct il_priv *il);
 /* Lowest firmware API version supported */
 #define IL4965_UCODE_API_MIN 2
 
-#define IL4965_FW_PRE "iwlwifi-4965-"
-#define _IL4965_MODULE_FIRMWARE(api) IL4965_FW_PRE #api ".ucode"
+#define IL4965_FW_PRE "/*(DEBLOBBED)*/"
+#define _IL4965_MODULE_FIRMWARE(api) IL4965_FW_PRE /*(DEBLOBBED)*/
 #define IL4965_MODULE_FIRMWARE(api) _IL4965_MODULE_FIRMWARE(api)
 
 /* check contents of special bootstrap uCode SRAM */
@@ -1949,4 +1949,4 @@ struct il_cfg il4965_cfg = {
 };
 
 /* Module firmware */
-MODULE_FIRMWARE(IL4965_MODULE_FIRMWARE(IL4965_UCODE_API_MAX));
+/*(DEBLOBBED)*/

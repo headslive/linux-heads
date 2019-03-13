@@ -481,9 +481,9 @@ static int sigmadsp_firmware_load(struct sigmadsp *sigmadsp, const char *name)
 	u32 crc;
 
 	/* first load the blob */
-	ret = request_firmware(&fw, name, sigmadsp->dev);
+	ret = maybe_reject_firmware(&fw, name, sigmadsp->dev);
 	if (ret) {
-		pr_debug("%s: request_firmware() failed with %i\n", __func__, ret);
+		pr_debug("%s: maybe_reject_firmware() failed with %i\n", __func__, ret);
 		goto done;
 	}
 

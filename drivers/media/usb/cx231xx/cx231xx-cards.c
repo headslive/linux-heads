@@ -1198,7 +1198,7 @@ static void cx231xx_config_tuner(struct cx231xx *dev)
 #if 0
 	if (tun_setup.type == TUNER_XC5000) {
 		static struct xc2028_ctrl ctrl = {
-			.fname = XC5000_DEFAULT_FIRMWARE,
+			.fname = "/*(DEBLOBBED)*/",
 			.max_len = 64,
 			.demod = 0;
 		};

@@ -153,7 +153,7 @@ int softing_load_fw(const char *file, struct softing *card,
 	int buflen = 0;
 	int8_t type_end = 0;
 
-	ret = request_firmware(&fw, file, &card->pdev->dev);
+	ret = reject_firmware(&fw, file, &card->pdev->dev);
 	if (ret < 0)
 		return ret;
 	dev_dbg(&card->pdev->dev, "%s, firmware(%s) got %u bytes"
@@ -236,9 +236,9 @@ int softing_load_app_fw(const char *file, struct softing *card)
 	unsigned int sum, rx_sum;
 	int8_t type_end = 0, type_entrypoint = 0;
 
-	ret = request_firmware(&fw, file, &card->pdev->dev);
+	ret = reject_firmware(&fw, file, &card->pdev->dev);
 	if (ret) {
-		dev_alert(&card->pdev->dev, "request_firmware(%s) got %i\n",
+		dev_alert(&card->pdev->dev, "reject_firmware(%s) got %i\n",
 			file, ret);
 		return ret;
 	}

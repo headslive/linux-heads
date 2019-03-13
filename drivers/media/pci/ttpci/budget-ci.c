@@ -830,7 +830,7 @@ static int philips_tdm1316l_request_firmware(struct dvb_frontend *fe,
 {
 	struct budget_ci *budget_ci = (struct budget_ci *) fe->dvb->priv;
 
-	return request_firmware(fw, name, &budget_ci->budget.dev->pci->dev);
+	return reject_firmware(fw, name, &budget_ci->budget.dev->pci->dev);
 }
 
 static struct tda1004x_config philips_tdm1316l_config = {

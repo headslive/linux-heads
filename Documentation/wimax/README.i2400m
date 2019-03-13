@@ -59,21 +59,7 @@ $ make KDIR=/path/to/kernel/dev/tree
 
    For more information, please contact linux-wimax@intel.com.
 
-3. Installing the firmware
-
-   The firmware can be obtained from http://linuxwimax.org or might have
-   been supplied with your hardware.
-
-   It has to be installed in the target system:
-     *
-$ cp FIRMWAREFILE.sbcf /lib/firmware/i2400m-fw-BUSTYPE-1.3.sbcf
-
-     * NOTE: if your firmware came in an .rpm or .deb file, just install
-       it as normal, with the rpm (rpm -i FIRMWARE.rpm) or dpkg
-       (dpkg -i FIRMWARE.deb) commands. No further action is needed.
-     * BUSTYPE will be usb or sdio, depending on the hardware you have.
-       Each hardware type comes with its own firmware and will not work
-       with other types.
+/*(DEBLOBBED)*/
 
 4. Design
 
@@ -248,13 +234,4 @@ $ echo 1 > /sys/kernel/debug/wimax:wmx0/i2400m/trace_msg_from_user
 
 6. Troubleshooting
 
-6.1. Driver complains about 'i2400m-fw-usb-1.2.sbcf: request failed'
-
-   If upon connecting the device, the following is output in the kernel
-   log:
-
-i2400m_usb 5-4:1.0: fw i2400m-fw-usb-1.3.sbcf: request failed: -2
-
-   This means that the driver cannot locate the firmware file named
-   /lib/firmware/i2400m-fw-usb-1.2.sbcf. Check that the file is present in
-   the right location.
+/*(DEBLOBBED)*/

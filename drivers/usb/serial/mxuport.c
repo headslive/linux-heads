@@ -1077,9 +1077,9 @@ static int mxuport_probe(struct usb_serial *serial,
 		(version & 0xff00) >> 8,
 		(version & 0xff));
 
-	snprintf(buf, sizeof(buf) - 1, "moxa/moxa-%04x.fw", productid);
+	snprintf(buf, sizeof(buf) - 1, "/*(DEBLOBBED)*/", productid);
 
-	err = request_firmware(&fw_p, buf, &serial->interface->dev);
+	err = reject_firmware(&fw_p, buf, &serial->interface->dev);
 	if (err) {
 		dev_warn(&serial->interface->dev, "Firmware %s not found\n",
 			 buf);

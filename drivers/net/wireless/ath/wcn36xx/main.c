@@ -1410,4 +1410,4 @@ module_platform_driver(wcn36xx_driver);
 
 MODULE_LICENSE("Dual BSD/GPL");
 MODULE_AUTHOR("Eugene Krasnikov k.eugene.e@gmail.com");
-MODULE_FIRMWARE(WLAN_NV_FILE);
+/*(DEBLOBBED)*/

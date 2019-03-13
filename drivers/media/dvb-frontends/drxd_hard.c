@@ -30,8 +30,8 @@
 #include "drxd.h"
 #include "drxd_firm.h"
 
-#define DRX_FW_FILENAME_A2 "drxd-a2-1.1.fw"
-#define DRX_FW_FILENAME_B1 "drxd-b1-1.1.fw"
+#define DRX_FW_FILENAME_A2 "/*(DEBLOBBED)*/"
+#define DRX_FW_FILENAME_B1 "/*(DEBLOBBED)*/"
 
 #define CHUNK_SIZE 48
 
@@ -903,7 +903,7 @@ static int load_firmware(struct drxd_state *state, const char *fw_name)
 {
 	const struct firmware *fw;
 
-	if (request_firmware(&fw, fw_name, state->dev) < 0) {
+	if (reject_firmware(&fw, fw_name, state->dev) < 0) {
 		printk(KERN_ERR "drxd: firmware load failure [%s]\n", fw_name);
 		return -EIO;
 	}

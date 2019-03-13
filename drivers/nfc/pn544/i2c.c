@@ -756,7 +756,7 @@ static void pn544_hci_i2c_fw_work(struct work_struct *work)
 	case FW_WORK_STATE_START:
 		pn544_hci_i2c_enable_mode(phy, PN544_FW_MODE);
 
-		r = request_firmware(&phy->fw, phy->firmware_name,
+		r = reject_firmware(&phy->fw, phy->firmware_name,
 				     &phy->i2c_dev->dev);
 		if (r < 0)
 			goto exit_state_start;

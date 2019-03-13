@@ -359,14 +359,14 @@ static void load_code(struct icom_port *icom_port)
 	memset_io(dram_ptr, 0, 512);
 
 	/* Load Call Setup into Adapter */
-	if (request_firmware(&fw, "icom_call_setup.bin", &dev->dev) < 0) {
-		dev_err(&dev->dev,"Unable to load icom_call_setup.bin firmware image\n");
+	if (reject_firmware(&fw, "/*(DEBLOBBED)*/", &dev->dev) < 0) {
+		dev_err(&dev->dev,"Unable to load /*(DEBLOBBED)*/ firmware image\n");
 		status = -1;
 		goto load_code_exit;
 	}
 
 	if (fw->size > ICOM_DCE_IRAM_OFFSET) {
-		dev_err(&dev->dev, "Invalid firmware image for icom_call_setup.bin found.\n");
+		dev_err(&dev->dev, "Invalid firmware image for /*(DEBLOBBED)*/ found.\n");
 		release_firmware(fw);
 		status = -1;
 		goto load_code_exit;
@@ -379,14 +379,14 @@ static void load_code(struct icom_port *icom_port)
 	release_firmware(fw);
 
 	/* Load Resident DCE portion of Adapter */
-	if (request_firmware(&fw, "icom_res_dce.bin", &dev->dev) < 0) {
-		dev_err(&dev->dev,"Unable to load icom_res_dce.bin firmware image\n");
+	if (reject_firmware(&fw, "/*(DEBLOBBED)*/", &dev->dev) < 0) {
+		dev_err(&dev->dev,"Unable to load /*(DEBLOBBED)*/ firmware image\n");
 		status = -1;
 		goto load_code_exit;
 	}
 
 	if (fw->size > ICOM_IRAM_SIZE) {
-		dev_err(&dev->dev, "Invalid firmware image for icom_res_dce.bin found.\n");
+		dev_err(&dev->dev, "Invalid firmware image for /*(DEBLOBBED)*/ found.\n");
 		release_firmware(fw);
 		status = -1;
 		goto load_code_exit;
@@ -424,14 +424,14 @@ static void load_code(struct icom_port *icom_port)
 		goto load_code_exit;
 	}
 
-	if (request_firmware(&fw, "icom_asc.bin", &dev->dev) < 0) {
-		dev_err(&dev->dev,"Unable to load icom_asc.bin firmware image\n");
+	if (reject_firmware(&fw, "/*(DEBLOBBED)*/", &dev->dev) < 0) {
+		dev_err(&dev->dev,"Unable to load /*(DEBLOBBED)*/ firmware image\n");
 		status = -1;
 		goto load_code_exit;
 	}
 
 	if (fw->size > ICOM_DCE_IRAM_OFFSET) {
-		dev_err(&dev->dev, "Invalid firmware image for icom_asc.bin found.\n");
+		dev_err(&dev->dev, "Invalid firmware image for /*(DEBLOBBED)*/ found.\n");
 		release_firmware(fw);
 		status = -1;
 		goto load_code_exit;
@@ -1642,6 +1642,4 @@ MODULE_DESCRIPTION("IBM iSeries Serial IOA driver");
 MODULE_SUPPORTED_DEVICE
     ("IBM iSeries 2745, 2771, 2772, 2742, 2793 and 2805 Communications adapters");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("icom_call_setup.bin");
-MODULE_FIRMWARE("icom_res_dce.bin");
-MODULE_FIRMWARE("icom_asc.bin");
+/*(DEBLOBBED)*/

@@ -35,11 +35,7 @@ cards which have no tuner), try adding this to your modules.conf:
 
 	options i2c-algo-bit bit_test=1
 
-For the WinTV/PVR you need one firmware file from the driver CD:
-hcwamc.rbf.  The file is in the pvr45xxx.exe archive (self-extracting
-zip file, unzip can unpack it).  Put it into the /etc/pvr directory or
-use the firm_altera=<path> insmod option to point the driver to the
-location of the file.
+/*(DEBLOBBED)*/
 
 If your card isn't listed in CARDLIST.bttv or if you have trouble making
 audio work, you should read the Sound-FAQ.

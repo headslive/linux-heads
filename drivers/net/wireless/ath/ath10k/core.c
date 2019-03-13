@@ -738,7 +738,7 @@ static const struct firmware *ath10k_fetch_fw_file(struct ath10k *ar,
 		dir = ".";
 
 	snprintf(filename, sizeof(filename), "%s/%s", dir, file);
-	ret = firmware_request_nowarn(&fw, filename, ar->dev);
+	ret = firmware_reject_nowarn(&fw, filename, ar->dev);
 	ath10k_dbg(ar, ATH10K_DBG_BOOT, "boot fw request '%s': %d\n",
 		   filename, ret);
 
@@ -1037,15 +1037,15 @@ static int ath10k_fetch_cal_file(struct ath10k *ar)
 	char filename[100];
 
 	/* pre-cal-<bus>-<id>.bin */
-	scnprintf(filename, sizeof(filename), "pre-cal-%s-%s.bin",
+	scnprintf(filename, sizeof(filename), "/*(DEBLOBBED)*/",
 		  ath10k_bus_str(ar->hif.bus), dev_name(ar->dev));
 
 	ar->pre_cal_file = ath10k_fetch_fw_file(ar, ATH10K_FW_DIR, filename);
 	if (!IS_ERR(ar->pre_cal_file))
 		goto success;
 
-	/* cal-<bus>-<id>.bin */
-	scnprintf(filename, sizeof(filename), "cal-%s-%s.bin",
+	/*(DEBLOBBED)*/
+	scnprintf(filename, sizeof(filename), "/*(DEBLOBBED)*/",
 		  ath10k_bus_str(ar->hif.bus), dev_name(ar->dev));
 
 	ar->cal_file = ath10k_fetch_fw_file(ar, ATH10K_FW_DIR, filename);
@@ -1393,7 +1393,7 @@ int ath10k_core_fetch_board_file(struct ath10k *ar, int bd_ie_type)
 		ret = ath10k_core_create_eboard_name(ar, boardname,
 						     sizeof(boardname));
 		if (ret) {
-			ath10k_err(ar, "fallback to eboard.bin since board id 0");
+			ath10k_err(ar, "fallback to /*(DEBLOBBED)*/ since board id 0");
 			goto fallback;
 		}
 	}
@@ -1409,7 +1409,7 @@ fallback:
 	ar->bd_api = 1;
 	ret = ath10k_core_fetch_board_data_api_1(ar, bd_ie_type);
 	if (ret) {
-		ath10k_err(ar, "failed to fetch board-2.bin or board.bin from %s\n",
+		ath10k_err(ar, "failed to fetch /*(DEBLOBBED)*/ or /*(DEBLOBBED)*/ from %s\n",
 			   ar->hw_params.fw.dir);
 		return ret;
 	}
@@ -1888,14 +1888,14 @@ static void ath10k_core_get_fw_name(struct ath10k *ar, char *fw_name,
 	switch (ar->hif.bus) {
 	case ATH10K_BUS_SDIO:
 	case ATH10K_BUS_USB:
-		scnprintf(fw_name, fw_name_len, "%s-%s-%d.bin",
+		scnprintf(fw_name, fw_name_len, "/*(DEBLOBBED)*/",
 			  ATH10K_FW_FILE_BASE, ath10k_bus_str(ar->hif.bus),
 			  fw_api);
 		break;
 	case ATH10K_BUS_PCI:
 	case ATH10K_BUS_AHB:
 	case ATH10K_BUS_SNOC:
-		scnprintf(fw_name, fw_name_len, "%s-%d.bin",
+		scnprintf(fw_name, fw_name_len, "/*(DEBLOBBED)*/",
 			  ATH10K_FW_FILE_BASE, fw_api);
 		break;
 	}

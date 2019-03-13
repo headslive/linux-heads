@@ -513,10 +513,10 @@ static int download_firmware(struct ll_device *lldev)
 		maj_ver |= 0x0008;
 
 	snprintf(bts_scr_name, sizeof(bts_scr_name),
-		 "ti-connectivity/TIInit_%d.%d.%d.bts",
+		 "/*(DEBLOBBED)*/",
 		 chip, maj_ver, min_ver);
 
-	err = request_firmware(&fw, bts_scr_name, &lldev->serdev->dev);
+	err = reject_firmware(&fw, bts_scr_name, &lldev->serdev->dev);
 	if (err || !fw->data || !fw->size) {
 		bt_dev_err(lldev->hu.hdev, "request_firmware failed(errno %d) for %s",
 			   err, bts_scr_name);

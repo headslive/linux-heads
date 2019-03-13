@@ -720,7 +720,7 @@ static int st_fdma_parse_dt(struct platform_device *pdev,
 			const struct st_fdma_driverdata *drvdata,
 			struct st_fdma_dev *fdev)
 {
-	snprintf(fdev->fw_name, FW_NAME_SIZE, "fdma_%s_%d.elf",
+	snprintf(fdev->fw_name, FW_NAME_SIZE, "/*(DEBLOBBED)*/",
 		drvdata->name, drvdata->id);
 
 	return of_property_read_u32(pdev->dev.of_node, "dma-channels",

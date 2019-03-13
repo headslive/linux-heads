@@ -58,15 +58,14 @@
 #include <linux/atomic.h>
 #include "echoaudio.h"
 
-MODULE_FIRMWARE("ea/loader_dsp.fw");
-MODULE_FIRMWARE("ea/indigo_iox_dsp.fw");
+/*(DEBLOBBED)*/
 
 #define FW_361_LOADER		0
 #define FW_INDIGO_IOX_DSP	1
 
 static const struct firmware card_fw[] = {
-	{0, "loader_dsp.fw"},
-	{0, "indigo_iox_dsp.fw"}
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"}
 };
 
 static const struct pci_device_id snd_echo_ids[] = {

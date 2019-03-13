@@ -97,7 +97,7 @@ int s3fwrn5_nci_rf_configure(struct s3fwrn5_info *info, const char *fw_name)
 	int i, len;
 	int ret;
 
-	ret = request_firmware(&fw, fw_name, &info->ndev->nfc_dev->dev);
+	ret = reject_firmware(&fw, fw_name, &info->ndev->nfc_dev->dev);
 	if (ret < 0)
 		return ret;
 

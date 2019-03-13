@@ -50,7 +50,7 @@
 #include <media/v4l2-event.h>
 
 #define S2255_VERSION		"1.25.1"
-#define FIRMWARE_FILE_NAME "f2255usb.bin"
+#define FIRMWARE_FILE_NAME "/*(DEBLOBBED)*/"
 
 /* default JPEG quality */
 #define S2255_DEF_JPEG_QUAL     50
@@ -269,7 +269,7 @@ struct s2255_dev {
 	u32			cc;	/* current channel */
 	int			frame_ready;
 	int                     chn_ready;
-	/* dsp firmware version (f2255usb.bin) */
+	/*(DEBLOBBED)*/
 	int                     dsp_fw_ver;
 	u16                     pid; /* product id */
 #define S2255_CMDBUF_SIZE 512
@@ -2297,7 +2297,7 @@ static int s2255_probe(struct usb_interface *interface,
 		goto errorFWDATA2;
 	}
 	/* load the first chunk */
-	if (request_firmware(&dev->fw_data->fw,
+	if (reject_firmware(&dev->fw_data->fw,
 			     FIRMWARE_FILE_NAME, &dev->udev->dev)) {
 		dev_err(&interface->dev, "sensoray 2255 failed to get firmware\n");
 		goto errorREQFW;
@@ -2317,7 +2317,7 @@ static int s2255_probe(struct usb_interface *interface,
 		pr_info("s2255 dsp fw version %x\n", le32_to_cpu(*pRel));
 		dev->dsp_fw_ver = le32_to_cpu(*pRel);
 		if (dev->dsp_fw_ver < S2255_CUR_DSP_FWVER)
-			pr_info("s2255: f2255usb.bin out of date.\n");
+			pr_info("s2255: /*(DEBLOBBED)*/ out of date.\n");
 		if (dev->pid == 0x2257 &&
 				dev->dsp_fw_ver < S2255_MIN_DSP_COLORFILTER)
 			pr_warn("2257 needs firmware %d or above.\n",
@@ -2398,4 +2398,4 @@ MODULE_DESCRIPTION("Sensoray 2255 Video for Linux driver");
 MODULE_AUTHOR("Dean Anderson (Sensoray Company Inc.)");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(S2255_VERSION);
-MODULE_FIRMWARE(FIRMWARE_FILE_NAME);
+/*(DEBLOBBED)*/

@@ -89,7 +89,7 @@ static int rtl92d_init_sw_vars(struct ieee80211_hw *hw)
 	u8 tid;
 	struct rtl_priv *rtlpriv = rtl_priv(hw);
 	struct rtl_pci *rtlpci = rtl_pcidev(rtl_pcipriv(hw));
-	char *fw_name = "rtlwifi/rtl8192defw.bin";
+	char *fw_name = "/*(DEBLOBBED)*/";
 
 	rtlpriv->dm.dm_initialgain_enable = true;
 	rtlpriv->dm.dm_flag = 0;
@@ -179,7 +179,7 @@ static int rtl92d_init_sw_vars(struct ieee80211_hw *hw)
 	pr_info("Loading firmware file %s\n", fw_name);
 
 	/* request fw */
-	err = request_firmware_nowait(THIS_MODULE, 1, fw_name,
+	err = reject_firmware_nowait(THIS_MODULE, 1, fw_name,
 				      rtlpriv->io.dev, GFP_KERNEL, hw,
 				      rtl_fw_cb);
 	if (err) {
@@ -364,7 +364,7 @@ MODULE_AUTHOR("Realtek WlanFAE	<wlanfae@realtek.com>");
 MODULE_AUTHOR("Larry Finger	<Larry.Finger@lwfinger.net>");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Realtek 8192DE 802.11n Dual Mac PCI wireless");
-MODULE_FIRMWARE("rtlwifi/rtl8192defw.bin");
+/*(DEBLOBBED)*/
 
 module_param_named(swenc, rtl92de_mod_params.sw_crypto, bool, 0444);
 module_param_named(debug_level, rtl92de_mod_params.debug_level, int, 0644);

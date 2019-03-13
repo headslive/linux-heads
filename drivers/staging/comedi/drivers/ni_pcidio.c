@@ -207,12 +207,10 @@ static inline unsigned int secondary_DMAChannel_bits(unsigned int channel)
 #define StartDelay			Protocol_Register_8
 
 /* Firmware files for PCI-6524 */
-#define FW_PCI_6534_MAIN		"ni6534a.bin"
-#define FW_PCI_6534_SCARAB_DI		"niscrb01.bin"
-#define FW_PCI_6534_SCARAB_DO		"niscrb02.bin"
-MODULE_FIRMWARE(FW_PCI_6534_MAIN);
-MODULE_FIRMWARE(FW_PCI_6534_SCARAB_DI);
-MODULE_FIRMWARE(FW_PCI_6534_SCARAB_DO);
+#define FW_PCI_6534_MAIN		"/*(DEBLOBBED)*/"
+#define FW_PCI_6534_SCARAB_DI		"/*(DEBLOBBED)*/"
+#define FW_PCI_6534_SCARAB_DO		"/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 enum pci_6534_firmware_registers {	/* 16 bit */
 	Firmware_Control_Register = 0x100,

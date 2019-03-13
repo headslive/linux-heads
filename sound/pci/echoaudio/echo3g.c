@@ -67,18 +67,16 @@
 #include <linux/atomic.h>
 #include "echoaudio.h"
 
-MODULE_FIRMWARE("ea/loader_dsp.fw");
-MODULE_FIRMWARE("ea/echo3g_dsp.fw");
-MODULE_FIRMWARE("ea/3g_asic.fw");
+/*(DEBLOBBED)*/
 
 #define FW_361_LOADER	0
 #define FW_ECHO3G_DSP	1
 #define FW_3G_ASIC	2
 
 static const struct firmware card_fw[] = {
-	{0, "loader_dsp.fw"},
-	{0, "echo3g_dsp.fw"},
-	{0, "3g_asic.fw"}
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"}
 };
 
 static const struct pci_device_id snd_echo_ids[] = {

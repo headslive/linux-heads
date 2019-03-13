@@ -25,7 +25,7 @@
 #define Rtl8188E_FwImageArray		Rtl8188EFwImgArray
 #define Rtl8188E_FWImgArrayLength	Rtl8188EFWImgArrayLength
 
-#define RTL8188E_FW_UMC_IMG			"rtl8188E\\rtl8188efw.bin"
+#define RTL8188E_FW_UMC_IMG			"/*(DEBLOBBED)*/"
 #define RTL8188E_PHY_REG			"rtl8188E\\PHY_REG_1T.txt"
 #define RTL8188E_PHY_RADIO_A			"rtl8188E\\radio_a_1T.txt"
 #define RTL8188E_PHY_RADIO_B			"rtl8188E\\radio_b_1T.txt"

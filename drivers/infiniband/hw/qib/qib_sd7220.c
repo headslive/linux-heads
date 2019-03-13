@@ -44,8 +44,8 @@
 #include "qib.h"
 #include "qib_7220.h"
 
-#define SD7220_FW_NAME "qlogic/sd7220.fw"
-MODULE_FIRMWARE(SD7220_FW_NAME);
+#define SD7220_FW_NAME "/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 /*
  * Same as in qib_iba7220.c, but just the registers needed here.
@@ -405,7 +405,7 @@ int qib_sd7220_init(struct qib_devdata *dd)
 		qib_sd_trimdone_monitor(dd, "Driver-reload");
 	}
 
-	ret = request_firmware(&fw, SD7220_FW_NAME, &dd->pcidev->dev);
+	ret = reject_firmware(&fw, SD7220_FW_NAME, &dd->pcidev->dev);
 	if (ret) {
 		qib_dev_err(dd, "Failed to load IB SERDES image\n");
 		goto done;

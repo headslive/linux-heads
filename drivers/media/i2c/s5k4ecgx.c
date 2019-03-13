@@ -37,7 +37,7 @@ static int debug;
 module_param(debug, int, 0644);
 
 #define S5K4ECGX_DRIVER_NAME		"s5k4ecgx"
-#define S5K4ECGX_FIRMWARE		"s5k4ecgx.bin"
+#define S5K4ECGX_FIRMWARE		"/*(DEBLOBBED)*/"
 
 /* Firmware revision information */
 #define REG_FW_REVISION			0x700001a6
@@ -336,7 +336,7 @@ static int s5k4ecgx_load_firmware(struct v4l2_subdev *sd)
 	u32 addr, crc, crc_file, addr_inc = 0;
 	u16 val;
 
-	err = request_firmware(&fw, S5K4ECGX_FIRMWARE, sd->v4l2_dev->dev);
+	err = reject_firmware(&fw, S5K4ECGX_FIRMWARE, sd->v4l2_dev->dev);
 	if (err) {
 		v4l2_err(sd, "Failed to read firmware %s\n", S5K4ECGX_FIRMWARE);
 		return err;
@@ -1033,4 +1033,4 @@ MODULE_DESCRIPTION("Samsung S5K4ECGX 5MP SOC camera");
 MODULE_AUTHOR("Sangwook Lee <sangwook.lee@linaro.org>");
 MODULE_AUTHOR("Seok-Young Jang <quartz.jang@samsung.com>");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(S5K4ECGX_FIRMWARE);
+/*(DEBLOBBED)*/

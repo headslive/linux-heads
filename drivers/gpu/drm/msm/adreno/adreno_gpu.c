@@ -87,7 +87,7 @@ adreno_request_fw(struct adreno_gpu *adreno_gpu, const char *fwname)
 	if ((adreno_gpu->fwloc == FW_LOCATION_UNKNOWN) ||
 	    (adreno_gpu->fwloc == FW_LOCATION_NEW)) {
 
-		ret = request_firmware_direct(&fw, newname, drm->dev);
+		ret = reject_firmware_direct(&fw, newname, drm->dev);
 		if (!ret) {
 			DRM_DEV_INFO(drm->dev, "loaded %s from new location\n",
 				newname);
@@ -107,7 +107,7 @@ adreno_request_fw(struct adreno_gpu *adreno_gpu, const char *fwname)
 	if ((adreno_gpu->fwloc == FW_LOCATION_UNKNOWN) ||
 	    (adreno_gpu->fwloc == FW_LOCATION_LEGACY)) {
 
-		ret = request_firmware_direct(&fw, fwname, drm->dev);
+		ret = reject_firmware_direct(&fw, fwname, drm->dev);
 		if (!ret) {
 			DRM_DEV_INFO(drm->dev, "loaded %s from legacy location\n",
 				newname);
@@ -122,13 +122,13 @@ adreno_request_fw(struct adreno_gpu *adreno_gpu, const char *fwname)
 	}
 
 	/*
-	 * Finally fall back to request_firmware() for cases where the
+	 * Finally fall back to reject_firmware() for cases where the
 	 * usermode helper is needed (I think mainly android)
 	 */
 	if ((adreno_gpu->fwloc == FW_LOCATION_UNKNOWN) ||
 	    (adreno_gpu->fwloc == FW_LOCATION_HELPER)) {
 
-		ret = request_firmware(&fw, newname, drm->dev);
+		ret = reject_firmware(&fw, newname, drm->dev);
 		if (!ret) {
 			DRM_DEV_INFO(drm->dev, "loaded %s with helper\n",
 				newname);

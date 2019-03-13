@@ -35,20 +35,19 @@
 #define KBL_BLD_NUM 1810
 
 #define HUC_FW_PATH(platform, major, minor, bld_num) \
-	"i915/" __stringify(platform) "_huc_ver" __stringify(major) "_" \
-	__stringify(minor) "_" __stringify(bld_num) ".bin"
+	"/*(DEBLOBBED)*/"
 
 #define I915_SKL_HUC_UCODE HUC_FW_PATH(skl, SKL_HUC_FW_MAJOR, \
 	SKL_HUC_FW_MINOR, SKL_BLD_NUM)
-MODULE_FIRMWARE(I915_SKL_HUC_UCODE);
+/*(DEBLOBBED)*/
 
 #define I915_BXT_HUC_UCODE HUC_FW_PATH(bxt, BXT_HUC_FW_MAJOR, \
 	BXT_HUC_FW_MINOR, BXT_BLD_NUM)
-MODULE_FIRMWARE(I915_BXT_HUC_UCODE);
+/*(DEBLOBBED)*/
 
 #define I915_KBL_HUC_UCODE HUC_FW_PATH(kbl, KBL_HUC_FW_MAJOR, \
 	KBL_HUC_FW_MINOR, KBL_BLD_NUM)
-MODULE_FIRMWARE(I915_KBL_HUC_UCODE);
+/*(DEBLOBBED)*/
 
 static void huc_fw_select(struct intel_uc_fw *huc_fw)
 {

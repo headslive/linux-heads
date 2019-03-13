@@ -48,14 +48,14 @@ enum ath10k_bus {
 #define QCA988X_HW_2_0_VERSION		0x4100016c
 #define QCA988X_HW_2_0_CHIP_ID_REV	0x2
 #define QCA988X_HW_2_0_FW_DIR		ATH10K_FW_DIR "/QCA988X/hw2.0"
-#define QCA988X_HW_2_0_BOARD_DATA_FILE	"board.bin"
+#define QCA988X_HW_2_0_BOARD_DATA_FILE	"/*(DEBLOBBED)*/"
 #define QCA988X_HW_2_0_PATCH_LOAD_ADDR	0x1234
 
 /* QCA9887 1.0 definitions */
 #define QCA9887_HW_1_0_VERSION		0x4100016d
 #define QCA9887_HW_1_0_CHIP_ID_REV	0
 #define QCA9887_HW_1_0_FW_DIR		ATH10K_FW_DIR "/QCA9887/hw1.0"
-#define QCA9887_HW_1_0_BOARD_DATA_FILE	"board.bin"
+#define QCA9887_HW_1_0_BOARD_DATA_FILE	"/*(DEBLOBBED)*/"
 #define QCA9887_HW_1_0_PATCH_LOAD_ADDR	0x1234
 
 /* QCA6174 target BMI version signatures */
@@ -94,11 +94,11 @@ enum qca9377_chip_id_rev {
 };
 
 #define QCA6174_HW_2_1_FW_DIR		ATH10K_FW_DIR "/QCA6174/hw2.1"
-#define QCA6174_HW_2_1_BOARD_DATA_FILE	"board.bin"
+#define QCA6174_HW_2_1_BOARD_DATA_FILE	"/*(DEBLOBBED)*/"
 #define QCA6174_HW_2_1_PATCH_LOAD_ADDR	0x1234
 
 #define QCA6174_HW_3_0_FW_DIR		ATH10K_FW_DIR "/QCA6174/hw3.0"
-#define QCA6174_HW_3_0_BOARD_DATA_FILE	"board.bin"
+#define QCA6174_HW_3_0_BOARD_DATA_FILE	"/*(DEBLOBBED)*/"
 #define QCA6174_HW_3_0_PATCH_LOAD_ADDR	0x1234
 
 /* QCA99X0 1.0 definitions (unsupported) */
@@ -108,7 +108,7 @@ enum qca9377_chip_id_rev {
 #define QCA99X0_HW_2_0_DEV_VERSION     0x01000000
 #define QCA99X0_HW_2_0_CHIP_ID_REV     0x1
 #define QCA99X0_HW_2_0_FW_DIR          ATH10K_FW_DIR "/QCA99X0/hw2.0"
-#define QCA99X0_HW_2_0_BOARD_DATA_FILE "board.bin"
+#define QCA99X0_HW_2_0_BOARD_DATA_FILE "/*(DEBLOBBED)*/"
 #define QCA99X0_HW_2_0_PATCH_LOAD_ADDR	0x1234
 
 /* QCA9984 1.0 defines */
@@ -116,8 +116,8 @@ enum qca9377_chip_id_rev {
 #define QCA9984_HW_DEV_TYPE		0xa
 #define QCA9984_HW_1_0_CHIP_ID_REV	0x0
 #define QCA9984_HW_1_0_FW_DIR		ATH10K_FW_DIR "/QCA9984/hw1.0"
-#define QCA9984_HW_1_0_BOARD_DATA_FILE "board.bin"
-#define QCA9984_HW_1_0_EBOARD_DATA_FILE "eboard.bin"
+#define QCA9984_HW_1_0_BOARD_DATA_FILE "/*(DEBLOBBED)*/"
+#define QCA9984_HW_1_0_EBOARD_DATA_FILE "/*(DEBLOBBED)*/"
 #define QCA9984_HW_1_0_PATCH_LOAD_ADDR	0x1234
 
 /* QCA9888 2.0 defines */
@@ -125,18 +125,18 @@ enum qca9377_chip_id_rev {
 #define QCA9888_HW_DEV_TYPE		0xc
 #define QCA9888_HW_2_0_CHIP_ID_REV	0x0
 #define QCA9888_HW_2_0_FW_DIR		ATH10K_FW_DIR "/QCA9888/hw2.0"
-#define QCA9888_HW_2_0_BOARD_DATA_FILE "board.bin"
+#define QCA9888_HW_2_0_BOARD_DATA_FILE "/*(DEBLOBBED)*/"
 #define QCA9888_HW_2_0_PATCH_LOAD_ADDR	0x1234
 
 /* QCA9377 1.0 definitions */
 #define QCA9377_HW_1_0_FW_DIR          ATH10K_FW_DIR "/QCA9377/hw1.0"
-#define QCA9377_HW_1_0_BOARD_DATA_FILE "board.bin"
+#define QCA9377_HW_1_0_BOARD_DATA_FILE "/*(DEBLOBBED)*/"
 #define QCA9377_HW_1_0_PATCH_LOAD_ADDR	0x1234
 
 /* QCA4019 1.0 definitions */
 #define QCA4019_HW_1_0_DEV_VERSION     0x01000000
 #define QCA4019_HW_1_0_FW_DIR          ATH10K_FW_DIR "/QCA4019/hw1.0"
-#define QCA4019_HW_1_0_BOARD_DATA_FILE "board.bin"
+#define QCA4019_HW_1_0_BOARD_DATA_FILE "/*(DEBLOBBED)*/"
 #define QCA4019_HW_1_0_PATCH_LOAD_ADDR  0x1234
 
 /* WCN3990 1.0 definitions */
@@ -147,26 +147,26 @@ enum qca9377_chip_id_rev {
 #define ATH10K_FW_API_MAX		6
 #define ATH10K_FW_API_MIN		2
 
-#define ATH10K_FW_API2_FILE		"firmware-2.bin"
-#define ATH10K_FW_API3_FILE		"firmware-3.bin"
+#define ATH10K_FW_API2_FILE		"/*(DEBLOBBED)*/"
+#define ATH10K_FW_API3_FILE		"/*(DEBLOBBED)*/"
 
 /* added support for ATH10K_FW_IE_WMI_OP_VERSION */
-#define ATH10K_FW_API4_FILE		"firmware-4.bin"
+#define ATH10K_FW_API4_FILE		"/*(DEBLOBBED)*/"
 
 /* HTT id conflict fix for management frames over HTT */
-#define ATH10K_FW_API5_FILE		"firmware-5.bin"
+#define ATH10K_FW_API5_FILE		"/*(DEBLOBBED)*/"
 
-/* the firmware-6.bin blob */
-#define ATH10K_FW_API6_FILE		"firmware-6.bin"
+/*(DEBLOBBED)*/
+#define ATH10K_FW_API6_FILE		"/*(DEBLOBBED)*/"
 
-#define ATH10K_FW_UTF_FILE		"utf.bin"
-#define ATH10K_FW_UTF_API2_FILE		"utf-2.bin"
+#define ATH10K_FW_UTF_FILE		"/*(DEBLOBBED)*/"
+#define ATH10K_FW_UTF_API2_FILE		"/*(DEBLOBBED)*/"
 
 /* includes also the null byte */
 #define ATH10K_FIRMWARE_MAGIC               "QCA-ATH10K"
 #define ATH10K_BOARD_MAGIC                  "QCA-ATH10K-BOARD"
 
-#define ATH10K_BOARD_API2_FILE         "board-2.bin"
+#define ATH10K_BOARD_API2_FILE         "/*(DEBLOBBED)*/"
 
 #define REG_DUMP_COUNT_QCA988X 60
 

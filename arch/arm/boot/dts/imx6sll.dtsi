@@ -626,7 +626,7 @@
 				clock-names = "ipg", "ahb";
 				#dma-cells = <3>;
 				iram = <&ocram>;
-				fsl,sdma-ram-script-name = "imx/sdma/sdma-imx6q.bin";
+				fsl,sdma-ram-script-name = "/*(DEBLOBBED)*/";
 			};
 
 			lcdif: lcd-controller@20f8000 {

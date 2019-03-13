@@ -677,7 +677,7 @@ static int ath6kl_get_fw(struct ath6kl *ar, const char *filename,
 	const struct firmware *fw_entry;
 	int ret;
 
-	ret = request_firmware(&fw_entry, filename, ar->dev);
+	ret = reject_firmware(&fw_entry, filename, ar->dev);
 	if (ret)
 		return ret;
 
@@ -695,10 +695,7 @@ static int ath6kl_get_fw(struct ath6kl *ar, const char *filename,
 #ifdef CONFIG_OF
 /*
  * Check the device tree for a board-id and use it to construct
- * the pathname to the firmware file.  Used (for now) to find a
- * fallback to the "bdata.bin" file--typically a symlink to the
- * appropriate board-specific file.
- */
+ * the pathname to the firmware file.  /*(DEBLOBBED)*/
 static bool check_device_tree(struct ath6kl *ar)
 {
 	static const char *board_id_prop = "atheros,board-id";
@@ -715,7 +712,7 @@ static bool check_device_tree(struct ath6kl *ar)
 			continue;
 		}
 		snprintf(board_filename, sizeof(board_filename),
-			 "%s/bdata.%s.bin", ar->hw.fw.dir, board_id);
+			 "/*(DEBLOBBED)*/", ar->hw.fw.dir, board_id);
 
 		ret = ath6kl_get_fw(ar, board_filename, &ar->fw_board,
 				    &ar->fw_board_len);
@@ -962,7 +959,7 @@ static int ath6kl_fetch_fw_apin(struct ath6kl *ar, const char *name)
 
 	snprintf(filename, sizeof(filename), "%s/%s", ar->hw.fw.dir, name);
 
-	ret = request_firmware(&fw, filename, ar->dev);
+	ret = reject_firmware(&fw, filename, ar->dev);
 	if (ret) {
 		ath6kl_err("Failed request firmware, rv: %d\n", ret);
 		return ret;

@@ -376,7 +376,7 @@ MODULE_DEVICE_TABLE(usb, vp702x_usb_table);
 
 static struct dvb_usb_device_properties vp702x_properties = {
 	.usb_ctrl = CYPRESS_FX2,
-	.firmware            = "dvb-usb-vp702x-02.fw",
+	.firmware            = "/*(DEBLOBBED)*/",
 	.no_reconnect        = 1,
 
 	.size_of_priv     = sizeof(struct vp702x_device_state),

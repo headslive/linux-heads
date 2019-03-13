@@ -464,7 +464,7 @@ static int qlogicpti_reset_hardware(struct Scsi_Host *host)
 static int qlogicpti_load_firmware(struct qlogicpti *qpti)
 {
 	const struct firmware *fw;
-	const char fwname[] = "qlogic/isp1000.bin";
+	const char fwname[] = "/*(DEBLOBBED)*/";
 	const __le16 *fw_data;
 	struct Scsi_Host *host = qpti->qhost;
 	unsigned short csum = 0;
@@ -474,7 +474,7 @@ static int qlogicpti_load_firmware(struct qlogicpti *qpti)
 	unsigned long flags;
 	int i, timeout;
 
-	err = request_firmware(&fw, fwname, &qpti->op->dev);
+	err = reject_firmware(&fw, fwname, &qpti->op->dev);
 	if (err) {
 		printk(KERN_ERR "Failed to load image \"%s\" err %d\n",
 		       fwname, err);
@@ -1473,7 +1473,7 @@ MODULE_DESCRIPTION("QlogicISP SBUS driver");
 MODULE_AUTHOR("David S. Miller (davem@davemloft.net)");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("2.1");
-MODULE_FIRMWARE("qlogic/isp1000.bin");
+/*(DEBLOBBED)*/
 
 module_init(qpti_init);
 module_exit(qpti_exit);

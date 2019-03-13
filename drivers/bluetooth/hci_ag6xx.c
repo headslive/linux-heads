@@ -205,10 +205,10 @@ static int ag6xx_setup(struct hci_uart *hu)
 		return -EINVAL;
 	}
 
-	snprintf(fwname, sizeof(fwname), "intel/ibt-hw-%x.%x.bddata",
+	snprintf(fwname, sizeof(fwname), "/*(DEBLOBBED)*/",
 		 ver.hw_platform, ver.hw_variant);
 
-	err = request_firmware(&fw, fwname, &hdev->dev);
+	err = reject_firmware(&fw, fwname, &hdev->dev);
 	if (err < 0) {
 		bt_dev_err(hdev, "Failed to open Intel bddata file: %s (%d)",
 			   fwname, err);
@@ -241,12 +241,12 @@ patch:
 	}
 
 	snprintf(fwname, sizeof(fwname),
-		 "intel/ibt-hw-%x.%x.%x-fw-%x.%x.%x.%x.%x.pbn",
+		 "/*(DEBLOBBED)*/",
 		 ver.hw_platform, ver.hw_variant, ver.hw_revision,
 		 ver.fw_variant,  ver.fw_revision, ver.fw_build_num,
 		 ver.fw_build_ww, ver.fw_build_yy);
 
-	err = request_firmware(&fw, fwname, &hdev->dev);
+	err = reject_firmware(&fw, fwname, &hdev->dev);
 	if (err < 0) {
 		bt_dev_err(hdev, "Failed to open Intel patch file: %s(%d)",
 			   fwname, err);

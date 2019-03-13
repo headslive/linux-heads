@@ -164,7 +164,7 @@ static int find_firmware(struct gb_bootrom *bootrom, u8 stage)
 	 * XXX Name it properly..
 	 */
 	snprintf(firmware_name, sizeof(firmware_name),
-		 FW_NAME_PREFIX "%08x_%08x_%08x_%08x_s2l.tftf",
+		 FW_NAME_PREFIX "/*(DEBLOBBED)*/",
 		 intf->ddbl1_manufacturer_id, intf->ddbl1_product_id,
 		 intf->vendor_id, intf->product_id);
 
@@ -175,7 +175,7 @@ static int find_firmware(struct gb_bootrom *bootrom, u8 stage)
 	dev_info(&connection->bundle->dev, "Firmware file '%s' requested\n",
 		 firmware_name);
 
-	rc = request_firmware(&bootrom->fw, firmware_name,
+	rc = reject_firmware(&bootrom->fw, firmware_name,
 			      &connection->bundle->dev);
 	if (rc) {
 		dev_err(&connection->bundle->dev,

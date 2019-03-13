@@ -59,13 +59,13 @@
 static const char *if_names[] = { "auto", "10baseT", "10base2"};
 
 /* Firmware name */
-#define FIRMWARE_NAME		"ositech/Xilinx7OD.bin"
+#define FIRMWARE_NAME		"/*(DEBLOBBED)*/"
 
 /* Module parameters */
 
 MODULE_DESCRIPTION("SMC 91c92 series PCMCIA ethernet driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(FIRMWARE_NAME);
+/*(DEBLOBBED)*/
 
 #define INT_MODULE_PARM(n, v) static int n = v; module_param(n, int, 0)
 
@@ -646,7 +646,7 @@ static int osi_load_firmware(struct pcmcia_device *link)
 	const struct firmware *fw;
 	int i, err;
 
-	err = request_firmware(&fw, FIRMWARE_NAME, &link->dev);
+	err = reject_firmware(&fw, FIRMWARE_NAME, &link->dev);
 	if (err) {
 		pr_err("Failed to load firmware \"%s\"\n", FIRMWARE_NAME);
 		return err;

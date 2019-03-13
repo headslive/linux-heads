@@ -57,9 +57,7 @@ static const struct mlxsw_fw_rev mlxsw_sp1_fw_rev = {
 };
 
 #define MLXSW_SP1_FW_FILENAME \
-	"mellanox/mlxsw_spectrum-" __stringify(MLXSW_SP1_FWREV_MAJOR) \
-	"." __stringify(MLXSW_SP1_FWREV_MINOR) \
-	"." __stringify(MLXSW_SP1_FWREV_SUBMINOR) ".mfa2"
+	"/*(DEBLOBBED)*/"
 
 static const char mlxsw_sp1_driver_name[] = "mlxsw_spectrum";
 static const char mlxsw_sp2_driver_name[] = "mlxsw_spectrum2";
@@ -365,7 +363,7 @@ static int mlxsw_sp_fw_rev_validate(struct mlxsw_sp *mlxsw_sp)
 	dev_info(mlxsw_sp->bus_info->dev, "Flashing firmware using file %s\n",
 		 fw_filename);
 
-	err = request_firmware_direct(&firmware, fw_filename,
+	err = reject_firmware_direct(&firmware, fw_filename,
 				      mlxsw_sp->bus_info->dev);
 	if (err) {
 		dev_err(mlxsw_sp->bus_info->dev, "Could not request firmware file %s\n",
@@ -5516,4 +5514,4 @@ MODULE_AUTHOR("Jiri Pirko <jiri@mellanox.com>");
 MODULE_DESCRIPTION("Mellanox Spectrum driver");
 MODULE_DEVICE_TABLE(pci, mlxsw_sp1_pci_id_table);
 MODULE_DEVICE_TABLE(pci, mlxsw_sp2_pci_id_table);
-MODULE_FIRMWARE(MLXSW_SP1_FW_FILENAME);
+/*(DEBLOBBED)*/

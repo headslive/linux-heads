@@ -38,7 +38,7 @@
 #include "comedi_8254.h"
 #include "plx9052.h"
 
-#define ME4000_FIRMWARE		"me4000_firmware.bin"
+#define ME4000_FIRMWARE		"/*(DEBLOBBED)*/"
 
 /*
  * ME4000 Register map and bit defines
@@ -1275,4 +1275,4 @@ module_comedi_pci_driver(me4000_driver, me4000_pci_driver);
 MODULE_AUTHOR("Comedi http://www.comedi.org");
 MODULE_DESCRIPTION("Comedi driver for Meilhaus ME-4000 series boards");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(ME4000_FIRMWARE);
+/*(DEBLOBBED)*/

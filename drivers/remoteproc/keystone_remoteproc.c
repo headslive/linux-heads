@@ -374,7 +374,7 @@ static int keystone_rproc_probe(struct platform_device *pdev)
 	struct rproc *rproc;
 	int dsp_id;
 	char *fw_name = NULL;
-	char *template = "keystone-dsp%d-fw";
+	char *template = "/*(DEBLOBBED)*/";
 	int name_len = 0;
 	int ret = 0;
 

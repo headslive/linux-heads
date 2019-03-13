@@ -44,8 +44,8 @@ extern const struct il_ops il3945_ops;
 /* Lowest firmware API version supported */
 #define IL3945_UCODE_API_MIN 1
 
-#define IL3945_FW_PRE	"iwlwifi-3945-"
-#define _IL3945_MODULE_FIRMWARE(api) IL3945_FW_PRE #api ".ucode"
+#define IL3945_FW_PRE	"/*(DEBLOBBED)*/"
+#define _IL3945_MODULE_FIRMWARE(api) IL3945_FW_PRE /*(DEBLOBBED)*/
 #define IL3945_MODULE_FIRMWARE(api) _IL3945_MODULE_FIRMWARE(api)
 
 /* Default noise level to report when noise measurement is not available.

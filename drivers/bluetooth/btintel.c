@@ -273,7 +273,7 @@ int btintel_load_ddc_config(struct hci_dev *hdev, const char *ddc_name)
 	const u8 *fw_ptr;
 	int err;
 
-	err = request_firmware_direct(&fw, ddc_name, &hdev->dev);
+	err = reject_firmware_direct(&fw, ddc_name, &hdev->dev);
 	if (err < 0) {
 		bt_dev_err(hdev, "Failed to load Intel DDC file %s (%d)",
 			   ddc_name, err);
@@ -728,7 +728,4 @@ MODULE_AUTHOR("Marcel Holtmann <marcel@holtmann.org>");
 MODULE_DESCRIPTION("Bluetooth support for Intel devices ver " VERSION);
 MODULE_VERSION(VERSION);
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("intel/ibt-11-5.sfi");
-MODULE_FIRMWARE("intel/ibt-11-5.ddc");
-MODULE_FIRMWARE("intel/ibt-12-16.sfi");
-MODULE_FIRMWARE("intel/ibt-12-16.ddc");
+/*(DEBLOBBED)*/

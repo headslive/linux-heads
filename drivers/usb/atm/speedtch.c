@@ -353,18 +353,18 @@ static int speedtch_find_firmware(struct usbatm_data *usbatm, struct usb_interfa
 	const u8 minor_revision = bcdDevice & 0xff;
 	char buf[24];
 
-	sprintf(buf, "speedtch-%d.bin.%x.%02x", phase, major_revision, minor_revision);
+	sprintf(buf, "/*(DEBLOBBED)*/", phase, major_revision, minor_revision);
 	usb_dbg(usbatm, "%s: looking for %s\n", __func__, buf);
 
-	if (request_firmware(fw_p, buf, dev)) {
-		sprintf(buf, "speedtch-%d.bin.%x", phase, major_revision);
+	if (reject_firmware(fw_p, buf, dev)) {
+		sprintf(buf, "/*(DEBLOBBED)*/", phase, major_revision);
 		usb_dbg(usbatm, "%s: looking for %s\n", __func__, buf);
 
-		if (request_firmware(fw_p, buf, dev)) {
-			sprintf(buf, "speedtch-%d.bin", phase);
+		if (reject_firmware(fw_p, buf, dev)) {
+			sprintf(buf, "/*(DEBLOBBED)*/", phase);
 			usb_dbg(usbatm, "%s: looking for %s\n", __func__, buf);
 
-			if (request_firmware(fw_p, buf, dev)) {
+			if (reject_firmware(fw_p, buf, dev)) {
 				usb_err(usbatm, "%s: no stage %d firmware found!\n", __func__, phase);
 				return -ENOENT;
 			}

@@ -1072,10 +1072,10 @@ static int cxacru_find_firmware(struct cxacru_data *instance,
 	struct device *dev = &usbatm->usb_intf->dev;
 	char buf[16];
 
-	sprintf(buf, "cxacru-%s.bin", phase);
+	sprintf(buf, "/*(DEBLOBBED)*/", phase);
 	usb_dbg(usbatm, "cxacru_find_firmware: looking for %s\n", buf);
 
-	if (request_firmware(fw_p, buf, dev)) {
+	if (reject_firmware(fw_p, buf, dev)) {
 		usb_dbg(usbatm, "no stage %s firmware found\n", phase);
 		return -ENOENT;
 	}
@@ -1093,14 +1093,14 @@ static int cxacru_heavy_init(struct usbatm_data *usbatm_instance,
 	int ret = cxacru_find_firmware(instance, "fw", &fw);
 
 	if (ret) {
-		usb_warn(usbatm_instance, "firmware (cxacru-fw.bin) unavailable (system misconfigured?)\n");
+		usb_warn(usbatm_instance, "firmware (/*(DEBLOBBED)*/) unavailable (system misconfigured?)\n");
 		return ret;
 	}
 
 	if (instance->modem_type->boot_rom_patch) {
 		ret = cxacru_find_firmware(instance, "bp", &bp);
 		if (ret) {
-			usb_warn(usbatm_instance, "boot ROM patch (cxacru-bp.bin) unavailable (system misconfigured?)\n");
+			usb_warn(usbatm_instance, "boot ROM patch (/*(DEBLOBBED)*/) unavailable (system misconfigured?)\n");
 			release_firmware(fw);
 			return ret;
 		}

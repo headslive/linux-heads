@@ -122,8 +122,8 @@
 #define SMA_wUser_17				0x004a
 #define SMA__size				0x004c
 
-#define INITCODEFILE		"turtlebeach/msndinit.bin"
-#define PERMCODEFILE		"turtlebeach/msndperm.bin"
+#define INITCODEFILE		"/*(DEBLOBBED)*/"
+#define PERMCODEFILE		"/*(DEBLOBBED)*/"
 #define LONGNAME		"MultiSound (Classic/Monterey/Tahiti)"
 
 #endif /* __MSND_CLASSIC_H */

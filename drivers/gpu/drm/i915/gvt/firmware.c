@@ -243,7 +243,7 @@ int intel_gvt_load_firmware(struct intel_gvt *gvt)
 
 	gvt_dbg_core("request hw state firmware %s...\n", path);
 
-	ret = request_firmware(&fw, path, &dev_priv->drm.pdev->dev);
+	ret = reject_firmware(&fw, path, &dev_priv->drm.pdev->dev);
 	kfree(path);
 
 	if (ret)

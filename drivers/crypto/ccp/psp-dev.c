@@ -32,7 +32,7 @@
 		 (psp_master->api_minor) >= _min)
 
 #define DEVICE_NAME		"sev"
-#define SEV_FW_FILE		"amd/sev.fw"
+#define SEV_FW_FILE		"/*(DEBLOBBED)*/"
 #define SEV_FW_NAME_SIZE	64
 
 static DEFINE_MUTEX(sev_cmd_mutex);
@@ -468,9 +468,9 @@ static int sev_get_firmware(struct device *dev,
 	 *
 	 * Fall-back to using generic name: sev.fw
 	 */
-	if ((firmware_request_nowarn(firmware, fw_name_specific, dev) >= 0) ||
-	    (firmware_request_nowarn(firmware, fw_name_subset, dev) >= 0) ||
-	    (firmware_request_nowarn(firmware, SEV_FW_FILE, dev) >= 0))
+	if ((firmware_reject_nowarn(firmware, fw_name_specific, dev) >= 0) ||
+	    (firmware_reject_nowarn(firmware, fw_name_subset, dev) >= 0) ||
+	    (firmware_reject_nowarn(firmware, SEV_FW_FILE, dev) >= 0))
 		return 0;
 
 	return -ENOENT;

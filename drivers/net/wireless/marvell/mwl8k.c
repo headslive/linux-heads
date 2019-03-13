@@ -533,11 +533,11 @@ static int mwl8k_request_fw(struct mwl8k_priv *priv,
 		mwl8k_release_fw(fw);
 
 	if (nowait)
-		return request_firmware_nowait(THIS_MODULE, 1, fname,
+		return reject_firmware_nowait(THIS_MODULE, 1, fname,
 					       &priv->pdev->dev, GFP_KERNEL,
 					       priv, mwl8k_fw_state_machine);
 	else
-		return request_firmware(fw, fname, &priv->pdev->dev);
+		return reject_firmware(fw, fname, &priv->pdev->dev);
 }
 
 static int mwl8k_request_firmware(struct mwl8k_priv *priv, char *fw_image,
@@ -5643,28 +5643,28 @@ enum {
 };
 
 #define MWL8K_8366_AP_FW_API 3
-#define _MWL8K_8366_AP_FW(api) "mwl8k/fmimage_8366_ap-" #api ".fw"
+#define _MWL8K_8366_AP_FW(api) "/*(DEBLOBBED)*/"
 #define MWL8K_8366_AP_FW(api) _MWL8K_8366_AP_FW(api)
 
 #define MWL8K_8764_AP_FW_API 1
-#define _MWL8K_8764_AP_FW(api) "mwl8k/fmimage_8764_ap-" #api ".fw"
+#define _MWL8K_8764_AP_FW(api) "/*(DEBLOBBED)*/"
 #define MWL8K_8764_AP_FW(api) _MWL8K_8764_AP_FW(api)
 
 static struct mwl8k_device_info mwl8k_info_tbl[] = {
 	[MWL8363] = {
 		.part_name	= "88w8363",
-		.helper_image	= "mwl8k/helper_8363.fw",
-		.fw_image_sta	= "mwl8k/fmimage_8363.fw",
+		.helper_image	= "/*(DEBLOBBED)*/",
+		.fw_image_sta	= "/*(DEBLOBBED)*/",
 	},
 	[MWL8687] = {
 		.part_name	= "88w8687",
-		.helper_image	= "mwl8k/helper_8687.fw",
-		.fw_image_sta	= "mwl8k/fmimage_8687.fw",
+		.helper_image	= "/*(DEBLOBBED)*/",
+		.fw_image_sta	= "/*(DEBLOBBED)*/",
 	},
 	[MWL8366] = {
 		.part_name	= "88w8366",
-		.helper_image	= "mwl8k/helper_8366.fw",
-		.fw_image_sta	= "mwl8k/fmimage_8366.fw",
+		.helper_image	= "/*(DEBLOBBED)*/",
+		.fw_image_sta	= "/*(DEBLOBBED)*/",
 		.fw_image_ap	= MWL8K_8366_AP_FW(MWL8K_8366_AP_FW_API),
 		.fw_api_ap	= MWL8K_8366_AP_FW_API,
 		.ap_rxd_ops	= &rxd_ap_ops,
@@ -5677,13 +5677,7 @@ static struct mwl8k_device_info mwl8k_info_tbl[] = {
 	},
 };
 
-MODULE_FIRMWARE("mwl8k/helper_8363.fw");
-MODULE_FIRMWARE("mwl8k/fmimage_8363.fw");
-MODULE_FIRMWARE("mwl8k/helper_8687.fw");
-MODULE_FIRMWARE("mwl8k/fmimage_8687.fw");
-MODULE_FIRMWARE("mwl8k/helper_8366.fw");
-MODULE_FIRMWARE("mwl8k/fmimage_8366.fw");
-MODULE_FIRMWARE(MWL8K_8366_AP_FW(MWL8K_8366_AP_FW_API));
+/*(DEBLOBBED)*/
 
 static const struct pci_device_id mwl8k_pci_id_table[] = {
 	{ PCI_VDEVICE(MARVELL, 0x2a0a), .driver_data = MWL8363, },

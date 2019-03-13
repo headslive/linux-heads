@@ -1099,7 +1099,7 @@ MODULE_DEVICE_TABLE(usb, az6027_usb_table);
 static struct dvb_usb_device_properties az6027_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 	.usb_ctrl = CYPRESS_FX2,
-	.firmware            = "dvb-usb-az6027-03.fw",
+	.firmware            = "/*(DEBLOBBED)*/",
 	.no_reconnect        = 1,
 
 	.size_of_priv     = sizeof(struct az6027_device_state),

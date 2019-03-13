@@ -81,14 +81,12 @@
 #define SCP_SET    0
 #define SCP_GET    1
 
-#define EFX_FILE   "ctefx.bin"
-#define DESKTOP_EFX_FILE   "ctefx-desktop.bin"
-#define R3DI_EFX_FILE  "ctefx-r3di.bin"
+#define EFX_FILE   "/*(DEBLOBBED)*/"
+#define DESKTOP_EFX_FILE   "/*(DEBLOBBED)*/"
+#define R3DI_EFX_FILE  "/*(DEBLOBBED)*/"
 
 #ifdef CONFIG_SND_HDA_CODEC_CA0132_DSP
-MODULE_FIRMWARE(EFX_FILE);
-MODULE_FIRMWARE(DESKTOP_EFX_FILE);
-MODULE_FIRMWARE(R3DI_EFX_FILE);
+/*(DEBLOBBED)*/
 #endif
 
 static const char *const dirstr[2] = { "Playback", "Capture" };
@@ -7528,7 +7526,7 @@ static bool ca0132_download_dsp_images(struct hda_codec *codec)
 	case QUIRK_SBZ:
 	case QUIRK_R3D:
 	case QUIRK_AE5:
-		if (request_firmware(&fw_entry, DESKTOP_EFX_FILE,
+		if (reject_firmware(&fw_entry, DESKTOP_EFX_FILE,
 					codec->card->dev) != 0) {
 			codec_dbg(codec, "Desktop firmware not found.");
 			spec->alt_firmware_present = false;
@@ -7538,7 +7536,7 @@ static bool ca0132_download_dsp_images(struct hda_codec *codec)
 		}
 		break;
 	case QUIRK_R3DI:
-		if (request_firmware(&fw_entry, R3DI_EFX_FILE,
+		if (reject_firmware(&fw_entry, R3DI_EFX_FILE,
 					codec->card->dev) != 0) {
 			codec_dbg(codec, "Recon3Di alt firmware not detected.");
 			spec->alt_firmware_present = false;
@@ -7551,13 +7549,10 @@ static bool ca0132_download_dsp_images(struct hda_codec *codec)
 		spec->alt_firmware_present = false;
 		break;
 	}
-	/*
-	 * Use default ctefx.bin if no alt firmware is detected, or if none
-	 * exists for your particular codec.
-	 */
+/*(DEBLOBBED)*/
 	if (!spec->alt_firmware_present) {
 		codec_dbg(codec, "Default firmware selected.");
-		if (request_firmware(&fw_entry, EFX_FILE,
+		if (reject_firmware(&fw_entry, EFX_FILE,
 					codec->card->dev) != 0)
 			return false;
 	}

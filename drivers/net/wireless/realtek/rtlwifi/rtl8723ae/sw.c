@@ -95,7 +95,7 @@ int rtl8723e_init_sw_vars(struct ieee80211_hw *hw)
 	struct rtl_pci *rtlpci = rtl_pcidev(rtl_pcipriv(hw));
 	struct rtl_hal *rtlhal = rtl_hal(rtl_priv(hw));
 	int err = 0;
-	char *fw_name = "rtlwifi/rtl8723fw.bin";
+	char *fw_name = "/*(DEBLOBBED)*/";
 
 	rtl8723e_bt_reg_init(hw);
 
@@ -176,11 +176,11 @@ int rtl8723e_init_sw_vars(struct ieee80211_hw *hw)
 	}
 
 	if (IS_81xxC_VENDOR_UMC_B_CUT(rtlhal->version))
-		fw_name = "rtlwifi/rtl8723fw_B.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 
 	rtlpriv->max_fw_size = 0x6000;
 	pr_info("Using firmware %s\n", fw_name);
-	err = request_firmware_nowait(THIS_MODULE, 1, fw_name,
+	err = reject_firmware_nowait(THIS_MODULE, 1, fw_name,
 				      rtlpriv->io.dev, GFP_KERNEL, hw,
 				      rtl_fw_cb);
 	if (err) {
@@ -381,7 +381,7 @@ MODULE_AUTHOR("lizhaoming	<chaoming_li@realsil.com.cn>");
 MODULE_AUTHOR("Realtek WlanFAE	<wlanfae@realtek.com>");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Realtek 8723E 802.11n PCI wireless");
-MODULE_FIRMWARE("rtlwifi/rtl8723efw.bin");
+/*(DEBLOBBED)*/
 
 module_param_named(swenc, rtl8723e_mod_params.sw_crypto, bool, 0444);
 module_param_named(debug_level, rtl8723e_mod_params.debug_level, int, 0644);

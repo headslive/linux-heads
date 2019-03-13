@@ -88,32 +88,17 @@ static struct {
 	const char *fw_file;
 	const char *fw_file_ext;
 } fw_table[] = {
-	{ ATMEL_FW_TYPE_502,		"atmel_at76c502",	"bin" },
-	{ ATMEL_FW_TYPE_502D,		"atmel_at76c502d",	"bin" },
-	{ ATMEL_FW_TYPE_502E,		"atmel_at76c502e",	"bin" },
-	{ ATMEL_FW_TYPE_502_3COM,	"atmel_at76c502_3com",	"bin" },
-	{ ATMEL_FW_TYPE_504,		"atmel_at76c504",	"bin" },
-	{ ATMEL_FW_TYPE_504_2958,	"atmel_at76c504_2958",	"bin" },
-	{ ATMEL_FW_TYPE_504A_2958,	"atmel_at76c504a_2958",	"bin" },
-	{ ATMEL_FW_TYPE_506,		"atmel_at76c506",	"bin" },
+	{ ATMEL_FW_TYPE_502,		"/*(DEBLOBBED)*/",	"bin" },
+	{ ATMEL_FW_TYPE_502D,		"/*(DEBLOBBED)*/",	"bin" },
+	{ ATMEL_FW_TYPE_502E,		"/*(DEBLOBBED)*/",	"bin" },
+	{ ATMEL_FW_TYPE_502_3COM,	"/*(DEBLOBBED)*/",	"bin" },
+	{ ATMEL_FW_TYPE_504,		"/*(DEBLOBBED)*/",	"bin" },
+	{ ATMEL_FW_TYPE_504_2958,	"/*(DEBLOBBED)*/",	"bin" },
+	{ ATMEL_FW_TYPE_504A_2958,	"/*(DEBLOBBED)*/",	"bin" },
+	{ ATMEL_FW_TYPE_506,		"/*(DEBLOBBED)*/",	"bin" },
 	{ ATMEL_FW_TYPE_NONE,		NULL,			NULL }
 };
-MODULE_FIRMWARE("atmel_at76c502-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c502.bin");
-MODULE_FIRMWARE("atmel_at76c502d-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c502d.bin");
-MODULE_FIRMWARE("atmel_at76c502e-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c502e.bin");
-MODULE_FIRMWARE("atmel_at76c502_3com-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c502_3com.bin");
-MODULE_FIRMWARE("atmel_at76c504-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c504.bin");
-MODULE_FIRMWARE("atmel_at76c504_2958-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c504_2958.bin");
-MODULE_FIRMWARE("atmel_at76c504a_2958-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c504a_2958.bin");
-MODULE_FIRMWARE("atmel_at76c506-wpa.bin");
-MODULE_FIRMWARE("atmel_at76c506.bin");
+/*(DEBLOBBED)*/
 
 #define MAX_SSID_LENGTH 32
 #define MGMT_JIFFIES (256 * HZ / 100)
@@ -3890,9 +3875,9 @@ static int reset_atmel_card(struct net_device *dev)
 					printk(KERN_INFO
 					       "%s: if not, use the firmware= module parameter.\n",
 					       dev->name);
-					strcpy(priv->firmware_id, "atmel_at76c502.bin");
+					strcpy(priv->firmware_id, "/*(DEBLOBBED)*/");
 				}
-				err = request_firmware(&fw_entry, priv->firmware_id, priv->sys_dev);
+				err = reject_firmware(&fw_entry, priv->firmware_id, priv->sys_dev);
 				if (err != 0) {
 					printk(KERN_ALERT
 					       "%s: firmware %s is missing, cannot continue.\n",
@@ -3915,7 +3900,7 @@ static int reset_atmel_card(struct net_device *dev)
 						snprintf(priv->firmware_id, 32, "%s%s.%s", fw_table[fw_index].fw_file,
 							firmware_modifier[i], fw_table[fw_index].fw_file_ext);
 						priv->firmware_id[31] = '\0';
-						if (request_firmware(&fw_entry, priv->firmware_id, priv->sys_dev) == 0) {
+						if (reject_firmware(&fw_entry, priv->firmware_id, priv->sys_dev) == 0) {
 							success = 1;
 							break;
 						}

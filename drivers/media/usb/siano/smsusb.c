@@ -243,11 +243,11 @@ static int smsusb_sendrequest(void *context, void *buffer, size_t size)
 }
 
 static char *smsusb1_fw_lkup[] = {
-	"dvbt_stellar_usb.inp",
-	"dvbh_stellar_usb.inp",
-	"tdmb_stellar_usb.inp",
+	"/*(DEBLOBBED)*/",
+	"/*(DEBLOBBED)*/",
+	"/*(DEBLOBBED)*/",
 	"none",
-	"dvbt_bda_stellar_usb.inp",
+	"/*(DEBLOBBED)*/",
 };
 
 static inline char *sms_get_fw_name(int mode, int board_id)
@@ -273,13 +273,13 @@ static int smsusb1_load_firmware(struct usb_device *udev, int id, int board_id)
 
 	fw_filename = sms_get_fw_name(id, board_id);
 
-	rc = request_firmware(&fw, fw_filename, &udev->dev);
+	rc = reject_firmware(&fw, fw_filename, &udev->dev);
 	if (rc < 0) {
 		pr_warn("failed to open '%s' mode %d, trying again with default firmware\n",
 			fw_filename, id);
 
 		fw_filename = smsusb1_fw_lkup[id];
-		rc = request_firmware(&fw, fw_filename, &udev->dev);
+		rc = reject_firmware(&fw, fw_filename, &udev->dev);
 		if (rc < 0) {
 			pr_warn("failed to open '%s' mode %d\n",
 				 fw_filename, id);

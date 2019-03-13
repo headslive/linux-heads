@@ -266,7 +266,7 @@ static int philips_tda1004x_request_firmware(struct dvb_frontend *fe,
 					   const struct firmware **fw, char *name)
 {
 	struct saa7134_dev *dev = fe->dvb->priv;
-	return request_firmware(fw, name, &dev->pci->dev);
+	return reject_firmware(fw, name, &dev->pci->dev);
 }
 
 /* ------------------------------------------------------------------

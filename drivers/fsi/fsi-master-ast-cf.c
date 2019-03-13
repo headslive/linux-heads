@@ -25,7 +25,7 @@
 #include "fsi-master.h"
 #include "cf-fsi-fw.h"
 
-#define FW_FILE_NAME	"cf-fsi-fw.bin"
+#define FW_FILE_NAME	"/*(DEBLOBBED)*/"
 
 /* Common SCU based coprocessor control registers */
 #define SCU_COPRO_CTRL			0x100
@@ -835,7 +835,7 @@ static int load_copro_firmware(struct fsi_master_acf *master)
 	int rc;
 
 	/* Get the binary */
-	rc = request_firmware(&fw, FW_FILE_NAME, master->dev);
+	rc = reject_firmware(&fw, FW_FILE_NAME, master->dev);
 	if (rc) {
 		dev_err(
 			master->dev, "Error %d to load firwmare '%s' !\n",

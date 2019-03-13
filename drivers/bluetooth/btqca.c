@@ -273,7 +273,7 @@ static int qca_download_firmware(struct hci_dev *hdev,
 
 	bt_dev_info(hdev, "QCA Downloading %s", config->fwname);
 
-	ret = request_firmware(&fw, config->fwname, &hdev->dev);
+	ret = reject_firmware(&fw, config->fwname, &hdev->dev);
 	if (ret) {
 		bt_dev_err(hdev, "QCA Failed to request file: %s (%d)",
 			   config->fwname, ret);
@@ -354,7 +354,7 @@ int qca_uart_setup(struct hci_dev *hdev, uint8_t baudrate,
 			 "qca/crbtfw%02x.tlv", rom_ver);
 	} else {
 		snprintf(config.fwname, sizeof(config.fwname),
-			 "qca/rampatch_%08x.bin", soc_ver);
+			 "/*(DEBLOBBED)*/", soc_ver);
 	}
 
 	err = qca_download_firmware(hdev, &config);
@@ -367,10 +367,10 @@ int qca_uart_setup(struct hci_dev *hdev, uint8_t baudrate,
 	config.type = TLV_TYPE_NVM;
 	if (soc_type == QCA_WCN3990)
 		snprintf(config.fwname, sizeof(config.fwname),
-			 "qca/crnv%02x.bin", rom_ver);
+			 "/*(DEBLOBBED)*/", rom_ver);
 	else
 		snprintf(config.fwname, sizeof(config.fwname),
-			 "qca/nvm_%08x.bin", soc_ver);
+			 "/*(DEBLOBBED)*/", soc_ver);
 
 	err = qca_download_firmware(hdev, &config);
 	if (err < 0) {

@@ -64,7 +64,7 @@ extern char spider_net_driver_name[];
 #define SPIDER_NET_FIRMWARE_LEN		(SPIDER_NET_FIRMWARE_SEQS * \
 					 SPIDER_NET_FIRMWARE_SEQWORDS * \
 					 sizeof(u32))
-#define SPIDER_NET_FIRMWARE_NAME	"spider_fw.bin"
+#define SPIDER_NET_FIRMWARE_NAME	"/*(DEBLOBBED)*/"
 
 /** spider_net SMMIO registers */
 #define SPIDER_NET_GHIINT0STS		0x00000000

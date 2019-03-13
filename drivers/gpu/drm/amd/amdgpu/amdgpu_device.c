@@ -61,11 +61,7 @@
 
 #include "amdgpu_xgmi.h"
 
-MODULE_FIRMWARE("amdgpu/vega10_gpu_info.bin");
-MODULE_FIRMWARE("amdgpu/vega12_gpu_info.bin");
-MODULE_FIRMWARE("amdgpu/raven_gpu_info.bin");
-MODULE_FIRMWARE("amdgpu/picasso_gpu_info.bin");
-MODULE_FIRMWARE("amdgpu/raven2_gpu_info.bin");
+/*(DEBLOBBED)*/
 
 #define AMDGPU_RESUME_MS		2000
 
@@ -765,7 +761,7 @@ bool amdgpu_device_need_post(struct amdgpu_device *adev)
 		if (adev->asic_type == CHIP_FIJI) {
 			int err;
 			uint32_t fw_ver;
-			err = request_firmware(&adev->pm.fw, "amdgpu/fiji_smc.bin", adev->dev);
+			err = reject_firmware(&adev->pm.fw, "/*(DEBLOBBED)*/", adev->dev);
 			/* force vPost if error occured */
 			if (err)
 				return true;
@@ -1357,8 +1353,8 @@ static int amdgpu_device_parse_gpu_info_fw(struct amdgpu_device *adev)
 		break;
 	}
 
-	snprintf(fw_name, sizeof(fw_name), "amdgpu/%s_gpu_info.bin", chip_name);
-	err = request_firmware(&adev->firmware.gpu_info_fw, fw_name, adev->dev);
+	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
+	err = reject_firmware(&adev->firmware.gpu_info_fw, fw_name, adev->dev);
 	if (err) {
 		dev_err(adev->dev,
 			"Failed to load gpu_info firmware \"%s\"\n",

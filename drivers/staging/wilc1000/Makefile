@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
 obj-$(CONFIG_WILC1000) += wilc1000.o
 
-ccflags-y += -DFIRMWARE_1002=\"atmel/wilc1002_firmware.bin\" \
-		-DFIRMWARE_1003=\"atmel/wilc1003_firmware.bin\"
+ccflags-y += -DFIRMWARE_1002="\"/*(DEBLOBBED)*/\"" \
+		-DFIRMWARE_1003="\"/*(DEBLOBBED)*/\""
 
 wilc1000-objs := wilc_wfi_cfgoperations.o linux_wlan.o linux_mon.o \
 			host_interface.o wilc_wlan_cfg.o wilc_wlan.o

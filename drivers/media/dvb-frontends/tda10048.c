@@ -31,8 +31,8 @@
 #include <media/dvb_math.h>
 #include "tda10048.h"
 
-#define TDA10048_DEFAULT_FIRMWARE "dvb-fe-tda10048-1.0.fw"
-#define TDA10048_DEFAULT_FIRMWARE_SIZE 24878
+/*(DEBLOBBED)*/
+/*(DEBLOBBED)*/
 
 /* Register name definitions */
 #define TDA10048_IDENTITY          0x00
@@ -490,9 +490,9 @@ static int tda10048_firmware_upload(struct dvb_frontend *fe)
 	/* request the firmware, this will block and timeout */
 	printk(KERN_INFO "%s: waiting for firmware upload (%s)...\n",
 		__func__,
-		TDA10048_DEFAULT_FIRMWARE);
+		"/*(DEBLOBBED)*/");
 
-	ret = request_firmware(&fw, TDA10048_DEFAULT_FIRMWARE,
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/",
 		state->i2c->dev.parent);
 	if (ret) {
 		printk(KERN_ERR "%s: Upload failed. (file not found?)\n",
@@ -505,7 +505,7 @@ static int tda10048_firmware_upload(struct dvb_frontend *fe)
 		ret = 0;
 	}
 
-	if (fw->size != TDA10048_DEFAULT_FIRMWARE_SIZE) {
+	if (fw->size != 0) {
 		printk(KERN_ERR "%s: firmware incorrect size\n", __func__);
 		ret = -EIO;
 	} else {

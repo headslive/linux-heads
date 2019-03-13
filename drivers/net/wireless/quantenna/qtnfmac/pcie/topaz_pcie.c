@@ -1004,7 +1004,7 @@ static int qtnf_topaz_fw_upload(struct qtnf_pcie_topaz_state *ts,
 
 	pr_info("starting firmware upload: %s\n", fwname);
 
-	ret = request_firmware(&fw, fwname, &pdev->dev);
+	ret = reject_firmware(&fw, fwname, &pdev->dev);
 	if (ret < 0) {
 		pr_err("%s: request_firmware error %d\n", fwname, ret);
 		return -1;

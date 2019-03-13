@@ -33,25 +33,25 @@
 
 #define MODULENAME "r8169"
 
-#define FIRMWARE_8168D_1	"rtl_nic/rtl8168d-1.fw"
-#define FIRMWARE_8168D_2	"rtl_nic/rtl8168d-2.fw"
-#define FIRMWARE_8168E_1	"rtl_nic/rtl8168e-1.fw"
-#define FIRMWARE_8168E_2	"rtl_nic/rtl8168e-2.fw"
-#define FIRMWARE_8168E_3	"rtl_nic/rtl8168e-3.fw"
-#define FIRMWARE_8168F_1	"rtl_nic/rtl8168f-1.fw"
-#define FIRMWARE_8168F_2	"rtl_nic/rtl8168f-2.fw"
-#define FIRMWARE_8105E_1	"rtl_nic/rtl8105e-1.fw"
-#define FIRMWARE_8402_1		"rtl_nic/rtl8402-1.fw"
-#define FIRMWARE_8411_1		"rtl_nic/rtl8411-1.fw"
-#define FIRMWARE_8411_2		"rtl_nic/rtl8411-2.fw"
-#define FIRMWARE_8106E_1	"rtl_nic/rtl8106e-1.fw"
-#define FIRMWARE_8106E_2	"rtl_nic/rtl8106e-2.fw"
-#define FIRMWARE_8168G_2	"rtl_nic/rtl8168g-2.fw"
-#define FIRMWARE_8168G_3	"rtl_nic/rtl8168g-3.fw"
-#define FIRMWARE_8168H_1	"rtl_nic/rtl8168h-1.fw"
-#define FIRMWARE_8168H_2	"rtl_nic/rtl8168h-2.fw"
-#define FIRMWARE_8107E_1	"rtl_nic/rtl8107e-1.fw"
-#define FIRMWARE_8107E_2	"rtl_nic/rtl8107e-2.fw"
+#define FIRMWARE_8168D_1	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168D_2	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168E_1	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168E_2	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168E_3	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168F_1	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168F_2	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8105E_1	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8402_1		"/*(DEBLOBBED)*/"
+#define FIRMWARE_8411_1		"/*(DEBLOBBED)*/"
+#define FIRMWARE_8411_2		"/*(DEBLOBBED)*/"
+#define FIRMWARE_8106E_1	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8106E_2	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168G_2	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168G_3	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168H_1	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8168H_2	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8107E_1	"/*(DEBLOBBED)*/"
+#define FIRMWARE_8107E_2	"/*(DEBLOBBED)*/"
 
 #define R8169_MSG_DEFAULT \
 	(NETIF_MSG_DRV | NETIF_MSG_PROBE | NETIF_MSG_IFUP | NETIF_MSG_IFDOWN)
@@ -710,25 +710,7 @@ module_param_named(debug, debug.msg_enable, int, 0);
 MODULE_PARM_DESC(debug, "Debug verbosity level (0=none, ..., 16=all)");
 MODULE_SOFTDEP("pre: realtek");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(FIRMWARE_8168D_1);
-MODULE_FIRMWARE(FIRMWARE_8168D_2);
-MODULE_FIRMWARE(FIRMWARE_8168E_1);
-MODULE_FIRMWARE(FIRMWARE_8168E_2);
-MODULE_FIRMWARE(FIRMWARE_8168E_3);
-MODULE_FIRMWARE(FIRMWARE_8105E_1);
-MODULE_FIRMWARE(FIRMWARE_8168F_1);
-MODULE_FIRMWARE(FIRMWARE_8168F_2);
-MODULE_FIRMWARE(FIRMWARE_8402_1);
-MODULE_FIRMWARE(FIRMWARE_8411_1);
-MODULE_FIRMWARE(FIRMWARE_8411_2);
-MODULE_FIRMWARE(FIRMWARE_8106E_1);
-MODULE_FIRMWARE(FIRMWARE_8106E_2);
-MODULE_FIRMWARE(FIRMWARE_8168G_2);
-MODULE_FIRMWARE(FIRMWARE_8168G_3);
-MODULE_FIRMWARE(FIRMWARE_8168H_1);
-MODULE_FIRMWARE(FIRMWARE_8168H_2);
-MODULE_FIRMWARE(FIRMWARE_8107E_1);
-MODULE_FIRMWARE(FIRMWARE_8107E_2);
+/*(DEBLOBBED)*/
 
 static inline struct device *tp_to_dev(struct rtl8169_private *tp)
 {
@@ -4394,7 +4376,7 @@ static void rtl_request_uncached_firmware(struct rtl8169_private *tp)
 	if (!rtl_fw)
 		goto err_warn;
 
-	rc = request_firmware(&rtl_fw->fw, name, tp_to_dev(tp));
+	rc = reject_firmware(&rtl_fw->fw, name, tp_to_dev(tp));
 	if (rc < 0)
 		goto err_free;
 

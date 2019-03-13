@@ -7684,7 +7684,7 @@ static void saa7134_tuner_setup(struct saa7134_dev *dev)
 		memset(&xc2028_cfg, 0, sizeof(xc2028_cfg));
 		memset(&ctl, 0, sizeof(ctl));
 
-		ctl.fname   = XC2028_DEFAULT_FIRMWARE;
+		ctl.fname   = "/*(DEBLOBBED)*/";
 		ctl.max_len = 64;
 
 		switch (dev->board) {

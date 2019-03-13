@@ -23,11 +23,11 @@
 #include <linux/i2c-mux.h>
 #include <linux/kernel.h>
 
-#define SI2168_A20_FIRMWARE "dvb-demod-si2168-a20-01.fw"
-#define SI2168_A30_FIRMWARE "dvb-demod-si2168-a30-01.fw"
-#define SI2168_B40_FIRMWARE "dvb-demod-si2168-b40-01.fw"
-#define SI2168_D60_FIRMWARE "dvb-demod-si2168-d60-01.fw"
-#define SI2168_B40_FIRMWARE_FALLBACK "dvb-demod-si2168-02.fw"
+#define SI2168_A20_FIRMWARE "/*(DEBLOBBED)*/"
+#define SI2168_A30_FIRMWARE "/*(DEBLOBBED)*/"
+#define SI2168_B40_FIRMWARE "/*(DEBLOBBED)*/"
+#define SI2168_D60_FIRMWARE "/*(DEBLOBBED)*/"
+#define SI2168_B40_FIRMWARE_FALLBACK "/*(DEBLOBBED)*/"
 
 /* state struct */
 struct si2168_dev {

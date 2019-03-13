@@ -174,8 +174,8 @@
 #define SMA_dwDSPPlayCount			0x0078
 #define SMA__size				0x007c
 
-#define INITCODEFILE		"turtlebeach/pndspini.bin"
-#define PERMCODEFILE		"turtlebeach/pndsperm.bin"
+#define INITCODEFILE		"/*(DEBLOBBED)*/"
+#define PERMCODEFILE		"/*(DEBLOBBED)*/"
 #define LONGNAME		"MultiSound (Pinnacle/Fiji)"
 
 #endif /* __MSND_PINNACLE_H */

@@ -22,7 +22,7 @@
 #include "usbpipe.h"
 
 #define FIRMWARE_VERSION	0x133		/* version 1.51 */
-#define FIRMWARE_NAME		"vntwusb.fw"
+#define FIRMWARE_NAME		"/*(DEBLOBBED)*/"
 
 #define FIRMWARE_CHUNK_SIZE	0x400
 
@@ -38,7 +38,7 @@ int vnt_download_firmware(struct vnt_private *priv)
 
 	dev_dbg(dev, "---->Download firmware\n");
 
-	rc = request_firmware(&fw, FIRMWARE_NAME, dev);
+	rc = reject_firmware(&fw, FIRMWARE_NAME, dev);
 	if (rc) {
 		dev_err(dev, "firmware file %s request failed (%d)\n",
 			FIRMWARE_NAME, rc);
@@ -75,7 +75,7 @@ out:
 
 	return result;
 }
-MODULE_FIRMWARE(FIRMWARE_NAME);
+/*(DEBLOBBED)*/
 
 int vnt_firmware_branch_to_sram(struct vnt_private *priv)
 {

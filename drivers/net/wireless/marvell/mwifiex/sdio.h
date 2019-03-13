@@ -30,13 +30,13 @@
 
 #include "main.h"
 
-#define SD8786_DEFAULT_FW_NAME "mrvl/sd8786_uapsta.bin"
-#define SD8787_DEFAULT_FW_NAME "mrvl/sd8787_uapsta.bin"
-#define SD8797_DEFAULT_FW_NAME "mrvl/sd8797_uapsta.bin"
-#define SD8897_DEFAULT_FW_NAME "mrvl/sd8897_uapsta.bin"
-#define SD8887_DEFAULT_FW_NAME "mrvl/sd8887_uapsta.bin"
-#define SD8801_DEFAULT_FW_NAME "mrvl/sd8801_uapsta.bin"
-#define SD8997_DEFAULT_FW_NAME "mrvl/sd8997_uapsta.bin"
+#define SD8786_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define SD8787_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define SD8797_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define SD8897_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define SD8887_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define SD8801_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
+#define SD8997_DEFAULT_FW_NAME "/*(DEBLOBBED)*/"
 
 #define BLOCK_MODE	1
 #define BYTE_MODE	0

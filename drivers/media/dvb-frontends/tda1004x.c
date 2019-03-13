@@ -19,15 +19,7 @@
      Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
    */
-/*
- * This driver needs external firmware. Please use the commands
- * "<kerneldir>/scripts/get_dvb_firmware tda10045",
- * "<kerneldir>/scripts/get_dvb_firmware tda10046" to
- * download/extract them, and then copy them to /usr/lib/hotplug/firmware
- * or /lib/firmware (depending on configuration of firmware hotplug).
- */
-#define TDA10045_DEFAULT_FIRMWARE "dvb-fe-tda10045.fw"
-#define TDA10046_DEFAULT_FIRMWARE "dvb-fe-tda10046.fw"
+/*(DEBLOBBED)*/
 
 #include <linux/init.h>
 #include <linux/module.h>
@@ -399,8 +391,8 @@ static int tda10045_fwupload(struct dvb_frontend* fe)
 		return 0;
 
 	/* request the firmware, this will block until someone uploads it */
-	printk(KERN_INFO "tda1004x: waiting for firmware upload (%s)...\n", TDA10045_DEFAULT_FIRMWARE);
-	ret = state->config->request_firmware(fe, &fw, TDA10045_DEFAULT_FIRMWARE);
+	printk(KERN_INFO "tda1004x: waiting for firmware upload (%s)...\n", "/*(DEBLOBBED)*/");
+	ret = state->config->request_firmware(fe, &fw, "/*(DEBLOBBED)*/");
 	if (ret) {
 		printk(KERN_ERR "tda1004x: no firmware upload (timeout or file not found?)\n");
 		return ret;
@@ -540,16 +532,16 @@ static int tda10046_fwupload(struct dvb_frontend* fe)
 	if (state->config->request_firmware != NULL) {
 		/* request the firmware, this will block until someone uploads it */
 		printk(KERN_INFO "tda1004x: waiting for firmware upload...\n");
-		ret = state->config->request_firmware(fe, &fw, TDA10046_DEFAULT_FIRMWARE);
+		ret = state->config->request_firmware(fe, &fw, "/*(DEBLOBBED)*/");
 		if (ret) {
 			/* remain compatible to old bug: try to load with tda10045 image name */
-			ret = state->config->request_firmware(fe, &fw, TDA10045_DEFAULT_FIRMWARE);
+			ret = state->config->request_firmware(fe, &fw, "/*(DEBLOBBED)*/");
 			if (ret) {
 				printk(KERN_ERR "tda1004x: no firmware upload (timeout or file not found?)\n");
 				return ret;
 			} else {
 				printk(KERN_INFO "tda1004x: please rename the firmware file to %s\n",
-						  TDA10046_DEFAULT_FIRMWARE);
+						  "/*(DEBLOBBED)*/");
 			}
 		}
 	} else {

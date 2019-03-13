@@ -132,8 +132,7 @@ static int intel_sst_probe(struct pci_dev *pci,
 	sst_drv_ctx->pdata = sst_pdata;
 	sst_drv_ctx->irq_num = pci->irq;
 	snprintf(sst_drv_ctx->firmware_name, sizeof(sst_drv_ctx->firmware_name),
-			"%s%04x%s", "fw_sst_",
-			sst_drv_ctx->dev_id, ".bin");
+			"/*(DEBLOBBED)*/");
 
 	ret = sst_context_init(sst_drv_ctx);
 	if (ret < 0)

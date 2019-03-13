@@ -20,9 +20,9 @@
 //#undef SPDIF	/* if you want MIDI uncomment this line */ 
 
 #ifdef SPDIF
-#define FIRMWARE_FW "emi62/spdif.fw"
+#define FIRMWARE_FW "/*(DEBLOBBED)*/"
 #else
-#define FIRMWARE_FW "emi62/midi.fw"
+#define FIRMWARE_FW "/*(DEBLOBBED)*/"
 #endif
 
 #define EMI62_VENDOR_ID 		0x086a  /* Emagic Soft-und Hardware GmBH */
@@ -92,16 +92,16 @@ static int emi62_load_firmware (struct usb_device *dev)
 	if (!buf)
 		goto wraperr;
 
-	err = request_ihex_firmware(&loader_fw, "emi62/loader.fw", &dev->dev);
+	err = reject_firmware(&loader_fw, "/*(DEBLOBBED)*/", &dev->dev);
 	if (err)
 		goto nofw;
 
-	err = request_ihex_firmware(&bitstream_fw, "emi62/bitstream.fw",
+	err = reject_firmware(&bitstream_fw, "/*(DEBLOBBED)*/",
 				    &dev->dev);
 	if (err)
 		goto nofw;
 
-	err = request_ihex_firmware(&firmware_fw, FIRMWARE_FW, &dev->dev);
+	err = reject_firmware(&firmware_fw, FIRMWARE_FW, &dev->dev);
 	if (err) {
 	nofw:
 		goto wraperr;
@@ -265,8 +265,6 @@ MODULE_AUTHOR("Tapio Laxström");
 MODULE_DESCRIPTION("Emagic EMI 6|2m firmware loader.");
 MODULE_LICENSE("GPL");
 
-MODULE_FIRMWARE("emi62/loader.fw");
-MODULE_FIRMWARE("emi62/bitstream.fw");
-MODULE_FIRMWARE(FIRMWARE_FW);
+/*(DEBLOBBED)*/
 /* vi:ai:syntax=c:sw=8:ts=8:tw=80
  */

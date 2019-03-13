@@ -33,7 +33,7 @@
 #include "cx24120.h"
 
 #define CX24120_SEARCH_RANGE_KHZ 5000
-#define CX24120_FIRMWARE "dvb-fe-cx24120-1.20.58.2.fw"
+#define CX24120_FIRMWARE "/*(DEBLOBBED)*/"
 
 /* cx24120 i2c registers  */
 #define CX24120_REG_CMD_START	0x00		/* write cmd_id */

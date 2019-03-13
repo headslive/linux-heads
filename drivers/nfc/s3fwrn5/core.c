@@ -36,7 +36,7 @@ static int s3fwrn5_firmware_update(struct s3fwrn5_info *info)
 	bool need_update;
 	int ret;
 
-	s3fwrn5_fw_init(&info->fw_info, "sec_s3fwrn5_firmware.bin");
+	s3fwrn5_fw_init(&info->fw_info, "/*(DEBLOBBED)*/");
 
 	/* Update firmware */
 
@@ -63,7 +63,7 @@ static int s3fwrn5_firmware_update(struct s3fwrn5_info *info)
 	s3fwrn5_set_mode(info, S3FWRN5_MODE_NCI);
 
 	s3fwrn5_set_wake(info, true);
-	ret = s3fwrn5_nci_rf_configure(info, "sec_s3fwrn5_rfreg.bin");
+	ret = s3fwrn5_nci_rf_configure(info, "/*(DEBLOBBED)*/");
 	s3fwrn5_set_wake(info, false);
 
 out:

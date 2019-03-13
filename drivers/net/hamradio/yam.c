@@ -81,8 +81,8 @@ static const char yam_drvinfo[] __initconst = KERN_INFO \
 
 /* --------------------------------------------------------------------- */
 
-#define FIRMWARE_9600	"yam/9600.bin"
-#define FIRMWARE_1200	"yam/1200.bin"
+#define FIRMWARE_9600	"/*(DEBLOBBED)*/"
+#define FIRMWARE_1200	"/*(DEBLOBBED)*/"
 
 #define YAM_9600	1
 #define YAM_1200	2
@@ -370,7 +370,7 @@ static unsigned char *add_mcs(unsigned char *bits, int bitrate,
 			printk(KERN_ERR "yam: Failed to register firmware\n");
 			return NULL;
 		}
-		err = request_firmware(&fw, fw_name[predef], &pdev->dev);
+		err = reject_firmware(&fw, fw_name[predef], &pdev->dev);
 		platform_device_unregister(pdev);
 		if (err) {
 			printk(KERN_ERR "Failed to load firmware \"%s\"\n",
@@ -1198,8 +1198,7 @@ static void __exit yam_cleanup_driver(void)
 MODULE_AUTHOR("Frederic Rible F1OAT frible@teaser.fr");
 MODULE_DESCRIPTION("Yam amateur radio modem driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(FIRMWARE_1200);
-MODULE_FIRMWARE(FIRMWARE_9600);
+/*(DEBLOBBED)*/
 
 module_init(yam_init_driver);
 module_exit(yam_cleanup_driver);

@@ -1592,12 +1592,12 @@ static const struct firmware *btusb_setup_intel_get_fw(struct hci_dev *hdev,
 	int ret;
 
 	snprintf(fwname, sizeof(fwname),
-		 "intel/ibt-hw-%x.%x.%x-fw-%x.%x.%x.%x.%x.bseq",
+		 "/*(DEBLOBBED)*/",
 		 ver->hw_platform, ver->hw_variant, ver->hw_revision,
 		 ver->fw_variant,  ver->fw_revision, ver->fw_build_num,
 		 ver->fw_build_ww, ver->fw_build_yy);
 
-	ret = request_firmware(&fw, fwname, &hdev->dev);
+	ret = reject_firmware(&fw, fwname, &hdev->dev);
 	if (ret < 0) {
 		if (ret == -EINVAL) {
 			bt_dev_err(hdev, "Intel firmware file request failed (%d)",
@@ -1611,9 +1611,9 @@ static const struct firmware *btusb_setup_intel_get_fw(struct hci_dev *hdev,
 		/* If the correct firmware patch file is not found, use the
 		 * default firmware patch file instead
 		 */
-		snprintf(fwname, sizeof(fwname), "intel/ibt-hw-%x.%x.bseq",
+		snprintf(fwname, sizeof(fwname), "/*(DEBLOBBED)*/",
 			 ver->hw_platform, ver->hw_variant);
-		if (request_firmware(&fw, fwname, &hdev->dev) < 0) {
+		if (reject_firmware(&fw, fwname, &hdev->dev) < 0) {
 			bt_dev_err(hdev, "failed to open default fw file: %s",
 				   fwname);
 			return NULL;
@@ -2223,7 +2223,7 @@ static int btusb_setup_intel_new(struct hci_dev *hdev)
 		return -EINVAL;
 	}
 
-	err = request_firmware(&fw, fwname, &hdev->dev);
+	err = reject_firmware(&fw, fwname, &hdev->dev);
 	if (err < 0) {
 		bt_dev_err(hdev, "Failed to load Intel firmware file (%d)", err);
 		return err;
@@ -2634,9 +2634,9 @@ static int btusb_setup_qca_load_rampatch(struct hci_dev *hdev,
 	ver_rom = le32_to_cpu(ver->rom_version);
 	ver_patch = le32_to_cpu(ver->patch_version);
 
-	snprintf(fwname, sizeof(fwname), "qca/rampatch_usb_%08x.bin", ver_rom);
+	snprintf(fwname, sizeof(fwname), "/*(DEBLOBBED)*/", ver_rom);
 
-	err = request_firmware(&fw, fwname, &hdev->dev);
+	err = reject_firmware(&fw, fwname, &hdev->dev);
 	if (err) {
 		bt_dev_err(hdev, "failed to request rampatch file: %s (%d)",
 			   fwname, err);
@@ -2675,10 +2675,10 @@ static int btusb_setup_qca_load_nvm(struct hci_dev *hdev,
 	char fwname[64];
 	int err;
 
-	snprintf(fwname, sizeof(fwname), "qca/nvm_usb_%08x.bin",
+	snprintf(fwname, sizeof(fwname), "/*(DEBLOBBED)*/",
 		 le32_to_cpu(ver->rom_version));
 
-	err = request_firmware(&fw, fwname, &hdev->dev);
+	err = reject_firmware(&fw, fwname, &hdev->dev);
 	if (err) {
 		bt_dev_err(hdev, "failed to request NVM file: %s (%d)",
 			   fwname, err);

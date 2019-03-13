@@ -486,7 +486,7 @@ static int mn88473_init(struct dvb_frontend *fe)
 		goto warm;
 
 	/* Request the firmware, this will block and timeout */
-	ret = request_firmware(&fw, name, &client->dev);
+	ret = reject_firmware(&fw, name, &client->dev);
 	if (ret) {
 		dev_err(&client->dev, "firmware file '%s' not found\n", name);
 		goto err;
@@ -777,4 +777,4 @@ module_i2c_driver(mn88473_driver);
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("Panasonic MN88473 DVB-T/T2/C demodulator driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(MN88473_FIRMWARE);
+/*(DEBLOBBED)*/

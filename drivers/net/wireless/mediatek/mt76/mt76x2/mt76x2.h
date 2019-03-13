@@ -27,8 +27,8 @@
 #include <linux/mutex.h>
 #include <linux/bitops.h>
 
-#define MT7662_FIRMWARE		"mt7662.bin"
-#define MT7662_ROM_PATCH	"mt7662_rom_patch.bin"
+#define MT7662_FIRMWARE		"/*(DEBLOBBED)*/"
+#define MT7662_ROM_PATCH	"/*(DEBLOBBED)*/"
 #define MT7662_EEPROM_SIZE	512
 
 #include "../mt76x02.h"

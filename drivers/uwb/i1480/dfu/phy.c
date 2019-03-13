@@ -169,7 +169,7 @@ int i1480_phy_fw_upload(struct i1480 *i1480)
 	size_t data_size;
 	u8 phy_stat;
 
-	result = request_firmware(&fw, i1480->phy_fw_name, i1480->dev);
+	result = reject_firmware(&fw, i1480->phy_fw_name, i1480->dev);
 	if (result < 0)
 		goto out;
 	/* Loop writing data in chunks as big as possible until done. */

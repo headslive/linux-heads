@@ -20,7 +20,7 @@
 #include "sti_drv.h"
 
 /* Firmware name */
-#define HQVDP_FMW_NAME          "hqvdp-stih407.bin"
+#define HQVDP_FMW_NAME          "/*(DEBLOBBED)*/"
 
 /* Regs address */
 #define HQVDP_DMEM              0x00000000               /* 0x00000000 */
@@ -908,7 +908,7 @@ static void sti_hqvdp_start_xp70(struct sti_hqvdp *hqvdp)
 	}
 
 	/* Request firmware */
-	if (request_firmware(&firmware, HQVDP_FMW_NAME, hqvdp->dev)) {
+	if (reject_firmware(&firmware, HQVDP_FMW_NAME, hqvdp->dev)) {
 		DRM_ERROR("Can't get HQVDP firmware\n");
 		return;
 	}

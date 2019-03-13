@@ -53,7 +53,7 @@
  *         i1480->cmd()           [i1480_{usb,pci}_cmd()]
  *         ...
  *     i1480_phy_fw_upload()
- *       request_firmware()
+ *       reject_firmware()
  *       i1480_mpi_write()
  *         i1480->cmd()           [i1480_{usb,pci}_cmd()]
  *

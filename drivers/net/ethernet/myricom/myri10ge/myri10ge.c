@@ -254,14 +254,11 @@ struct myri10ge_priv {
 	int rebooted;
 };
 
-static char *myri10ge_fw_unaligned = "myri10ge_ethp_z8e.dat";
-static char *myri10ge_fw_aligned = "myri10ge_eth_z8e.dat";
-static char *myri10ge_fw_rss_unaligned = "myri10ge_rss_ethp_z8e.dat";
-static char *myri10ge_fw_rss_aligned = "myri10ge_rss_eth_z8e.dat";
-MODULE_FIRMWARE("myri10ge_ethp_z8e.dat");
-MODULE_FIRMWARE("myri10ge_eth_z8e.dat");
-MODULE_FIRMWARE("myri10ge_rss_ethp_z8e.dat");
-MODULE_FIRMWARE("myri10ge_rss_eth_z8e.dat");
+static char *myri10ge_fw_unaligned = "/*(DEBLOBBED)*/";
+static char *myri10ge_fw_aligned = "/*(DEBLOBBED)*/";
+static char *myri10ge_fw_rss_unaligned = "/*(DEBLOBBED)*/";
+static char *myri10ge_fw_rss_aligned = "/*(DEBLOBBED)*/";
+/*(DEBLOBBED)*/
 
 /* Careful: must be accessed under kernel_param_lock() */
 static char *myri10ge_fw_name = NULL;
@@ -579,7 +576,7 @@ static int myri10ge_load_hotplug_firmware(struct myri10ge_priv *mgp, u32 * size)
 	int status;
 	unsigned i;
 
-	if ((status = request_firmware(&fw, mgp->fw_name, dev)) < 0) {
+	if ((status = reject_firmware(&fw, mgp->fw_name, dev)) < 0) {
 		dev_err(dev, "Unable to load %s firmware image via hotplug\n",
 			mgp->fw_name);
 		status = -EINVAL;
@@ -3132,14 +3129,7 @@ static void myri10ge_enable_ecrc(struct myri10ge_priv *mgp)
  * When PCI-E Completion packets are not aligned, it is actually more
  * efficient to limit Read-DMA transactions to 2KB, rather than 4KB.
  *
- * If the driver can neither enable ECRC nor verify that it has
- * already been enabled, then it must use a firmware image which works
- * around unaligned completion packets (myri10ge_rss_ethp_z8e.dat), and it
- * should also ensure that it never gives the device a Read-DMA which is
- * larger than 2KB by setting the tx_boundary to 2KB.  If ECRC is
- * enabled, then the driver should use the aligned (myri10ge_rss_eth_z8e.dat)
- * firmware image, and set tx_boundary to 4KB.
- */
+ * /*(DEBLOBBED)*/
 
 static void myri10ge_firmware_probe(struct myri10ge_priv *mgp)
 {

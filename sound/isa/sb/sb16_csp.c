@@ -36,11 +36,7 @@
 MODULE_AUTHOR("Uros Bizjak <uros@kss-loka.si>");
 MODULE_DESCRIPTION("ALSA driver for SB16 Creative Signal Processor");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("sb16/mulaw_main.csp");
-MODULE_FIRMWARE("sb16/alaw_main.csp");
-MODULE_FIRMWARE("sb16/ima_adpcm_init.csp");
-MODULE_FIRMWARE("sb16/ima_adpcm_playback.csp");
-MODULE_FIRMWARE("sb16/ima_adpcm_capture.csp");
+/*(DEBLOBBED)*/
 
 #ifdef SNDRV_LITTLE_ENDIAN
 #define CSP_HDR_VALUE(a,b,c,d)	((a) | ((b)<<8) | ((c)<<16) | ((d)<<24))
@@ -702,18 +698,18 @@ static int snd_sb_csp_load_user(struct snd_sb_csp * p, const unsigned char __use
 static int snd_sb_csp_firmware_load(struct snd_sb_csp *p, int index, int flags)
 {
 	static const char *const names[] = {
-		"sb16/mulaw_main.csp",
-		"sb16/alaw_main.csp",
-		"sb16/ima_adpcm_init.csp",
-		"sb16/ima_adpcm_playback.csp",
-		"sb16/ima_adpcm_capture.csp",
+		"/*(DEBLOBBED)*/",
+		"/*(DEBLOBBED)*/",
+		"/*(DEBLOBBED)*/",
+		"/*(DEBLOBBED)*/",
+		"/*(DEBLOBBED)*/",
 	};
 	const struct firmware *program;
 
 	BUILD_BUG_ON(ARRAY_SIZE(names) != CSP_PROGRAM_COUNT);
 	program = p->csp_programs[index];
 	if (!program) {
-		int err = request_firmware(&program, names[index],
+		int err = reject_firmware(&program, names[index],
 				       p->chip->card->dev);
 		if (err < 0)
 			return err;

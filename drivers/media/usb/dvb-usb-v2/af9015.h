@@ -33,7 +33,7 @@
 #include "tda18218.h"
 #include "mxl5007t.h"
 
-#define AF9015_FIRMWARE "dvb-usb-af9015.fw"
+#define AF9015_FIRMWARE "/*(DEBLOBBED)*/"
 
 #define AF9015_I2C_EEPROM  0x50
 #define AF9015_I2C_DEMOD   0x1c

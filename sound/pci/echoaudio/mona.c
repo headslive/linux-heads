@@ -63,14 +63,7 @@
 #include <linux/atomic.h>
 #include "echoaudio.h"
 
-MODULE_FIRMWARE("ea/loader_dsp.fw");
-MODULE_FIRMWARE("ea/mona_301_dsp.fw");
-MODULE_FIRMWARE("ea/mona_361_dsp.fw");
-MODULE_FIRMWARE("ea/mona_301_1_asic_48.fw");
-MODULE_FIRMWARE("ea/mona_301_1_asic_96.fw");
-MODULE_FIRMWARE("ea/mona_361_1_asic_48.fw");
-MODULE_FIRMWARE("ea/mona_361_1_asic_96.fw");
-MODULE_FIRMWARE("ea/mona_2_asic.fw");
+/*(DEBLOBBED)*/
 
 #define FW_361_LOADER		0
 #define FW_MONA_301_DSP		1
@@ -82,14 +75,14 @@ MODULE_FIRMWARE("ea/mona_2_asic.fw");
 #define FW_MONA_2_ASIC		7
 
 static const struct firmware card_fw[] = {
-	{0, "loader_dsp.fw"},
-	{0, "mona_301_dsp.fw"},
-	{0, "mona_361_dsp.fw"},
-	{0, "mona_301_1_asic_48.fw"},
-	{0, "mona_301_1_asic_96.fw"},
-	{0, "mona_361_1_asic_48.fw"},
-	{0, "mona_361_1_asic_96.fw"},
-	{0, "mona_2_asic.fw"}
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"}
 };
 
 static const struct pci_device_id snd_echo_ids[] = {

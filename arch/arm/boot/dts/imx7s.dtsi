@@ -1071,7 +1071,7 @@
 					 <&clks IMX7D_AHB_CHANNEL_ROOT_CLK>;
 				clock-names = "ipg", "ahb";
 				#dma-cells = <3>;
-				fsl,sdma-ram-script-name = "imx/sdma/sdma-imx7d.bin";
+				fsl,sdma-ram-script-name = "/*(DEBLOBBED)*/";
 			};
 
 			fec1: ethernet@30be0000 {

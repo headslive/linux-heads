@@ -124,7 +124,7 @@ int falcon_read_firmware(struct falcon *falcon, const char *name)
 	int err;
 
 	/* request_firmware prints error if it fails */
-	err = request_firmware(&falcon->firmware.firmware, name, falcon->dev);
+	err = reject_firmware(&falcon->firmware.firmware, name, falcon->dev);
 	if (err < 0)
 		return err;
 

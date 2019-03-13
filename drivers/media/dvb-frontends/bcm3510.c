@@ -13,8 +13,6 @@
  *  The driver works also with QAM64 DVB-C, but had an unreasonable high
  *  UNC. (Tested with the Air2PC ATSC 1st generation)
  *
- *  You'll need a firmware for this driver in order to get it running. It is
- *  called "dvb-fe-bcm3510-01.fw".
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -605,7 +603,7 @@ static void bcm3510_release(struct dvb_frontend* fe)
  * firmware file is build up like this:
  * 16bit addr, 16bit length, 8byte of length
  */
-#define BCM3510_DEFAULT_FIRMWARE "dvb-fe-bcm3510-01.fw"
+/*(DEBLOBBED)*/
 
 static int bcm3510_write_ram(struct bcm3510_state *st, u16 addr, const u8 *b,
 			     u16 len)
@@ -636,8 +634,8 @@ static int bcm3510_download_firmware(struct dvb_frontend* fe)
 	int ret,i;
 
 	deb_info("requesting firmware\n");
-	if ((ret = st->config->request_firmware(fe, &fw, BCM3510_DEFAULT_FIRMWARE)) < 0) {
-		err("could not load firmware (%s): %d",BCM3510_DEFAULT_FIRMWARE,ret);
+	if ((ret = st->config->request_firmware(fe, &fw, "/*(DEBLOBBED)*/")) < 0) {
+		err("could not load firmware (%s): %d","/*(DEBLOBBED)*/",ret);
 		return ret;
 	}
 	deb_info("got firmware: %zu\n", fw->size);

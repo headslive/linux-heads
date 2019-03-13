@@ -59,11 +59,11 @@ static int zd1201_fw_upload(struct usb_device *dev, int apfw)
 	char *fwfile;
 
 	if (apfw)
-		fwfile = "zd1201-ap.fw";
+		fwfile = "/*(DEBLOBBED)*/";
 	else
-		fwfile = "zd1201.fw";
+		fwfile = "/*(DEBLOBBED)*/";
 
-	err = request_firmware(&fw_entry, fwfile, &dev->dev);
+	err = reject_firmware(&fw_entry, fwfile, &dev->dev);
 	if (err) {
 		dev_err(&dev->dev, "Failed to load %s firmware file!\n", fwfile);
 		dev_err(&dev->dev, "Make sure the hotplug firmware loader is installed.\n");
@@ -118,8 +118,7 @@ exit:
 	return err;
 }
 
-MODULE_FIRMWARE("zd1201-ap.fw");
-MODULE_FIRMWARE("zd1201.fw");
+/*(DEBLOBBED)*/
 
 static void zd1201_usbfree(struct urb *urb)
 {

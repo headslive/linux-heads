@@ -98,7 +98,7 @@ static int venus_load_fw(struct venus_core *core, const char *fwname,
 		return -ENOMEM;
 	}
 
-	ret = request_firmware(&mdt, fwname, dev);
+	ret = reject_firmware(&mdt, fwname, dev);
 	if (ret < 0)
 		goto err_unmap;
 

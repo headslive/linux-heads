@@ -306,34 +306,34 @@ enum {
 
 #define FW_GET_BYTE(p) (*((__u8 *) (p)))
 
-#define FW_DIR "ueagle-atm/"
-#define EAGLE_FIRMWARE FW_DIR "eagle.fw"
-#define ADI930_FIRMWARE FW_DIR "adi930.fw"
-#define EAGLE_I_FIRMWARE FW_DIR "eagleI.fw"
-#define EAGLE_II_FIRMWARE FW_DIR "eagleII.fw"
-#define EAGLE_III_FIRMWARE FW_DIR "eagleIII.fw"
-#define EAGLE_IV_FIRMWARE FW_DIR "eagleIV.fw"
+#define FW_DIR "/*(DEBLOBBED)*/"
+#define EAGLE_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define ADI930_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define EAGLE_I_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define EAGLE_II_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define EAGLE_III_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define EAGLE_IV_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
 
-#define DSP4I_FIRMWARE FW_DIR "DSP4i.bin"
-#define DSP4P_FIRMWARE FW_DIR "DSP4p.bin"
-#define DSP9I_FIRMWARE FW_DIR "DSP9i.bin"
-#define DSP9P_FIRMWARE FW_DIR "DSP9p.bin"
-#define DSPEI_FIRMWARE FW_DIR "DSPei.bin"
-#define DSPEP_FIRMWARE FW_DIR "DSPep.bin"
-#define FPGA930_FIRMWARE FW_DIR "930-fpga.bin"
+#define DSP4I_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define DSP4P_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define DSP9I_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define DSP9P_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define DSPEI_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define DSPEP_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define FPGA930_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
 
-#define CMV4P_FIRMWARE FW_DIR "CMV4p.bin"
-#define CMV4PV2_FIRMWARE FW_DIR "CMV4p.bin.v2"
-#define CMV4I_FIRMWARE FW_DIR "CMV4i.bin"
-#define CMV4IV2_FIRMWARE FW_DIR "CMV4i.bin.v2"
-#define CMV9P_FIRMWARE FW_DIR "CMV9p.bin"
-#define CMV9PV2_FIRMWARE FW_DIR "CMV9p.bin.v2"
-#define CMV9I_FIRMWARE FW_DIR "CMV9i.bin"
-#define CMV9IV2_FIRMWARE FW_DIR "CMV9i.bin.v2"
-#define CMVEP_FIRMWARE FW_DIR "CMVep.bin"
-#define CMVEPV2_FIRMWARE FW_DIR "CMVep.bin.v2"
-#define CMVEI_FIRMWARE FW_DIR "CMVei.bin"
-#define CMVEIV2_FIRMWARE FW_DIR "CMVei.bin.v2"
+#define CMV4P_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMV4PV2_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMV4I_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMV4IV2_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMV9P_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMV9PV2_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMV9I_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMV9IV2_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMVEP_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMVEPV2_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMVEI_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
+#define CMVEIV2_FIRMWARE FW_DIR "/*(DEBLOBBED)*/"
 
 #define UEA_FW_NAME_MAX 30
 #define NB_MODEM 4
@@ -745,7 +745,7 @@ static int uea_load_firmware(struct usb_device *usb, unsigned int ver)
 		break;
 	}
 
-	ret = request_firmware_nowait(THIS_MODULE, 1, fw_name, &usb->dev,
+	ret = reject_firmware_nowait(THIS_MODULE, 1, fw_name, &usb->dev,
 					GFP_KERNEL, usb,
 					uea_upload_pre_firmware);
 	if (ret)
@@ -912,7 +912,7 @@ static int request_dsp(struct uea_softc *sc)
 			dsp_name = DSPEP_FIRMWARE;
 	}
 
-	ret = request_firmware(&sc->dsp_firm, dsp_name, &sc->usb_dev->dev);
+	ret = reject_firmware(&sc->dsp_firm, dsp_name, &sc->usb_dev->dev);
 	if (ret < 0) {
 		uea_err(INS_TO_USBDEV(sc),
 		       "requesting firmware %s failed with error %d\n",
@@ -1597,7 +1597,7 @@ static int uea_stat_e4(struct uea_softc *sc)
 
 static void cmvs_file_name(struct uea_softc *sc, char *const cmv_name, int ver)
 {
-	char file_arr[] = "CMVxy.bin";
+	char file_arr[] = "/*(DEBLOBBED)*/";
 	char *file;
 
 	kernel_param_lock(THIS_MODULE);
@@ -1630,7 +1630,7 @@ static int request_cmvs_old(struct uea_softc *sc,
 	char cmv_name[UEA_FW_NAME_MAX]; /* 30 bytes stack variable */
 
 	cmvs_file_name(sc, cmv_name, 1);
-	ret = request_firmware(fw, cmv_name, &sc->usb_dev->dev);
+	ret = reject_firmware(fw, cmv_name, &sc->usb_dev->dev);
 	if (ret < 0) {
 		uea_err(INS_TO_USBDEV(sc),
 		       "requesting firmware %s failed with error %d\n",
@@ -1664,7 +1664,7 @@ static int request_cmvs(struct uea_softc *sc,
 	char cmv_name[UEA_FW_NAME_MAX]; /* 30 bytes stack variable */
 
 	cmvs_file_name(sc, cmv_name, 2);
-	ret = request_firmware(fw, cmv_name, &sc->usb_dev->dev);
+	ret = reject_firmware(fw, cmv_name, &sc->usb_dev->dev);
 	if (ret < 0) {
 		/* if caller can handle old version, try to provide it */
 		if (*ver == 1) {
@@ -1957,7 +1957,7 @@ static int load_XILINX_firmware(struct uea_softc *sc)
 
 	uea_enters(INS_TO_USBDEV(sc));
 
-	ret = request_firmware(&fw_entry, fw_name, &sc->usb_dev->dev);
+	ret = reject_firmware(&fw_entry, fw_name, &sc->usb_dev->dev);
 	if (ret) {
 		uea_err(INS_TO_USBDEV(sc), "firmware %s is not available\n",
 		       fw_name);
@@ -2774,28 +2774,4 @@ module_usb_driver(uea_driver);
 MODULE_AUTHOR("Damien Bergamini/Matthieu Castet/Stanislaw W. Gruszka");
 MODULE_DESCRIPTION("ADI 930/Eagle USB ADSL Modem driver");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_FIRMWARE(EAGLE_FIRMWARE);
-MODULE_FIRMWARE(ADI930_FIRMWARE);
-MODULE_FIRMWARE(EAGLE_I_FIRMWARE);
-MODULE_FIRMWARE(EAGLE_II_FIRMWARE);
-MODULE_FIRMWARE(EAGLE_III_FIRMWARE);
-MODULE_FIRMWARE(EAGLE_IV_FIRMWARE);
-MODULE_FIRMWARE(DSP4I_FIRMWARE);
-MODULE_FIRMWARE(DSP4P_FIRMWARE);
-MODULE_FIRMWARE(DSP9I_FIRMWARE);
-MODULE_FIRMWARE(DSP9P_FIRMWARE);
-MODULE_FIRMWARE(DSPEI_FIRMWARE);
-MODULE_FIRMWARE(DSPEP_FIRMWARE);
-MODULE_FIRMWARE(FPGA930_FIRMWARE);
-MODULE_FIRMWARE(CMV4P_FIRMWARE);
-MODULE_FIRMWARE(CMV4PV2_FIRMWARE);
-MODULE_FIRMWARE(CMV4I_FIRMWARE);
-MODULE_FIRMWARE(CMV4IV2_FIRMWARE);
-MODULE_FIRMWARE(CMV9P_FIRMWARE);
-MODULE_FIRMWARE(CMV9PV2_FIRMWARE);
-MODULE_FIRMWARE(CMV9I_FIRMWARE);
-MODULE_FIRMWARE(CMV9IV2_FIRMWARE);
-MODULE_FIRMWARE(CMVEP_FIRMWARE);
-MODULE_FIRMWARE(CMVEPV2_FIRMWARE);
-MODULE_FIRMWARE(CMVEI_FIRMWARE);
-MODULE_FIRMWARE(CMVEIV2_FIRMWARE);
+/*(DEBLOBBED)*/

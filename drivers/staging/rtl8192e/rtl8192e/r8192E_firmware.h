@@ -15,9 +15,9 @@
 #ifndef __INC_FIRMWARE_H
 #define __INC_FIRMWARE_H
 
-#define RTL8192E_BOOT_IMG_FW	"RTL8192E/boot.img"
-#define RTL8192E_MAIN_IMG_FW	"RTL8192E/main.img"
-#define RTL8192E_DATA_IMG_FW	"RTL8192E/data.img"
+#define RTL8192E_BOOT_IMG_FW	"/*(DEBLOBBED)*/"
+#define RTL8192E_MAIN_IMG_FW	"/*(DEBLOBBED)*/"
+#define RTL8192E_DATA_IMG_FW	"/*(DEBLOBBED)*/"
 
 enum firmware_init_step {
 	FW_INIT_STEP0_BOOT = 0,

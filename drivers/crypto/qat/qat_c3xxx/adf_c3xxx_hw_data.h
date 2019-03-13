@@ -75,8 +75,8 @@
 #define ADF_C3XXX_VINTMSK_OFFSET(i)	(0x3A000 + 0x200 + ((i) * 0x04))
 
 /* Firmware Binary */
-#define ADF_C3XXX_FW "qat_c3xxx.bin"
-#define ADF_C3XXX_MMP "qat_c3xxx_mmp.bin"
+#define ADF_C3XXX_FW "/*(DEBLOBBED)*/"
+#define ADF_C3XXX_MMP "/*(DEBLOBBED)*/"
 
 void adf_init_hw_data_c3xxx(struct adf_hw_device_data *hw_data);
 void adf_clean_hw_data_c3xxx(struct adf_hw_device_data *hw_data);

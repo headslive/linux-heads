@@ -2039,7 +2039,7 @@ static int snd_ymfpci_request_firmware(struct snd_ymfpci *chip)
 	int err, is_1e;
 	const char *name;
 
-	err = request_firmware(&chip->dsp_microcode, "yamaha/ds1_dsp.fw",
+	err = reject_firmware(&chip->dsp_microcode, "/*(DEBLOBBED)*/",
 			       &chip->pci->dev);
 	if (err >= 0) {
 		if (chip->dsp_microcode->size != YDSXG_DSPLENGTH) {
@@ -2054,8 +2054,8 @@ static int snd_ymfpci_request_firmware(struct snd_ymfpci *chip)
 		chip->device_id == PCI_DEVICE_ID_YAMAHA_740C ||
 		chip->device_id == PCI_DEVICE_ID_YAMAHA_744 ||
 		chip->device_id == PCI_DEVICE_ID_YAMAHA_754;
-	name = is_1e ? "yamaha/ds1e_ctrl.fw" : "yamaha/ds1_ctrl.fw";
-	err = request_firmware(&chip->controller_microcode, name,
+	name = is_1e ? "/*(DEBLOBBED)*/" : "/*(DEBLOBBED)*/";
+	err = reject_firmware(&chip->controller_microcode, name,
 			       &chip->pci->dev);
 	if (err >= 0) {
 		if (chip->controller_microcode->size != YDSXG_CTRLLENGTH) {
@@ -2069,9 +2069,7 @@ static int snd_ymfpci_request_firmware(struct snd_ymfpci *chip)
 	return 0;
 }
 
-MODULE_FIRMWARE("yamaha/ds1_dsp.fw");
-MODULE_FIRMWARE("yamaha/ds1_ctrl.fw");
-MODULE_FIRMWARE("yamaha/ds1e_ctrl.fw");
+/*(DEBLOBBED)*/
 
 static void snd_ymfpci_download_image(struct snd_ymfpci *chip)
 {

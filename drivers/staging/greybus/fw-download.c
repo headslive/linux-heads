@@ -180,14 +180,14 @@ static struct fw_request *find_firmware(struct fw_download *fw_download,
 	fw_req->firmware_id = ret;
 
 	snprintf(fw_req->name, sizeof(fw_req->name),
-		 FW_NAME_PREFIX "%08x_%08x_%08x_%08x_%s.tftf",
+		 FW_NAME_PREFIX "/*(DEBLOBBED)*/",
 		 intf->ddbl1_manufacturer_id, intf->ddbl1_product_id,
 		 intf->vendor_id, intf->product_id, tag);
 
 	dev_info(fw_download->parent, "Requested firmware package '%s'\n",
 		 fw_req->name);
 
-	ret = request_firmware(&fw_req->fw, fw_req->name, fw_download->parent);
+	ret = reject_firmware(&fw_req->fw, fw_req->name, fw_download->parent);
 	if (ret) {
 		dev_err(fw_download->parent,
 			"firmware request failed for %s (%d)\n", fw_req->name,

@@ -40,12 +40,7 @@
 MODULE_AUTHOR("Chris Rankin");
 MODULE_DESCRIPTION("ENSONIQ SoundScape driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("sndscape.co0");
-MODULE_FIRMWARE("sndscape.co1");
-MODULE_FIRMWARE("sndscape.co2");
-MODULE_FIRMWARE("sndscape.co3");
-MODULE_FIRMWARE("sndscape.co4");
-MODULE_FIRMWARE("scope.cod");
+/*(DEBLOBBED)*/
 
 static int index[SNDRV_CARDS] = SNDRV_DEFAULT_IDX;
 static char* id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
@@ -543,9 +538,9 @@ static int sscape_upload_bootblock(struct snd_card *card)
 	int data = 0;
 	int ret;
 
-	ret = request_firmware(&init_fw, "scope.cod", card->dev);
+	ret = reject_firmware(&init_fw, "/*(DEBLOBBED)*/", card->dev);
 	if (ret < 0) {
-		snd_printk(KERN_ERR "sscape: Error loading scope.cod");
+		snd_printk(KERN_ERR "sscape: Error loading /*(DEBLOBBED)*/");
 		return ret;
 	}
 	ret = upload_dma_data(sscape, init_fw->data, init_fw->size);
@@ -581,11 +576,11 @@ static int sscape_upload_microcode(struct snd_card *card, int version)
 	char name[14];
 	int err;
 
-	snprintf(name, sizeof(name), "sndscape.co%d", version);
+	snprintf(name, sizeof(name), "/*(DEBLOBBED)*/", version);
 
-	err = request_firmware(&init_fw, name, card->dev);
+	err = reject_firmware(&init_fw, name, card->dev);
 	if (err < 0) {
-		snd_printk(KERN_ERR "sscape: Error loading sndscape.co%d",
+		snd_printk(KERN_ERR "sscape: Error loading /*(DEBLOBBED)*/",
 				version);
 		return err;
 	}

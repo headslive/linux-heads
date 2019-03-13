@@ -40,16 +40,16 @@
 #define KBL_FW_MINOR 39
 
 #define GUC_FW_PATH(platform, major, minor) \
-       "i915/" __stringify(platform) "_guc_ver" __stringify(major) "_" __stringify(minor) ".bin"
+       "/*(DEBLOBBED)*/"
 
 #define I915_SKL_GUC_UCODE GUC_FW_PATH(skl, SKL_FW_MAJOR, SKL_FW_MINOR)
-MODULE_FIRMWARE(I915_SKL_GUC_UCODE);
+/*(DEBLOBBED)*/
 
 #define I915_BXT_GUC_UCODE GUC_FW_PATH(bxt, BXT_FW_MAJOR, BXT_FW_MINOR)
-MODULE_FIRMWARE(I915_BXT_GUC_UCODE);
+/*(DEBLOBBED)*/
 
 #define I915_KBL_GUC_UCODE GUC_FW_PATH(kbl, KBL_FW_MAJOR, KBL_FW_MINOR)
-MODULE_FIRMWARE(I915_KBL_GUC_UCODE);
+/*(DEBLOBBED)*/
 
 static void guc_fw_select(struct intel_uc_fw *guc_fw)
 {

@@ -84,11 +84,11 @@ MODULE_DESCRIPTION(DRV_DESCRIPTION);
 MODULE_VERSION(DRV_VERSION);
 MODULE_AUTHOR(DRV_COPYRIGHT);
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("ipw2200-ibss.fw");
+/*(DEBLOBBED)*/
 #ifdef CONFIG_IPW2200_MONITOR
-MODULE_FIRMWARE("ipw2200-sniffer.fw");
+/*(DEBLOBBED)*/
 #endif
-MODULE_FIRMWARE("ipw2200-bss.fw");
+/*(DEBLOBBED)*/
 
 static int cmdlog = 0;
 static int debug = 0;
@@ -3409,7 +3409,7 @@ static int ipw_get_fw(struct ipw_priv *priv,
 	int rc;
 
 	/* ask firmware_class module to get the boot firmware off disk */
-	rc = request_firmware(raw, name, &priv->pci_dev->dev);
+	rc = reject_firmware(raw, name, &priv->pci_dev->dev);
 	if (rc < 0) {
 		IPW_ERROR("%s request_firmware failed: Reason %d\n", name, rc);
 		return rc;
@@ -3498,15 +3498,15 @@ static int ipw_load(struct ipw_priv *priv)
 
 	switch (priv->ieee->iw_mode) {
 	case IW_MODE_ADHOC:
-		name = "ipw2200-ibss.fw";
+		name = "/*(DEBLOBBED)*/";
 		break;
 #ifdef CONFIG_IPW2200_MONITOR
 	case IW_MODE_MONITOR:
-		name = "ipw2200-sniffer.fw";
+		name = "/*(DEBLOBBED)*/";
 		break;
 #endif
 	case IW_MODE_INFRA:
-		name = "ipw2200-bss.fw";
+		name = "/*(DEBLOBBED)*/";
 		break;
 	}
 

@@ -4141,7 +4141,7 @@ int vxge_fw_upgrade(struct vxgedev *vdev, char *fw_name, int override)
 	const struct firmware *fw;
 	int ret;
 
-	ret = request_firmware(&fw, fw_name, &vdev->pdev->dev);
+	ret = reject_firmware(&fw, fw_name, &vdev->pdev->dev);
 	if (ret) {
 		vxge_debug_init(VXGE_ERR, "%s: Firmware file '%s' not found",
 				VXGE_DRIVER_NAME, fw_name);
@@ -4244,9 +4244,9 @@ static int vxge_probe_fw_update(struct vxgedev *vdev)
 			}
 	}
 	if (gpxe)
-		fw_name = "vxge/X3fw-pxe.ncf";
+		fw_name = "/*(DEBLOBBED)*/";
 	else
-		fw_name = "vxge/X3fw.ncf";
+		fw_name = "/*(DEBLOBBED)*/";
 
 	ret = vxge_fw_upgrade(vdev, fw_name, 0);
 	/* -EINVAL and -ENOENT are not fatal errors for flashing firmware on

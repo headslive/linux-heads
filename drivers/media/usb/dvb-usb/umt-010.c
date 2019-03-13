@@ -95,7 +95,7 @@ static struct dvb_usb_device_properties umt_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = CYPRESS_FX2,
-	.firmware = "dvb-usb-umt-010-02.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 
 	.num_adapters = 1,
 	.adapter = {

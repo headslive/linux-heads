@@ -1285,11 +1285,11 @@ int iwl_read_external_nvm(struct iwl_trans *trans,
 
 	/*
 	 * Obtain NVM image via request_firmware. Since we already used
-	 * request_firmware_nowait() for the firmware binary load and only
+	 * reject_firmware_nowait() for the firmware binary load and only
 	 * get here after that we assume the NVM request can be satisfied
 	 * synchronously.
 	 */
-	ret = request_firmware(&fw_entry, nvm_file_name, trans->dev);
+	ret = reject_firmware(&fw_entry, nvm_file_name, trans->dev);
 	if (ret) {
 		IWL_ERR(trans, "ERROR: %s isn't available %d\n",
 			nvm_file_name, ret);

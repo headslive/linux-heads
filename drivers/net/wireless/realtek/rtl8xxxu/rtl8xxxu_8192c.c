@@ -340,11 +340,11 @@ static int rtl8192cu_load_firmware(struct rtl8xxxu_priv *priv)
 	int ret;
 
 	if (!priv->vendor_umc)
-		fw_name = "rtlwifi/rtl8192cufw_TMSC.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 	else if (priv->chip_cut || priv->rtl_chip == RTL8192C)
-		fw_name = "rtlwifi/rtl8192cufw_B.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 	else
-		fw_name = "rtlwifi/rtl8192cufw_A.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 
 	ret = rtl8xxxu_load_firmware(priv, fw_name);
 

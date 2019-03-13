@@ -169,11 +169,11 @@ int rtl92ee_init_sw_vars(struct ieee80211_hw *hw)
 	}
 
 	/* request fw */
-	fw_name = "rtlwifi/rtl8192eefw.bin";
+	fw_name = "/*(DEBLOBBED)*/";
 
 	rtlpriv->max_fw_size = 0x8000;
 	pr_info("Using firmware %s\n", fw_name);
-	err = request_firmware_nowait(THIS_MODULE, 1, fw_name,
+	err = reject_firmware_nowait(THIS_MODULE, 1, fw_name,
 				      rtlpriv->io.dev, GFP_KERNEL, hw,
 				      rtl_fw_cb);
 	if (err) {
@@ -369,7 +369,7 @@ MODULE_AUTHOR("Realtek WlanFAE	<wlanfae@realtek.com>");
 MODULE_AUTHOR("Larry Finger	<Larry.Finger@lwfinger.net>");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Realtek 8192EE 802.11n PCI wireless");
-MODULE_FIRMWARE("rtlwifi/rtl8192eefw.bin");
+/*(DEBLOBBED)*/
 
 module_param_named(swenc, rtl92ee_mod_params.sw_crypto, bool, 0444);
 module_param_named(debug_level, rtl92ee_mod_params.debug_level, int, 0644);

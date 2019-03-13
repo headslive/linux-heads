@@ -195,13 +195,13 @@ static int rtl8723au_load_firmware(struct rtl8xxxu_priv *priv)
 
 	switch (priv->chip_cut) {
 	case 0:
-		fw_name = "rtlwifi/rtl8723aufw_A.bin";
+		fw_name = "/*(DEBLOBBED)*/";
 		break;
 	case 1:
 		if (priv->enable_bluetooth)
-			fw_name = "rtlwifi/rtl8723aufw_B.bin";
+			fw_name = "/*(DEBLOBBED)*/";
 		else
-			fw_name = "rtlwifi/rtl8723aufw_B_NoBT.bin";
+			fw_name = "/*(DEBLOBBED)*/";
 
 		break;
 	default:

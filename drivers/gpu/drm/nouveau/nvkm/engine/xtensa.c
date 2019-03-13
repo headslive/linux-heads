@@ -104,10 +104,10 @@ nvkm_xtensa_init(struct nvkm_engine *engine)
 	u32 tmp;
 
 	if (!xtensa->gpu_fw) {
-		snprintf(name, sizeof(name), "nouveau/nv84_xuc%03x",
+		snprintf(name, sizeof(name), "/*(DEBLOBBED)*/",
 			 xtensa->addr >> 12);
 
-		ret = request_firmware(&fw, name, device->dev);
+		ret = reject_firmware(&fw, name, device->dev);
 		if (ret) {
 			nvkm_warn(subdev, "unable to load firmware %s\n", name);
 			return ret;

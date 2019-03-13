@@ -755,14 +755,14 @@ static int raydium_i2c_fw_update(struct raydium_data *ts)
 	char *fw_file;
 	int error;
 
-	fw_file = kasprintf(GFP_KERNEL, "raydium_%#04x.fw",
+	fw_file = kasprintf(GFP_KERNEL, "/*(DEBLOBBED)*/",
 			    le32_to_cpu(ts->info.hw_ver));
 	if (!fw_file)
 		return -ENOMEM;
 
 	dev_dbg(&client->dev, "firmware name: %s\n", fw_file);
 
-	error = request_firmware(&fw, fw_file, &client->dev);
+	error = reject_firmware(&fw, fw_file, &client->dev);
 	if (error) {
 		dev_err(&client->dev, "Unable to open firmware %s\n", fw_file);
 		goto out_free_fw_file;

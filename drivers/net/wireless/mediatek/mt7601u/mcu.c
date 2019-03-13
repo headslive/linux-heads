@@ -422,7 +422,7 @@ static int mt7601u_load_firmware(struct mt7601u_dev *dev)
 	if (firmware_running(dev))
 		return firmware_request_cache(dev->dev, MT7601U_FIRMWARE);
 
-	ret = request_firmware(&fw, MT7601U_FIRMWARE, dev->dev);
+	ret = reject_firmware(&fw, MT7601U_FIRMWARE, dev->dev);
 	if (ret)
 		return ret;
 

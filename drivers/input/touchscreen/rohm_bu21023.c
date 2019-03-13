@@ -21,7 +21,7 @@
 #include <linux/slab.h>
 
 #define BU21023_NAME			"bu21023_ts"
-#define BU21023_FIRMWARE_NAME		"bu21023.bin"
+#define BU21023_FIRMWARE_NAME		"/*(DEBLOBBED)*/"
 
 #define MAX_CONTACTS			2
 
@@ -657,7 +657,7 @@ static int rohm_ts_load_firmware(struct i2c_client *client,
 	unsigned int retry = 0;
 	int error, error2;
 
-	error = request_firmware(&fw, firmware_name, dev);
+	error = reject_firmware(&fw, firmware_name, dev);
 	if (error) {
 		dev_err(dev, "unable to retrieve firmware %s: %d\n",
 			firmware_name, error);

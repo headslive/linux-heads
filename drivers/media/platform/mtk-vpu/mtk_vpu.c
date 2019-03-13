@@ -52,8 +52,8 @@
 #define SHARE_BUF_SIZE		48
 
 /* binary firmware name */
-#define VPU_P_FW		"vpu_p.bin"
-#define VPU_D_FW		"vpu_d.bin"
+#define VPU_P_FW		"/*(DEBLOBBED)*/"
+#define VPU_D_FW		"/*(DEBLOBBED)*/"
 
 #define VPU_RESET		0x0
 #define VPU_TCM_CFG		0x0008
@@ -491,7 +491,7 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
 	void *dest;
 	int ret;
 
-	ret = request_firmware(&vpu_fw, fw_name, vpu->dev);
+	ret = reject_firmware(&vpu_fw, fw_name, vpu->dev);
 	if (ret < 0) {
 		dev_err(vpu->dev, "Failed to load %s, %d\n", fw_name, ret);
 		return ret;

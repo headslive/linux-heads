@@ -29,7 +29,7 @@
 #include "pmc.h"
 #include "debug.h"
 
-#define WLAN_NV_FILE               "wlan/prima/WCNSS_qcom_wlan_nv.bin"
+#define WLAN_NV_FILE               "/*(DEBLOBBED)*/"
 #define WCN36XX_AGGR_BUFFER_SIZE 64
 
 extern unsigned int wcn36xx_dbg_mask;

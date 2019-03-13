@@ -391,10 +391,10 @@ int i1480_usb_probe(struct usb_interface *iface, const struct usb_device_id *id)
 	}
 
 	/* setup the fops and upload the firmware */
-	i1480->pre_fw_name = "i1480-pre-phy-0.0.bin";
-	i1480->mac_fw_name = "i1480-usb-0.0.bin";
-	i1480->mac_fw_name_deprecate = "ptc-0.0.bin";
-	i1480->phy_fw_name = "i1480-phy-0.0.bin";
+	i1480->pre_fw_name = "/*(DEBLOBBED)*/";
+	i1480->mac_fw_name = "/*(DEBLOBBED)*/";
+	i1480->mac_fw_name_deprecate = "/*(DEBLOBBED)*/";
+	i1480->phy_fw_name = "/*(DEBLOBBED)*/";
 	i1480->dev = &iface->dev;
 	i1480->write = i1480_usb_write;
 	i1480->read = i1480_usb_read;
@@ -416,9 +416,7 @@ error:
 	return result;
 }
 
-MODULE_FIRMWARE("i1480-pre-phy-0.0.bin");
-MODULE_FIRMWARE("i1480-usb-0.0.bin");
-MODULE_FIRMWARE("i1480-phy-0.0.bin");
+/*(DEBLOBBED)*/
 
 #define i1480_USB_DEV(v, p)				\
 {							\

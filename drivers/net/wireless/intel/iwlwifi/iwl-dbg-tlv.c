@@ -219,7 +219,7 @@ void iwl_load_fw_dbg_tlv(struct device *dev, struct iwl_trans *trans)
 	if (trans->external_ini_loaded || !iwlwifi_mod_params.enable_ini)
 		return;
 
-	res = request_firmware(&fw, "iwl-dbg-tlv.ini", dev);
+	res = reject_firmware(&fw, "/*(DEBLOBBED)*/", dev);
 	if (res)
 		return;
 

@@ -294,20 +294,20 @@ static int wd719x_chip_init(struct wd719x *wd)
 	int i, ret;
 	u32 risc_init[3];
 	const struct firmware *fw_wcs, *fw_risc;
-	const char fwname_wcs[] = "wd719x-wcs.bin";
-	const char fwname_risc[] = "wd719x-risc.bin";
+	const char fwname_wcs[] = "/*(DEBLOBBED)*/";
+	const char fwname_risc[] = "/*(DEBLOBBED)*/";
 
 	memset(wd->hash_virt, 0, WD719X_HASH_TABLE_SIZE);
 
 	/* WCS (sequencer) firmware */
-	ret = request_firmware(&fw_wcs, fwname_wcs, &wd->pdev->dev);
+	ret = reject_firmware(&fw_wcs, fwname_wcs, &wd->pdev->dev);
 	if (ret) {
 		dev_err(&wd->pdev->dev, "Unable to load firmware %s: %d\n",
 			fwname_wcs, ret);
 		return ret;
 	}
 	/* RISC firmware */
-	ret = request_firmware(&fw_risc, fwname_risc, &wd->pdev->dev);
+	ret = reject_firmware(&fw_risc, fwname_risc, &wd->pdev->dev);
 	if (ret) {
 		dev_err(&wd->pdev->dev, "Unable to load firmware %s: %d\n",
 			fwname_risc, ret);
@@ -969,5 +969,4 @@ module_pci_driver(wd719x_pci_driver);
 MODULE_DESCRIPTION("Western Digital WD7193/7197/7296 SCSI driver");
 MODULE_AUTHOR("Ondrej Zary, Aaron Dewell, Juergen Gaertner");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("wd719x-wcs.bin");
-MODULE_FIRMWARE("wd719x-risc.bin");
+/*(DEBLOBBED)*/

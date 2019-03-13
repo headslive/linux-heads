@@ -67,11 +67,7 @@
 #include <linux/atomic.h>
 #include "echoaudio.h"
 
-MODULE_FIRMWARE("ea/loader_dsp.fw");
-MODULE_FIRMWARE("ea/layla24_dsp.fw");
-MODULE_FIRMWARE("ea/layla24_1_asic.fw");
-MODULE_FIRMWARE("ea/layla24_2A_asic.fw");
-MODULE_FIRMWARE("ea/layla24_2S_asic.fw");
+/*(DEBLOBBED)*/
 
 #define FW_361_LOADER		0
 #define FW_LAYLA24_DSP		1
@@ -80,11 +76,11 @@ MODULE_FIRMWARE("ea/layla24_2S_asic.fw");
 #define FW_LAYLA24_2S_ASIC	4
 
 static const struct firmware card_fw[] = {
-	{0, "loader_dsp.fw"},
-	{0, "layla24_dsp.fw"},
-	{0, "layla24_1_asic.fw"},
-	{0, "layla24_2A_asic.fw"},
-	{0, "layla24_2S_asic.fw"}
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"}
 };
 
 static const struct pci_device_id snd_echo_ids[] = {

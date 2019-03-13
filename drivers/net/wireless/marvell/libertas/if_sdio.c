@@ -80,29 +80,16 @@ MODULE_DEVICE_TABLE(sdio, if_sdio_ids);
 #define MODEL_8688	0x10
 
 static const struct lbs_fw_table fw_table[] = {
-	{ MODEL_8385, "libertas/sd8385_helper.bin", "libertas/sd8385.bin" },
-	{ MODEL_8385, "sd8385_helper.bin", "sd8385.bin" },
-	{ MODEL_8686, "libertas/sd8686_v9_helper.bin", "libertas/sd8686_v9.bin" },
-	{ MODEL_8686, "libertas/sd8686_v8_helper.bin", "libertas/sd8686_v8.bin" },
-	{ MODEL_8686, "sd8686_helper.bin", "sd8686.bin" },
-	{ MODEL_8688, "libertas/sd8688_helper.bin", "libertas/sd8688.bin" },
-	{ MODEL_8688, "sd8688_helper.bin", "sd8688.bin" },
+	{ MODEL_8385, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8385, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8686, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8686, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8686, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8688, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
+	{ MODEL_8688, "/*(DEBLOBBED)*/", "/*(DEBLOBBED)*/" },
 	{ 0, NULL, NULL }
 };
-MODULE_FIRMWARE("libertas/sd8385_helper.bin");
-MODULE_FIRMWARE("libertas/sd8385.bin");
-MODULE_FIRMWARE("sd8385_helper.bin");
-MODULE_FIRMWARE("sd8385.bin");
-MODULE_FIRMWARE("libertas/sd8686_v9_helper.bin");
-MODULE_FIRMWARE("libertas/sd8686_v9.bin");
-MODULE_FIRMWARE("libertas/sd8686_v8_helper.bin");
-MODULE_FIRMWARE("libertas/sd8686_v8.bin");
-MODULE_FIRMWARE("sd8686_helper.bin");
-MODULE_FIRMWARE("sd8686.bin");
-MODULE_FIRMWARE("libertas/sd8688_helper.bin");
-MODULE_FIRMWARE("libertas/sd8688.bin");
-MODULE_FIRMWARE("sd8688_helper.bin");
-MODULE_FIRMWARE("sd8688.bin");
+/*(DEBLOBBED)*/
 
 struct if_sdio_packet {
 	struct if_sdio_packet	*next;

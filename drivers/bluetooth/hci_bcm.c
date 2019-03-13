@@ -537,7 +537,7 @@ static int bcm_setup(struct hci_uart *hu)
 	if (err)
 		return err;
 
-	err = request_firmware(&fw, fw_name, &hu->hdev->dev);
+	err = reject_firmware(&fw, fw_name, &hu->hdev->dev);
 	if (err < 0) {
 		bt_dev_info(hu->hdev, "BCM: Patch %s not found", fw_name);
 		return 0;

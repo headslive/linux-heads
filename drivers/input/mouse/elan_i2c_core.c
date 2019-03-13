@@ -574,7 +574,7 @@ static ssize_t elan_sysfs_update_fw(struct device *dev,
 	}
 
 	dev_info(dev, "requesting fw '%s'\n", fw_name);
-	error = request_firmware(&fw, fw_name, dev);
+	error = reject_firmware(&fw, fw_name, dev);
 	kfree(fw_name);
 	if (error) {
 		dev_err(dev, "failed to request firmware: %d\n", error);

@@ -65,11 +65,7 @@
 #include <linux/atomic.h>
 #include "echoaudio.h"
 
-MODULE_FIRMWARE("ea/loader_dsp.fw");
-MODULE_FIRMWARE("ea/gina24_301_dsp.fw");
-MODULE_FIRMWARE("ea/gina24_361_dsp.fw");
-MODULE_FIRMWARE("ea/gina24_301_asic.fw");
-MODULE_FIRMWARE("ea/gina24_361_asic.fw");
+/*(DEBLOBBED)*/
 
 #define FW_361_LOADER		0
 #define FW_GINA24_301_DSP	1
@@ -78,11 +74,11 @@ MODULE_FIRMWARE("ea/gina24_361_asic.fw");
 #define FW_GINA24_361_ASIC	4
 
 static const struct firmware card_fw[] = {
-	{0, "loader_dsp.fw"},
-	{0, "gina24_301_dsp.fw"},
-	{0, "gina24_361_dsp.fw"},
-	{0, "gina24_301_asic.fw"},
-	{0, "gina24_361_asic.fw"}
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"},
+	{0, "/*(DEBLOBBED)*/"}
 };
 
 static const struct pci_device_id snd_echo_ids[] = {

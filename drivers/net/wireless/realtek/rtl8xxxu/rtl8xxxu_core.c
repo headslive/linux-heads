@@ -51,15 +51,7 @@ static int rtl8xxxu_dma_agg_pages = -1;
 MODULE_AUTHOR("Jes Sorensen <Jes.Sorensen@gmail.com>");
 MODULE_DESCRIPTION("RTL8XXXu USB mac80211 Wireless LAN Driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE("rtlwifi/rtl8723aufw_A.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8723aufw_B.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8723aufw_B_NoBT.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8192cufw_A.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8192cufw_B.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8192cufw_TMSC.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8192eu_nic.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8723bu_nic.bin");
-MODULE_FIRMWARE("rtlwifi/rtl8723bu_bt.bin");
+/*(DEBLOBBED)*/
 
 module_param_named(debug, rtl8xxxu_debug, int, 0600);
 MODULE_PARM_DESC(debug, "Set debug mask");
@@ -2079,8 +2071,8 @@ int rtl8xxxu_load_firmware(struct rtl8xxxu_priv *priv, char *fw_name)
 	u16 signature;
 
 	dev_info(dev, "%s: Loading firmware %s\n", DRIVER_NAME, fw_name);
-	if (request_firmware(&fw, fw_name, &priv->udev->dev)) {
-		dev_warn(dev, "request_firmware(%s) failed\n", fw_name);
+	if (reject_firmware(&fw, fw_name, &priv->udev->dev)) {
+		dev_warn(dev, "reject_firmware(%s) failed\n", fw_name);
 		ret = -EAGAIN;
 		goto exit;
 	}

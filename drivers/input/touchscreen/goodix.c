@@ -812,11 +812,11 @@ static int goodix_ts_probe(struct i2c_client *client,
 	if (ts->gpiod_int && ts->gpiod_rst) {
 		/* update device config */
 		ts->cfg_name = devm_kasprintf(&client->dev, GFP_KERNEL,
-					      "goodix_%d_cfg.bin", ts->id);
+					      "/*(DEBLOBBED)*/", ts->id);
 		if (!ts->cfg_name)
 			return -ENOMEM;
 
-		error = request_firmware_nowait(THIS_MODULE, true, ts->cfg_name,
+		error = reject_firmware_nowait(THIS_MODULE, true, ts->cfg_name,
 						&client->dev, GFP_KERNEL, ts,
 						goodix_config_cb);
 		if (error) {

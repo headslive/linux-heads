@@ -3787,7 +3787,7 @@ static void intel_snb_check_microcode(void)
 		pr_info("PEBS enabled due to microcode update\n");
 		x86_pmu.pebs_broken = 0;
 	} else {
-		pr_info("PEBS disabled due to CPU errata, please upgrade microcode\n");
+		pr_info("PEBS disabled due to CPU errata/*(DEBLOBBED)*/\n");
 		x86_pmu.pebs_broken = 1;
 	}
 }
@@ -3922,7 +3922,7 @@ static __init void intel_glp_counter_freezing_quirk(void)
 	 */
 	if (intel_glp_counter_freezing_broken(raw_smp_processor_id())) {
 		pr_info("PMU counter freezing disabled due to CPU errata,"
-			"please upgrade microcode\n");
+			"please /*(DEBLOBBED)*/\n");
 		x86_pmu.counter_freezing = false;
 		x86_pmu.handle_irq = intel_pmu_handle_irq;
 	}

@@ -498,7 +498,7 @@ static int pluto2_request_firmware(struct dvb_frontend *fe,
 {
 	struct pluto *pluto = frontend_to_pluto(fe);
 
-	return request_firmware(fw, name, &pluto->pdev->dev);
+	return reject_firmware(fw, name, &pluto->pdev->dev);
 }
 
 static struct tda1004x_config pluto2_fe_config = {

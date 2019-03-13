@@ -41,9 +41,9 @@ short hpi_dsp_code_open(u32 adapter, void *os_data, struct dsp_code *dsp_code,
 	short err_ret = HPI_ERROR_DSP_FILE_NOT_FOUND;
 	int err;
 
-	sprintf(fw_name, "asihpi/dsp%04x.bin", adapter);
+	sprintf(fw_name, "/*(DEBLOBBED)*/", adapter);
 
-	err = request_firmware(&firmware, fw_name, &dev->dev);
+	err = reject_firmware(&firmware, fw_name, &dev->dev);
 
 	if (err || !firmware) {
 		dev_err(&dev->dev, "%d, request_firmware failed for %s\n",

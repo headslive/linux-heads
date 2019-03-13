@@ -61,13 +61,13 @@ int adf_ae_fw_load(struct adf_accel_dev *accel_dev)
 	if (!hw_device->fw_name)
 		return 0;
 
-	if (request_firmware(&loader_data->mmp_fw, hw_device->fw_mmp_name,
+	if (reject_firmware(&loader_data->mmp_fw, hw_device->fw_mmp_name,
 			     &accel_dev->accel_pci_dev.pci_dev->dev)) {
 		dev_err(&GET_DEV(accel_dev), "Failed to load MMP firmware %s\n",
 			hw_device->fw_mmp_name);
 		return -EFAULT;
 	}
-	if (request_firmware(&loader_data->uof_fw, hw_device->fw_name,
+	if (reject_firmware(&loader_data->uof_fw, hw_device->fw_name,
 			     &accel_dev->accel_pci_dev.pci_dev->dev)) {
 		dev_err(&GET_DEV(accel_dev), "Failed to load UOF firmware %s\n",
 			hw_device->fw_name);

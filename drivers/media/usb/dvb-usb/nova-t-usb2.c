@@ -172,7 +172,7 @@ static struct dvb_usb_device_properties nova_t_properties = {
 	.caps = DVB_USB_IS_AN_I2C_ADAPTER,
 
 	.usb_ctrl = CYPRESS_FX2,
-	.firmware = "dvb-usb-nova-t-usb2-02.fw",
+	.firmware = "/*(DEBLOBBED)*/",
 
 	.num_adapters     = 1,
 	.adapter          = {

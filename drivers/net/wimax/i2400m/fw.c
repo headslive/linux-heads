@@ -119,7 +119,7 @@
  * i2400m_barker_db_exit              Called by i2400m_driver_exit()
  *
  * i2400m_dev_bootstrap               Called by __i2400m_dev_start()
- *   request_firmware
+ *   reject_firmware
  *   i2400m_fw_bootstrap
  *     i2400m_fw_check
  *       i2400m_fw_hdr_check
@@ -1580,7 +1580,7 @@ int i2400m_dev_bootstrap(struct i2400m *i2400m, enum i2400m_bri flags)
 			break;
 		}
 		d_printf(1, dev, "trying firmware %s (%d)\n", fw_name, itr);
-		ret = request_firmware(&fw, fw_name, dev);
+		ret = reject_firmware(&fw, fw_name, dev);
 		if (ret < 0) {
 			dev_err(dev, "fw %s: cannot load file: %d\n",
 				fw_name, ret);
@@ -1626,7 +1626,7 @@ void i2400m_fw_cache(struct i2400m *i2400m)
 	if (i2400m_fw == NULL)
 		goto out;
 	kref_init(&i2400m_fw->kref);
-	result = request_firmware(&i2400m_fw->fw, i2400m->fw_name, dev);
+	result = reject_firmware(&i2400m_fw->fw, i2400m->fw_name, dev);
 	if (result < 0) {
 		dev_err(dev, "firmware %s: failed to cache: %d\n",
 			i2400m->fw_name, result);

@@ -118,7 +118,7 @@ MODULE_AUTHOR("Peter Gruber <nokos@gmx.net>");
 MODULE_DESCRIPTION("riptide");
 MODULE_LICENSE("GPL");
 MODULE_SUPPORTED_DEVICE("{{Conexant,Riptide}}");
-MODULE_FIRMWARE("riptide.hex");
+/*(DEBLOBBED)*/
 
 static int index[SNDRV_CARDS] = SNDRV_DEFAULT_IDX;
 static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
@@ -1229,7 +1229,7 @@ static int try_to_load_firmware(struct cmdif *cif, struct snd_riptide *chip)
 
 	snd_printdd("Writing Firmware\n");
 	if (!chip->fw_entry) {
-		err = request_firmware(&chip->fw_entry, "riptide.hex",
+		err = reject_firmware(&chip->fw_entry, "/*(DEBLOBBED)*/",
 				       &chip->pci->dev);
 		if (err) {
 			snd_printk(KERN_ERR
@@ -1244,7 +1244,7 @@ static int try_to_load_firmware(struct cmdif *cif, struct snd_riptide *chip)
 		return err;
 	}
 
-	chip->firmware = firmware;
+	/*(DEBLOBBED)*/
 
 	return 1; /* OK */
 }

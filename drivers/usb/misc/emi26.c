@@ -83,20 +83,20 @@ static int emi26_load_firmware (struct usb_device *dev)
 	if (!buf)
 		goto wraperr;
 
-	err = request_ihex_firmware(&loader_fw, "emi26/loader.fw", &dev->dev);
+	err = reject_firmware(&loader_fw, "/*(DEBLOBBED)*/", &dev->dev);
 	if (err)
 		goto nofw;
 
-	err = request_ihex_firmware(&bitstream_fw, "emi26/bitstream.fw",
+	err = reject_firmware(&bitstream_fw, "/*(DEBLOBBED)*/",
 				    &dev->dev);
 	if (err)
 		goto nofw;
 
-	err = request_ihex_firmware(&firmware_fw, "emi26/firmware.fw",
+	err = reject_firmware(&firmware_fw, "/*(DEBLOBBED)*/",
 				    &dev->dev);
 	if (err) {
 	nofw:
-		dev_err(&dev->dev, "%s - request_firmware() failed\n",
+		dev_err(&dev->dev, "%s - reject_firmware() failed\n",
 			__func__);
 		goto wraperr;
 	}
@@ -252,8 +252,6 @@ MODULE_AUTHOR("Tapio Laxström");
 MODULE_DESCRIPTION("Emagic EMI 2|6 firmware loader.");
 MODULE_LICENSE("GPL");
 
-MODULE_FIRMWARE("emi26/loader.fw");
-MODULE_FIRMWARE("emi26/bitstream.fw");
-MODULE_FIRMWARE("emi26/firmware.fw");
+/*(DEBLOBBED)*/
 /* vi:ai:syntax=c:sw=8:ts=8:tw=80
  */

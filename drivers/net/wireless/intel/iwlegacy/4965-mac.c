@@ -4703,11 +4703,11 @@ il4965_request_firmware(struct il_priv *il, bool first)
 		return -ENOENT;
 	}
 
-	sprintf(il->firmware_name, "%s%s%s", name_pre, tag, ".ucode");
+	sprintf(il->firmware_name, "/*(DEBLOBBED)*/");
 
 	D_INFO("attempting to load firmware '%s'\n", il->firmware_name);
 
-	return request_firmware_nowait(THIS_MODULE, 1, il->firmware_name,
+	return reject_firmware_nowait(THIS_MODULE, 1, il->firmware_name,
 				       &il->pci_dev->dev, GFP_KERNEL, il,
 				       il4965_ucode_callback);
 }

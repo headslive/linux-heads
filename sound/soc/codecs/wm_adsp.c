@@ -1649,7 +1649,7 @@ static int wm_adsp_load(struct wm_adsp *dsp)
 		 wm_adsp_fw[dsp->fw].file);
 	file[PAGE_SIZE - 1] = '\0';
 
-	ret = request_firmware(&firmware, file, dsp->dev);
+	ret = reject_firmware(&firmware, file, dsp->dev);
 	if (ret != 0) {
 		adsp_err(dsp, "Failed to request '%s'\n", file);
 		goto out;
@@ -2223,11 +2223,11 @@ static int wm_adsp_load_coeff(struct wm_adsp *dsp)
 	if (file == NULL)
 		return -ENOMEM;
 
-	snprintf(file, PAGE_SIZE, "%s-%s-%s.bin", dsp->part, dsp->fwf_name,
+	snprintf(file, PAGE_SIZE, "/*(DEBLOBBED)*/", dsp->part, dsp->fwf_name,
 		 wm_adsp_fw[dsp->fw].file);
 	file[PAGE_SIZE - 1] = '\0';
 
-	ret = request_firmware(&firmware, file, dsp->dev);
+	ret = reject_firmware(&firmware, file, dsp->dev);
 	if (ret != 0) {
 		adsp_warn(dsp, "Failed to request '%s'\n", file);
 		ret = 0;

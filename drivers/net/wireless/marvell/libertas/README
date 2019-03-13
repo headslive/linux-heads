@@ -21,11 +21,11 @@
 DRIVER LOADING
 =====================
 
-	o. Copy the firmware image (e.g. usb8388.bin) to /lib/firmware/
+	/*(DEBLOBBED)*/
 
 	o. Load driver by using the following command:
 
-		insmod usb8388.ko [fw_name=usb8388.bin]
+		insmod usb8388.ko /*(DEBLOBBED)*/
 
 =========================
 ETHTOOL

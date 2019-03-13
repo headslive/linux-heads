@@ -386,7 +386,7 @@ static const struct go7007_hpi_ops saa7134_go7007_hpi_ops = {
 	.stream_stop		= saa7134_go7007_stream_stop,
 	.send_firmware		= saa7134_go7007_send_firmware,
 };
-MODULE_FIRMWARE("go7007/go7007tv.bin");
+/*(DEBLOBBED)*/
 
 /* --------------------------------------------------------------------------*/
 

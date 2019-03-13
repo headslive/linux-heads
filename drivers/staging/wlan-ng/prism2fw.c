@@ -54,8 +54,8 @@
 /*================================================================*/
 /* Local Constants */
 
-#define PRISM2_USB_FWFILE	"prism2_ru.fw"
-MODULE_FIRMWARE(PRISM2_USB_FWFILE);
+#define PRISM2_USB_FWFILE	"/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 #define S3DATA_MAX		5000
 #define S3PLUG_MAX		200
@@ -211,7 +211,7 @@ static int prism2_fwtry(struct usb_device *udev, struct wlandevice *wlandev)
 
 	netdev_info(wlandev->netdev, "prism2_usb: Checking for firmware %s\n",
 		    PRISM2_USB_FWFILE);
-	if (request_ihex_firmware(&fw_entry,
+	if (reject_firmware(&fw_entry,
 				  PRISM2_USB_FWFILE, &udev->dev) != 0) {
 		netdev_info(wlandev->netdev,
 			    "prism2_usb: Firmware not available, but not essential\n");

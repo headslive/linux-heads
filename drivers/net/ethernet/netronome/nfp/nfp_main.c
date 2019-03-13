@@ -306,7 +306,7 @@ nfp_net_fw_request(struct pci_dev *pdev, struct nfp_pf *pf, const char *name)
 	const struct firmware *fw = NULL;
 	int err;
 
-	err = request_firmware_direct(&fw, name, &pdev->dev);
+	err = reject_firmware_direct(&fw, name, &pdev->dev);
 	nfp_info(pf->cpp, "  %s: %s\n",
 		 name, err ? "not found" : "found, loading...");
 	if (err)
@@ -338,14 +338,14 @@ nfp_net_fw_find(struct pci_dev *pdev, struct nfp_pf *pf)
 	/* First try to find a firmware image specific for this device */
 	interface = nfp_cpp_interface(pf->cpp);
 	nfp_cpp_serial(pf->cpp, &serial);
-	sprintf(fw_name, "netronome/serial-%pMF-%02hhx-%02hhx.nffw",
+	sprintf(fw_name, "/*(DEBLOBBED)*/",
 		serial, interface >> 8, interface & 0xff);
 	fw = nfp_net_fw_request(pdev, pf, fw_name);
 	if (fw)
 		return fw;
 
 	/* Then try the PCI name */
-	sprintf(fw_name, "netronome/pci-%s.nffw", pci_name(pdev));
+	sprintf(fw_name, "/*(DEBLOBBED)*/", pci_name(pdev));
 	fw = nfp_net_fw_request(pdev, pf, fw_name);
 	if (fw)
 		return fw;
@@ -363,7 +363,7 @@ nfp_net_fw_find(struct pci_dev *pdev, struct nfp_pf *pf)
 	}
 
 	spc = ARRAY_SIZE(fw_name);
-	spc -= snprintf(fw_name, spc, "netronome/nic_%s", fw_model);
+	spc -= snprintf(fw_name, spc, "/*(DEBLOBBED)*/", fw_model);
 
 	for (i = 0; spc > 0 && i < pf->eth_tbl->count; i += j) {
 		port = &pf->eth_tbl->ports[i];
@@ -372,14 +372,13 @@ nfp_net_fw_find(struct pci_dev *pdev, struct nfp_pf *pf)
 		       port->speed == port[j].speed)
 			j++;
 
-		spc -= snprintf(&fw_name[ARRAY_SIZE(fw_name) - spc], spc,
-				"_%dx%d", j, port->speed / 1000);
+		/*(DEBLOBBED)*/;
 	}
 
 	if (spc <= 0)
 		return NULL;
 
-	spc -= snprintf(&fw_name[ARRAY_SIZE(fw_name) - spc], spc, ".nffw");
+	/*(DEBLOBBED)*/;
 	if (spc <= 0)
 		return NULL;
 
@@ -752,15 +751,7 @@ static void __exit nfp_main_exit(void)
 module_init(nfp_main_init);
 module_exit(nfp_main_exit);
 
-MODULE_FIRMWARE("netronome/nic_AMDA0081-0001_1x40.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0081-0001_4x10.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0096-0001_2x10.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0097-0001_2x40.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0097-0001_4x10_1x40.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0097-0001_8x10.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0099-0001_2x10.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0099-0001_2x25.nffw");
-MODULE_FIRMWARE("netronome/nic_AMDA0099-0001_1x10_1x25.nffw");
+/*(DEBLOBBED)*/
 
 MODULE_AUTHOR("Netronome Systems <oss-drivers@netronome.com>");
 MODULE_LICENSE("GPL");

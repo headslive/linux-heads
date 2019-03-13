@@ -18,7 +18,7 @@
 #ifndef _DVB_SI2165_PRIV
 #define _DVB_SI2165_PRIV
 
-#define SI2165_FIRMWARE_REV_D "dvb-demod-si2165.fw"
+#define SI2165_FIRMWARE_REV_D "/*(DEBLOBBED)*/"
 
 struct si2165_config {
 	/* i2c addr

@@ -329,7 +329,7 @@ int __mac_fw_upload(struct i1480 *i1480, const char *fw_name,
 	const struct firmware *fw;
 	struct fw_hdr *fw_hdrs;
 
-	result = request_firmware(&fw, fw_name, i1480->dev);
+	result = reject_firmware(&fw, fw_name, i1480->dev);
 	if (result < 0)	/* Up to caller to complain on -ENOENT */
 		goto out;
 	result = fw_hdrs_load(i1480, &fw_hdrs, fw->data, fw->size);

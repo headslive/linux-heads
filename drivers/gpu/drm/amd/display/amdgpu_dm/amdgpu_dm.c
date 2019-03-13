@@ -78,8 +78,8 @@
 #include "modules/power/power_helpers.h"
 #include "modules/inc/mod_info_packet.h"
 
-#define FIRMWARE_RAVEN_DMCU		"amdgpu/raven_dmcu.bin"
-MODULE_FIRMWARE(FIRMWARE_RAVEN_DMCU);
+#define FIRMWARE_RAVEN_DMCU		"/*(DEBLOBBED)*/"
+/*(DEBLOBBED)*/
 
 /**
  * DOC: overview
@@ -580,7 +580,7 @@ static int load_dmcu_fw(struct amdgpu_device *adev)
 		return 0;
 	}
 
-	r = request_firmware_direct(&adev->dm.fw_dmcu, fw_name_dmcu, adev->dev);
+	r = reject_firmware_direct(&adev->dm.fw_dmcu, fw_name_dmcu, adev->dev);
 	if (r == -ENOENT) {
 		/* DMCU firmware is not necessary, so don't raise a fuss if it's missing */
 		DRM_DEBUG_KMS("dm: DMCU firmware not found\n");

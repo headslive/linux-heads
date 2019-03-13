@@ -1113,9 +1113,7 @@ static void bnx2x_get_drvinfo(struct net_device *dev,
 	strlcpy(info->version, DRV_MODULE_VERSION, sizeof(info->version));
 
 	memset(version, 0, sizeof(version));
-	snprintf(version, ETHTOOL_FWVERS_LEN, " storm %d.%d.%d.%d",
-		 BCM_5710_FW_MAJOR_VERSION, BCM_5710_FW_MINOR_VERSION,
-		 BCM_5710_FW_REVISION_VERSION, BCM_5710_FW_ENGINEERING_VERSION);
+	/*(DEBLOBBED)*/;
 	strlcat(info->version, version, sizeof(info->version));
 
 	if (SHMEM2_HAS(bp, extended_dev_info_shared_addr)) {

@@ -167,10 +167,10 @@ enum ath6kl_hw_flags {
 	ATH6KL_HW_SDIO_CRC_ERROR_WAR	= BIT(3),
 };
 
-#define ATH6KL_FW_API2_FILE "fw-2.bin"
-#define ATH6KL_FW_API3_FILE "fw-3.bin"
-#define ATH6KL_FW_API4_FILE "fw-4.bin"
-#define ATH6KL_FW_API5_FILE "fw-5.bin"
+#define ATH6KL_FW_API2_FILE "/*(DEBLOBBED)*/"
+#define ATH6KL_FW_API3_FILE "/*(DEBLOBBED)*/"
+#define ATH6KL_FW_API4_FILE "/*(DEBLOBBED)*/"
+#define ATH6KL_FW_API5_FILE "/*(DEBLOBBED)*/"
 
 /* AR6003 1.0 definitions */
 #define AR6003_HW_1_0_VERSION                 0x300002ba
@@ -179,70 +179,70 @@ enum ath6kl_hw_flags {
 #define AR6003_HW_2_0_VERSION                 0x30000384
 #define AR6003_HW_2_0_PATCH_DOWNLOAD_ADDRESS  0x57e910
 #define AR6003_HW_2_0_FW_DIR			"ath6k/AR6003/hw2.0"
-#define AR6003_HW_2_0_OTP_FILE			"otp.bin.z77"
-#define AR6003_HW_2_0_FIRMWARE_FILE		"athwlan.bin.z77"
-#define AR6003_HW_2_0_TCMD_FIRMWARE_FILE	"athtcmd_ram.bin"
-#define AR6003_HW_2_0_PATCH_FILE		"data.patch.bin"
-#define AR6003_HW_2_0_BOARD_DATA_FILE AR6003_HW_2_0_FW_DIR "/bdata.bin"
+#define AR6003_HW_2_0_OTP_FILE			"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_0_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_0_TCMD_FIRMWARE_FILE	"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_0_PATCH_FILE		"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_0_BOARD_DATA_FILE AR6003_HW_2_0_FW_DIR "//*(DEBLOBBED)*/"
 #define AR6003_HW_2_0_DEFAULT_BOARD_DATA_FILE \
-			AR6003_HW_2_0_FW_DIR "/bdata.SD31.bin"
+			AR6003_HW_2_0_FW_DIR "//*(DEBLOBBED)*/"
 
 /* AR6003 3.0 definitions */
 #define AR6003_HW_2_1_1_VERSION                 0x30000582
 #define AR6003_HW_2_1_1_FW_DIR			"ath6k/AR6003/hw2.1.1"
-#define AR6003_HW_2_1_1_OTP_FILE		"otp.bin"
-#define AR6003_HW_2_1_1_FIRMWARE_FILE		"athwlan.bin"
-#define AR6003_HW_2_1_1_TCMD_FIRMWARE_FILE	"athtcmd_ram.bin"
-#define AR6003_HW_2_1_1_UTF_FIRMWARE_FILE	"utf.bin"
-#define AR6003_HW_2_1_1_TESTSCRIPT_FILE	"nullTestFlow.bin"
-#define AR6003_HW_2_1_1_PATCH_FILE		"data.patch.bin"
-#define AR6003_HW_2_1_1_BOARD_DATA_FILE AR6003_HW_2_1_1_FW_DIR "/bdata.bin"
+#define AR6003_HW_2_1_1_OTP_FILE		"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_1_1_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_1_1_TCMD_FIRMWARE_FILE	"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_1_1_UTF_FIRMWARE_FILE	"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_1_1_TESTSCRIPT_FILE	"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_1_1_PATCH_FILE		"/*(DEBLOBBED)*/"
+#define AR6003_HW_2_1_1_BOARD_DATA_FILE AR6003_HW_2_1_1_FW_DIR "//*(DEBLOBBED)*/"
 #define AR6003_HW_2_1_1_DEFAULT_BOARD_DATA_FILE	\
-			AR6003_HW_2_1_1_FW_DIR "/bdata.SD31.bin"
+			AR6003_HW_2_1_1_FW_DIR "//*(DEBLOBBED)*/"
 
 /* AR6004 1.0 definitions */
 #define AR6004_HW_1_0_VERSION                 0x30000623
 #define AR6004_HW_1_0_FW_DIR			"ath6k/AR6004/hw1.0"
-#define AR6004_HW_1_0_FIRMWARE_FILE		"fw.ram.bin"
-#define AR6004_HW_1_0_BOARD_DATA_FILE         AR6004_HW_1_0_FW_DIR "/bdata.bin"
+#define AR6004_HW_1_0_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_1_0_BOARD_DATA_FILE         AR6004_HW_1_0_FW_DIR "//*(DEBLOBBED)*/"
 #define AR6004_HW_1_0_DEFAULT_BOARD_DATA_FILE \
-	AR6004_HW_1_0_FW_DIR "/bdata.DB132.bin"
+	AR6004_HW_1_0_FW_DIR "//*(DEBLOBBED)*/"
 
 /* AR6004 1.1 definitions */
 #define AR6004_HW_1_1_VERSION                 0x30000001
 #define AR6004_HW_1_1_FW_DIR			"ath6k/AR6004/hw1.1"
-#define AR6004_HW_1_1_FIRMWARE_FILE		"fw.ram.bin"
-#define AR6004_HW_1_1_BOARD_DATA_FILE         AR6004_HW_1_1_FW_DIR "/bdata.bin"
+#define AR6004_HW_1_1_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_1_1_BOARD_DATA_FILE         AR6004_HW_1_1_FW_DIR "//*(DEBLOBBED)*/"
 #define AR6004_HW_1_1_DEFAULT_BOARD_DATA_FILE \
-	AR6004_HW_1_1_FW_DIR "/bdata.DB132.bin"
+	AR6004_HW_1_1_FW_DIR "//*(DEBLOBBED)*/"
 
 /* AR6004 1.2 definitions */
 #define AR6004_HW_1_2_VERSION                 0x300007e8
 #define AR6004_HW_1_2_FW_DIR			"ath6k/AR6004/hw1.2"
-#define AR6004_HW_1_2_FIRMWARE_FILE           "fw.ram.bin"
-#define AR6004_HW_1_2_BOARD_DATA_FILE         AR6004_HW_1_2_FW_DIR "/bdata.bin"
+#define AR6004_HW_1_2_FIRMWARE_FILE           "/*(DEBLOBBED)*/"
+#define AR6004_HW_1_2_BOARD_DATA_FILE         AR6004_HW_1_2_FW_DIR "//*(DEBLOBBED)*/"
 #define AR6004_HW_1_2_DEFAULT_BOARD_DATA_FILE \
-	AR6004_HW_1_2_FW_DIR "/bdata.bin"
+	AR6004_HW_1_2_FW_DIR "//*(DEBLOBBED)*/"
 
 /* AR6004 1.3 definitions */
 #define AR6004_HW_1_3_VERSION			0x31c8088a
 #define AR6004_HW_1_3_FW_DIR			"ath6k/AR6004/hw1.3"
-#define AR6004_HW_1_3_FIRMWARE_FILE		"fw.ram.bin"
-#define AR6004_HW_1_3_TCMD_FIRMWARE_FILE	"utf.bin"
-#define AR6004_HW_1_3_UTF_FIRMWARE_FILE		"utf.bin"
-#define AR6004_HW_1_3_TESTSCRIPT_FILE		"nullTestFlow.bin"
-#define AR6004_HW_1_3_BOARD_DATA_FILE	      AR6004_HW_1_3_FW_DIR "/bdata.bin"
-#define AR6004_HW_1_3_DEFAULT_BOARD_DATA_FILE AR6004_HW_1_3_FW_DIR "/bdata.bin"
+#define AR6004_HW_1_3_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_1_3_TCMD_FIRMWARE_FILE	"/*(DEBLOBBED)*/"
+#define AR6004_HW_1_3_UTF_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_1_3_TESTSCRIPT_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_1_3_BOARD_DATA_FILE	      AR6004_HW_1_3_FW_DIR "//*(DEBLOBBED)*/"
+#define AR6004_HW_1_3_DEFAULT_BOARD_DATA_FILE AR6004_HW_1_3_FW_DIR "//*(DEBLOBBED)*/"
 
 /* AR6004 3.0 definitions */
 #define AR6004_HW_3_0_VERSION			0x31C809F8
 #define AR6004_HW_3_0_FW_DIR			"ath6k/AR6004/hw3.0"
-#define AR6004_HW_3_0_FIRMWARE_FILE		"fw.ram.bin"
-#define AR6004_HW_3_0_TCMD_FIRMWARE_FILE	"utf.bin"
-#define AR6004_HW_3_0_UTF_FIRMWARE_FILE		"utf.bin"
-#define AR6004_HW_3_0_TESTSCRIPT_FILE		"nullTestFlow.bin"
-#define AR6004_HW_3_0_BOARD_DATA_FILE	      AR6004_HW_3_0_FW_DIR "/bdata.bin"
-#define AR6004_HW_3_0_DEFAULT_BOARD_DATA_FILE AR6004_HW_3_0_FW_DIR "/bdata.bin"
+#define AR6004_HW_3_0_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_3_0_TCMD_FIRMWARE_FILE	"/*(DEBLOBBED)*/"
+#define AR6004_HW_3_0_UTF_FIRMWARE_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_3_0_TESTSCRIPT_FILE		"/*(DEBLOBBED)*/"
+#define AR6004_HW_3_0_BOARD_DATA_FILE	      AR6004_HW_3_0_FW_DIR "//*(DEBLOBBED)*/"
+#define AR6004_HW_3_0_DEFAULT_BOARD_DATA_FILE AR6004_HW_3_0_FW_DIR "//*(DEBLOBBED)*/"
 
 /* Per STA data, used in AP mode */
 #define STA_PS_AWAKE		BIT(0)

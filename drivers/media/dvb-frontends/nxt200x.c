@@ -18,28 +18,14 @@
  *
 */
 
-/*
- *                      NOTES ABOUT THIS DRIVER
- *
- * This Linux driver supports:
- *   B2C2/BBTI Technisat Air2PC - ATSC (NXT2002)
- *   AverTVHD MCE A180 (NXT2004)
- *   ATI HDTV Wonder (NXT2004)
- *
- * This driver needs external firmware. Please use the command
- * "<kerneldir>/scripts/get_dvb_firmware nxt2002" or
- * "<kerneldir>/scripts/get_dvb_firmware nxt2004" to
- * download/extract the appropriate firmware, and then copy it to
- * /usr/lib/hotplug/firmware/ or /lib/firmware/
- * (depending on configuration of firmware hotplug).
- */
+/*(DEBLOBBED)*/
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 /* Max transfer size done by I2C transfer functions */
 #define MAX_XFER_SIZE  256
 
-#define NXT2002_DEFAULT_FIRMWARE "dvb-fe-nxt2002.fw"
-#define NXT2004_DEFAULT_FIRMWARE "dvb-fe-nxt2004.fw"
+/*(DEBLOBBED)*/
+/*(DEBLOBBED)*/
 #define CRC_CCIT_MASK 0x1021
 
 #include <linux/kernel.h>
@@ -883,8 +869,8 @@ static int nxt2002_init(struct dvb_frontend* fe)
 
 	/* request the firmware, this will block until someone uploads it */
 	pr_debug("%s: Waiting for firmware upload (%s)...\n",
-		 __func__, NXT2002_DEFAULT_FIRMWARE);
-	ret = request_firmware(&fw, NXT2002_DEFAULT_FIRMWARE,
+		 __func__, "/*(DEBLOBBED)*/");
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/",
 			       state->i2c->dev.parent);
 	pr_debug("%s: Waiting for firmware upload(2)...\n", __func__);
 	if (ret) {
@@ -950,8 +936,8 @@ static int nxt2004_init(struct dvb_frontend* fe)
 
 	/* request the firmware, this will block until someone uploads it */
 	pr_debug("%s: Waiting for firmware upload (%s)...\n",
-		 __func__, NXT2004_DEFAULT_FIRMWARE);
-	ret = request_firmware(&fw, NXT2004_DEFAULT_FIRMWARE,
+		 __func__, "/*(DEBLOBBED)*/");
+	ret = reject_firmware(&fw, "/*(DEBLOBBED)*/",
 			       state->i2c->dev.parent);
 	pr_debug("%s: Waiting for firmware upload(2)...\n", __func__);
 	if (ret) {

@@ -21,12 +21,12 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_skl_machines[] = {
 	{
 		.id = "INT343A",
 		.drv_name = "skl_alc286s_i2s",
-		.fw_filename = "intel/dsp_fw_release.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 	},
 	{
 		.id = "INT343B",
 		.drv_name = "skl_n88l25_s4567",
-		.fw_filename = "intel/dsp_fw_release.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &skl_codecs,
 		.pdata = &skl_dmic_data,
@@ -34,7 +34,7 @@ struct snd_soc_acpi_mach snd_soc_acpi_intel_skl_machines[] = {
 	{
 		.id = "MX98357A",
 		.drv_name = "skl_n88l25_m98357a",
-		.fw_filename = "intel/dsp_fw_release.bin",
+		.fw_filename = "/*(DEBLOBBED)*/",
 		.machine_quirk = snd_soc_acpi_codec_list,
 		.quirk_data = &skl_codecs,
 		.pdata = &skl_dmic_data,

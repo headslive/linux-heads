@@ -838,13 +838,7 @@ config MMC_VUB300
 	  The VUB300 chip supports SD and MMC memory cards in addition
 	  to single and multifunction SDIO cards.
 
-	  Some SDIO cards will need a firmware file to be loaded and
-	  sent to VUB300 chip in order to achieve better data throughput.
-	  Download these "Offload Pseudocode" from Elan Digital Systems'
-	  web-site http://www.elandigitalsystems.com/support/downloads.php
-	  and put them in /lib/firmware. Note that without these additional
-	  firmware files the VUB300 chip will still function, but not at
-	  the best obtainable data rate.
+	  /*(DEBLOBBED)*/
 
 	  To compile this mmc host controller driver as a module,
 	  choose M here: the module will be called vub300.

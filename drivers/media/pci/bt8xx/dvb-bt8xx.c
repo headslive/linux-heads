@@ -313,7 +313,7 @@ static int microtune_mt7202dtf_request_firmware(struct dvb_frontend* fe, const s
 {
 	struct dvb_bt8xx_card* bt = (struct dvb_bt8xx_card*) fe->dvb->priv;
 
-	return request_firmware(fw, name, &bt->bt->dev->dev);
+	return reject_firmware(fw, name, &bt->bt->dev->dev);
 }
 
 static const struct sp887x_config microtune_mt7202dtf_config = {
@@ -411,7 +411,7 @@ static int or51211_request_firmware(struct dvb_frontend* fe, const struct firmwa
 {
 	struct dvb_bt8xx_card* bt = (struct dvb_bt8xx_card*) fe->dvb->priv;
 
-	return request_firmware(fw, name, &bt->bt->dev->dev);
+	return reject_firmware(fw, name, &bt->bt->dev->dev);
 }
 
 static void or51211_setmode(struct dvb_frontend * fe, int mode)

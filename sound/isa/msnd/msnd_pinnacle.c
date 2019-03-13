@@ -389,12 +389,12 @@ static int upload_dsp_code(struct snd_card *card)
 
 	outb(HPBLKSEL_0, chip->io + HP_BLKS);
 
-	err = request_firmware(&init_fw, INITCODEFILE, card->dev);
+	err = reject_firmware(&init_fw, INITCODEFILE, card->dev);
 	if (err < 0) {
 		printk(KERN_ERR LOGNAME ": Error loading " INITCODEFILE);
 		goto cleanup1;
 	}
-	err = request_firmware(&perm_fw, PERMCODEFILE, card->dev);
+	err = reject_firmware(&perm_fw, PERMCODEFILE, card->dev);
 	if (err < 0) {
 		printk(KERN_ERR LOGNAME ": Error loading " PERMCODEFILE);
 		goto cleanup;
@@ -798,8 +798,7 @@ MODULE_PARM_DESC(isapnp, "ISA PnP detection for specified soundcard.");
 MODULE_AUTHOR("Karsten Wiese <annabellesgarden@yahoo.de>");
 MODULE_DESCRIPTION("Turtle Beach " LONGNAME " Linux Driver");
 MODULE_LICENSE("GPL");
-MODULE_FIRMWARE(INITCODEFILE);
-MODULE_FIRMWARE(PERMCODEFILE);
+/*(DEBLOBBED)*/
 
 module_param_hw_array(io, long, ioport, NULL, 0444);
 MODULE_PARM_DESC(io, "IO port #");

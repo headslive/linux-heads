@@ -3360,7 +3360,7 @@ void cx88_setup_xc3028(struct cx88_core *core, struct xc2028_ctrl *ctl)
 {
 	memset(ctl, 0, sizeof(*ctl));
 
-	ctl->fname   = XC2028_DEFAULT_FIRMWARE;
+	ctl->fname   = "/*(DEBLOBBED)*/";
 	ctl->max_len = 64;
 
 	switch (core->boardnr) {

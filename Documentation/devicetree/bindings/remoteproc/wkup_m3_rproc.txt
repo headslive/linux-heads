@@ -44,7 +44,7 @@ ocp {
 			      <0x180000 0x2000>;
 			reg-names = "umem", "dmem";
 			ti,hwmods = "wkup_m3";
-			ti,pm-firmware = "am335x-pm-firmware.elf";
+			ti,pm-firmware = "/*(DEBLOBBED)*/";
 		};
 	};
 

@@ -67,23 +67,7 @@ MODULE_AUTHOR("Gábor Stefanik");
 MODULE_AUTHOR("Rafał Miłecki");
 MODULE_LICENSE("GPL");
 
-MODULE_FIRMWARE("b43/ucode11.fw");
-MODULE_FIRMWARE("b43/ucode13.fw");
-MODULE_FIRMWARE("b43/ucode14.fw");
-MODULE_FIRMWARE("b43/ucode15.fw");
-MODULE_FIRMWARE("b43/ucode16_lp.fw");
-MODULE_FIRMWARE("b43/ucode16_mimo.fw");
-MODULE_FIRMWARE("b43/ucode24_lcn.fw");
-MODULE_FIRMWARE("b43/ucode25_lcn.fw");
-MODULE_FIRMWARE("b43/ucode25_mimo.fw");
-MODULE_FIRMWARE("b43/ucode26_mimo.fw");
-MODULE_FIRMWARE("b43/ucode29_mimo.fw");
-MODULE_FIRMWARE("b43/ucode33_lcn40.fw");
-MODULE_FIRMWARE("b43/ucode30_mimo.fw");
-MODULE_FIRMWARE("b43/ucode5.fw");
-MODULE_FIRMWARE("b43/ucode40.fw");
-MODULE_FIRMWARE("b43/ucode42.fw");
-MODULE_FIRMWARE("b43/ucode9.fw");
+/*(DEBLOBBED)*/
 
 static int modparam_bad_frames_preempt;
 module_param_named(bad_frames_preempt, modparam_bad_frames_preempt, int, 0444);
@@ -2183,10 +2167,7 @@ static void b43_release_firmware(struct b43_wldev *dev)
 static void b43_print_fw_helptext(struct b43_wl *wl, bool error)
 {
 	const char text[] =
-		"You must go to " \
-		"http://wireless.kernel.org/en/users/Drivers/b43#devicefirmware " \
-		"and download the correct firmware for this driver version. " \
-		"Please carefully read all instructions on this website.\n";
+		"/*(DEBLOBBED)*/";
 
 	if (error)
 		b43err(wl, text);
@@ -2232,7 +2213,7 @@ int b43_do_request_fw(struct b43_request_fw_context *ctx,
 	switch (ctx->req_type) {
 	case B43_FWTYPE_PROPRIETARY:
 		snprintf(ctx->fwname, sizeof(ctx->fwname),
-			 "b43%s/%s.fw",
+			 "/*(DEBLOBBED)*/",
 			 modparam_fwpostfix, name);
 		break;
 	case B43_FWTYPE_OPENSOURCE:
@@ -2247,7 +2228,7 @@ int b43_do_request_fw(struct b43_request_fw_context *ctx,
 	if (async) {
 		/* do this part asynchronously */
 		init_completion(&ctx->dev->fw_load_complete);
-		err = request_firmware_nowait(THIS_MODULE, 1, ctx->fwname,
+		err = maybe_reject_firmware_nowait(THIS_MODULE, 1, ctx->fwname,
 					      ctx->dev->dev->dev, GFP_KERNEL,
 					      ctx, b43_fw_cb);
 		if (err < 0) {
@@ -2261,7 +2242,7 @@ int b43_do_request_fw(struct b43_request_fw_context *ctx,
 	 * request works. For this reason, we fall through here
 	 */
 	}
-	err = request_firmware(&ctx->blob, ctx->fwname,
+	err = maybe_reject_firmware(&ctx->blob, ctx->fwname,
 			       ctx->dev->dev->dev);
 	if (err == -ENOENT) {
 		snprintf(ctx->errors[ctx->req_type],
@@ -2325,60 +2306,60 @@ static int b43_try_request_fw(struct b43_request_fw_context *ctx)
 	switch (rev) {
 	case 42:
 		if (phy->type == B43_PHYTYPE_AC)
-			filename = "ucode42";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 40:
 		if (phy->type == B43_PHYTYPE_AC)
-			filename = "ucode40";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 33:
 		if (phy->type == B43_PHYTYPE_LCN40)
-			filename = "ucode33_lcn40";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 30:
 		if (phy->type == B43_PHYTYPE_N)
-			filename = "ucode30_mimo";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 29:
 		if (phy->type == B43_PHYTYPE_HT)
-			filename = "ucode29_mimo";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 26:
 		if (phy->type == B43_PHYTYPE_HT)
-			filename = "ucode26_mimo";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 28:
 	case 25:
 		if (phy->type == B43_PHYTYPE_N)
-			filename = "ucode25_mimo";
+			filename = "/*(DEBLOBBED)*/";
 		else if (phy->type == B43_PHYTYPE_LCN)
-			filename = "ucode25_lcn";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 24:
 		if (phy->type == B43_PHYTYPE_LCN)
-			filename = "ucode24_lcn";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 23:
 		if (phy->type == B43_PHYTYPE_N)
-			filename = "ucode16_mimo";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 16 ... 19:
 		if (phy->type == B43_PHYTYPE_N)
-			filename = "ucode16_mimo";
+			filename = "/*(DEBLOBBED)*/";
 		else if (phy->type == B43_PHYTYPE_LP)
-			filename = "ucode16_lp";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case 15:
-		filename = "ucode15";
+		filename = "/*(DEBLOBBED)*/";
 		break;
 	case 14:
-		filename = "ucode14";
+		filename = "/*(DEBLOBBED)*/";
 		break;
 	case 13:
-		filename = "ucode13";
+		filename = "/*(DEBLOBBED)*/";
 		break;
 	case 11 ... 12:
-		filename = "ucode11";
+		filename = "/*(DEBLOBBED)*/";
 		break;
 	case 5 ... 10:
 		filename = "ucode5";
@@ -2392,7 +2373,7 @@ static int b43_try_request_fw(struct b43_request_fw_context *ctx)
 
 	/* Get PCM code */
 	if ((rev >= 5) && (rev <= 10))
-		filename = "pcm5";
+		filename = "/*(DEBLOBBED)*/";
 	else if (rev >= 11)
 		filename = NULL;
 	else
@@ -2411,53 +2392,53 @@ static int b43_try_request_fw(struct b43_request_fw_context *ctx)
 	switch (dev->phy.type) {
 	case B43_PHYTYPE_G:
 		if (rev == 13)
-			filename = "b0g0initvals13";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev >= 5 && rev <= 10)
 			filename = "b0g0initvals5";
 		break;
 	case B43_PHYTYPE_N:
 		if (rev == 30)
-			filename = "n16initvals30";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 28 || rev == 25)
-			filename = "n0initvals25";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 24)
-			filename = "n0initvals24";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 23)
-			filename = "n0initvals16"; /* What about n0initvals22? */
+			filename = "/*(DEBLOBBED)*/"; /*(DEBLOBBED)*/
 		else if (rev >= 16 && rev <= 18)
-			filename = "n0initvals16";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev >= 11 && rev <= 12)
-			filename = "n0initvals11";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_LP:
 		if (rev >= 16 && rev <= 18)
-			filename = "lp0initvals16";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 15)
-			filename = "lp0initvals15";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 14)
-			filename = "lp0initvals14";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 13)
-			filename = "lp0initvals13";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_HT:
 		if (rev == 29)
-			filename = "ht0initvals29";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 26)
-			filename = "ht0initvals26";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_LCN:
 		if (rev == 24)
-			filename = "lcn0initvals24";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_LCN40:
 		if (rev == 33)
-			filename = "lcn400initvals33";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_AC:
 		if (rev == 42)
-			filename = "ac1initvals42";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 40)
-			filename = "ac0initvals40";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	}
 	if (!filename)
@@ -2471,53 +2452,53 @@ static int b43_try_request_fw(struct b43_request_fw_context *ctx)
 	switch (dev->phy.type) {
 	case B43_PHYTYPE_G:
 		if (rev == 13)
-			filename = "b0g0bsinitvals13";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev >= 5 && rev <= 10)
 			filename = "b0g0bsinitvals5";
 		break;
 	case B43_PHYTYPE_N:
 		if (rev == 30)
-			filename = "n16bsinitvals30";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 28 || rev == 25)
-			filename = "n0bsinitvals25";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 24)
-			filename = "n0bsinitvals24";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 23)
-			filename = "n0bsinitvals16"; /* What about n0bsinitvals22? */
+			filename = "/*(DEBLOBBED)*/"; /*(DEBLOBBED)*/
 		else if (rev >= 16 && rev <= 18)
-			filename = "n0bsinitvals16";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev >= 11 && rev <= 12)
-			filename = "n0bsinitvals11";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_LP:
 		if (rev >= 16 && rev <= 18)
-			filename = "lp0bsinitvals16";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 15)
-			filename = "lp0bsinitvals15";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 14)
-			filename = "lp0bsinitvals14";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 13)
-			filename = "lp0bsinitvals13";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_HT:
 		if (rev == 29)
-			filename = "ht0bsinitvals29";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 26)
-			filename = "ht0bsinitvals26";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_LCN:
 		if (rev == 24)
-			filename = "lcn0bsinitvals24";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_LCN40:
 		if (rev == 33)
-			filename = "lcn400bsinitvals33";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	case B43_PHYTYPE_AC:
 		if (rev == 42)
-			filename = "ac1bsinitvals42";
+			filename = "/*(DEBLOBBED)*/";
 		else if (rev == 40)
-			filename = "ac0bsinitvals40";
+			filename = "/*(DEBLOBBED)*/";
 		break;
 	}
 	if (!filename)
@@ -2721,6 +2702,11 @@ static int b43_upload_microcode(struct b43_wldev *dev)
 	/* Default to firmware/hardware crypto acceleration. */
 	dev->hwcrypto_enabled = true;
 
+	if (!dev->fw.opensource) {
+		b43err(dev->wl, "Rejected non-Free firmware\n");
+		err = -EOPNOTSUPP;
+		goto error;
+	}
 	if (dev->fw.opensource) {
 		u16 fwcapa;
 
@@ -2744,7 +2730,7 @@ static int b43_upload_microcode(struct b43_wldev *dev)
 			(fwdate >> 12) & 0xF, (fwdate >> 8) & 0xF, fwdate & 0xFF,
 			(fwtime >> 11) & 0x1F, (fwtime >> 5) & 0x3F, fwtime & 0x1F);
 		if (dev->fw.pcm_request_failed) {
-			b43warn(dev->wl, "No \"pcm5.fw\" firmware file found. "
+			b43warn(dev->wl, "No \"/*(DEBLOBBED)*/\" firmware file found. "
 				"Hardware accelerated cryptography is disabled.\n");
 			b43_print_fw_helptext(dev->wl, 0);
 		}
